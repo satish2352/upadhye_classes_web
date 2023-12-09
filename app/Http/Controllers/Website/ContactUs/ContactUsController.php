@@ -9,10 +9,9 @@ class ContactUsController extends Controller
 {
     public function getContactUs()
     {
-        try {
-            // return view('website.pages.aboutus.updadhyeclasses');
-            return view('website.pages.contactus.contactus');
 
+        try {
+            return view('website.pages.contactus.contactus');
         } catch (\Exception $e) {
             return $e;
         }
@@ -20,7 +19,7 @@ class ContactUsController extends Controller
 
     
     public function store(Request $request) {
-     
+     dd("hi");
         $rules = [
             'full_name' => 'required',
             'email' => 'required|email',
