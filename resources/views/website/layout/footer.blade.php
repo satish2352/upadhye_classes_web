@@ -1,28 +1,24 @@
-<footer class="main-footer-two">
-    <div class="main-footer-two__bg" style="background-image: url(assets/images/shapes/footer-bg-2.png);"></div>
+<footer class="main-footer">
+    <div class="main-footer__bg" style="background-image: url(assets/images/shapes/footer-bg-1.png);"></div>
     <div class="container">
         <div class="row">
-            <div class="col-xl-4 col-md-5 wow fadeInUp" data-wow-delay="100ms">
-                <div class="main-footer-two__about">
-                    <a href="index-2.html" class="main-footer-two__logo">
-                        <img src="{{ asset('website/assets/images/logo-two.png')}}" alt="eduact" width="159" height="40">
+            <div class="col-xl-3 col-md-5 wow fadeInUp" data-wow-delay="100ms">
+                <div class="main-footer__about">
+                    <a href="index-2.html" class="main-footer__logo">
+                        <img src="{{ asset('website/assets/images/footer-logo-two.png')}}" alt="eduact" width="159" height="40">
                     </a><!-- /.footer-logo -->
-                    <ul class="main-footer-two__info-list">
-                        <li><span class="icon-Location"></span>6391 Elgin St. Celina, Delaware 10299</li>
-                        <li><span class="icon-Telephone"></span><a href="tel:3035550105">(303) 555-0105</a></li>
-                        <li><span class="icon-Email"></span><a href="mailto:michael.mitc@example.com">michael.mitc@example.com</a></li>
-                    </ul>
-                    <div class="main-footer-two__social">
-                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <p class="main-footer__about__text">UPADHYE CLASSES stand at top in educational institutes especially for engineering and medical entrance examinations. It is coaching unit for students of XI and XII who aim to pursue career in respective fields.</p>
+                    <div class="main-footer__social">
+                        <a href="https://www.facebook.com/Upadhyeclass/"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Frkupadhye"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCn6JXOHr112mYwWmQbFGwNA"><i class="fab fa-youtube"></i></a>
                     </div><!-- /.footer-social -->
                 </div><!-- footer-top -->
             </div>
             <div class="col-xl-3 col-md-4 wow fadeInUp" data-wow-delay="200ms">
-                <div class="main-footer-two__navmenu main-footer-two__widget01">
-                    <h3 class="main-footer-two__title">Courses</h3>
+                <div class="main-footer__navmenu main-footer__widget01">
+                    <h3 class="main-footer__title">Courses</h3>
                     <ul>
                         <li><a href="course.html">JEE (MAIN+ADVANCED)</a></li>
                         <li><a href="about.html">Repeaters Batch</a></li>
@@ -31,35 +27,42 @@
                         <li><a href="team-become.html">XII Science</a></li>
                         <li><a href="team-become.html">Crash course</a></li>
                     </ul><!-- /.list-unstyled -->
+                    </ul><!-- /.list-unstyled -->
                 </div><!-- /.footer-menu -->
             </div>
             <div class="col-xl-2 col-md-3 wow fadeInUp" data-wow-delay="300ms">
-                <div class="main-footer-two__navmenu main-footer-two__widget02">
-                    <h3 class="main-footer-two__title">Useful Links</h3>
+                <div class="main-footer__navmenu main-footer__widget02">
+                    <h3 class="main-footer__title">Useful Links</h3>
                     <ul>
                         <li><a href="about.html">Admission Process</a></li>
                         <li><a href="course.html">Contact</a></li>
                         <li><a href="blog-grid-right.html">Online Fees Payment</a></li>
                         <li><a href="faq.html">WHY UPADHYE CLASSES</a></li>
                     </ul><!-- /.list-unstyled -->
+                    </ul><!-- /.list-unstyled -->
                 </div><!-- /.footer-menu -->
             </div>
-            <div class="col-xl-3 col-md-12 wow fadeInUp" data-wow-delay="400ms">
-                <div class="main-footer-two__gallery">
-                    <h3 class="main-footer-two__title">Gallery</h3>
-                    <div class="main-footer-two__galleries">
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-1.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-1.jpg')}}" alt="eduact"></a>
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-2.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-2.jpg')}}" alt="eduact"></a>
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-3.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-3.jpg')}}" alt="eduact"></a>
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-4.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-4.jpg')}}" alt="eduact"></a>
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-5.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-5.jpg')}}" alt="eduact"></a>
-                        <a class="img-popup" href="{{ asset('website/assets/images/gallery/fg-6.jpg')}}"><img src="{{ asset('website/assets/images/gallery/fg-6.jpg')}}" alt="eduact"></a>
-                    </div>
-                </div><!-- /.gallery -->
+            <div class="col-xl-4 col-md-12 wow fadeInUp" data-wow-delay="400ms">
+                <div class="main-footer__newsletter">
+                    <h3 class="main-footer__title">Contact Us</h3>
+                    <ul class="main-footer-two__info-list">
+                        <li><span class="icon-Location"></span>Upadhye Classes, 1st & 2nd Floor, Phoenix Towers, Near Jyoti Stores, New Pandit Colony, Off Gangapure Road, 422 002</li>
+                        <li><span class="icon-Telephone"></span><a href="tel:9850511000">9850511000</a></li>
+                        <li><span class="icon-Email"></span><a href="mailto:upadhyeclasses@gmail.com">upadhyeclasses@gmail.com</a></li>
+                    </ul>
+                    {{-- <form class="main-footer__email-box mc-form" data-url="MC_FORM_URL" novalidate="novalidate">
+                        <div class="main-footer__email-input-box">
+                            <input type="email" placeholder="Email Address" name="EMAIL">
+                        </div>
+                        <button type="submit" class="eduact-btn"><span class="eduact-btn__curve"></span>Subscribe</button>
+                    </form> --}}
+                    <div class="mc-form__response"></div>
+                </div><!-- /.footer-mailchimp -->
             </div>
         </div><!-- /.row -->
     </div><!-- /.container -->
-</footer><!-- /.main-footer-two -->
+</footer><!-- /.main-footer -->
+
 
 <section class="copyright text-center">
     <div class="container wow fadeInUp" data-wow-delay="400ms">
