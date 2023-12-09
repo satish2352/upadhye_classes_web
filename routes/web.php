@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+
+Route::get('/login', function () {
+    return view('admin.login');
+});
+
 Route::get('/', ['as' => 'index', 'uses' => 'App\Http\Controllers\Website\IndexController@index']);
 //About Us========
 Route::get('/updadhyeclasses', ['as' => 'updadhyeclasses', 'uses' => 'App\Http\Controllers\Website\AboutUs\AboutUsController@index']);
