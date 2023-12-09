@@ -8,10 +8,10 @@
         <div class="page-header__bg jarallax-img"></div><!-- /.page-header-bg -->
         <div class="page-header__overlay"></div><!-- /.page-header-overlay -->
         <div class="container text-center">
-            <h2 class="page-header__title">Crash Courses</h2><!-- /.page-title -->
+            <h2 class="page-header__title">Intensive Batch</h2><!-- /.page-title -->
             <ul class="page-header__breadcrumb list-unstyled">
                 <li><a href="index-2.html">Home</a></li>
-                <li><span>Crash Courses</span></li>
+                <li><span>Intensive Batch</span></li>
             </ul><!-- /.page-breadcrumb list-unstyled -->
         </div><!-- /.container -->
     </section><!-- /.page-header -->
@@ -49,8 +49,7 @@
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
                                                 class="icon-instructor"></i></span> Course Type :</h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text"> Monday to Sunday 6 to 9
-                                        hours of studying.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">Monday to Sunday 6 to 9 hours of studying.</span></div>
                             </div>
                             <hr>
 
@@ -59,8 +58,7 @@
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
                                                 class="icon-history"></i></span> Course Duration</h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text"> This Batch is conducted
-                                        from March to till May for 2 Months .</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">This batch is conducted from April to till May.</span></div>
                             </div>
                             <hr>
                             <div class="row ">
@@ -68,9 +66,7 @@
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
                                                 class="icon-reading"></i></i></span> Admission Procedure :</h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text"> Must have passed 10+2 or
-                                        equivalent with Physics, Chemistry, Biology,
-                                        Math and English as core subjects from a recognized board.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">Must have passed 10+2 or equivalent with Physics, Chemistry, Biology, Math and English as core subjects from a recognized board.</span></div>
                             </div>
                             <hr>
                             <div class="row ">
@@ -78,9 +74,7 @@
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
                                                 class="icon-book"></i></span> Eligibility :</h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text"> Class 12 or equivalent
-                                        appearing aspirants are also eligible to apply
-                                        for NEET.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">Class 12 or equivalent appearing aspirants are also eligible to apply for NEET.</span></div>
                             </div>
                             <hr>
                         </div><!-- /.course-content -->

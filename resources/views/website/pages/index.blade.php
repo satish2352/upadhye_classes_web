@@ -588,7 +588,8 @@
                                             <li data-tab="#curriculum" class="tab-btn active-btn"><span>Crash
                                                     Course</span></li>
                                         </ul><!-- tab-title -->
-                                        <div class="tabs-content">
+                                        <div class="tabs-content"  style="background-image: url({{ asset('website/assets/images/shapes/category-bg-3.jpg') }}); height:300px; background-repeat: no-repeat;
+                                        background-size: cover;">
                                             <div class="tab fadeInUp animated" id="overview">
                                                 <div class="course-details__overview">
                                                     <p class="course-details__overview__text">
@@ -1084,7 +1085,8 @@
                         <div class="video-one__btn">
                             <img src="{{ asset('website/assets/images/backgrounds/video-btn-bg-1.png') }}"
                                 alt="eduact" />
-                            <a href="https://www.youtube.com/watch?v=ZfzBcYdoVEs" class="video-popup">
+                              
+                            <a href="https://www.youtube.com/embed/v=SR_ZaI1crIY" class="video-popup">
                                 <span class="icon-play"></span>
                             </a>
                         </div>

@@ -4,7 +4,7 @@
     <div class="custom-cursor__cursor-two"></div>
 
     <div class="preloader">
-        <div class="preloader__image" style="background-image: url(assets/images/loader.png);"></div>
+        <div class="preloader__image" style="background-image: url({{ asset('website/assets/images/favicons/loader.png')}});"></div>
     </div>
     <!-- /.preloader -->
     <div class="page-wrapper">
@@ -12,14 +12,14 @@
             <nav class="main-menu">
                 <div class="container">
                     <div class="main-menu__logo">
-                        <a href="/">
+                        <a href="{{ route('index') }}">
                             <img src="{{ asset('website/assets/images/logo-two.png')}}" width="183" height="48" alt="Eduact">
                         </a>
                     </div><!-- /.main-menu__logo -->
                     <div class="main-menu__nav">
                         <ul class="main-menu__list">
                             <li class="megamenu megamenu-clickable megamenu-clickable--toggler">
-                                <a href="#">Home</a>
+                                <a href="{{ route('index') }}">Home</a>
                                 {{-- <ul class="">
                                     <li>
                                         <div class="megamenu-popup">
@@ -165,28 +165,30 @@
                                 <a href="#">Courses</a>
                                 <ul>
                                     <li><a href="{{ route('crashcoursebatch') }}">Crash course Batch</a></li>
-                                    <li><a href="course-carousel.html">Repeaters Batch</a></li>
-                                    <li><a href="management-consulting.html">Revision Batch</a></li>
+                                    <li><a href="{{ route('repeatersbatch') }}">Repeaters Batch</a></li>
+                                    <li><a href="{{ route('revisionbatch') }}">Revision Batch</a></li>
                                     <li class="dropdown">
                                         <a href="#">XI Science</a>
                                         <ul class="sub-menu">
-                                            <li><a href="products.html">Progressive Batch</a></li>
-                                            <li><a href="products-left.html">FIntensive Batch</a></li>
-                                            <li><a href="products-right.html">IIT / JEE Batch</a></li>
+                                            <li><a href="{{ route('progressivebatch') }}">Progressive Batch</a></li>
+                                            <li><a href="{{ route('intensivebatch') }}">FIntensive Batch</a></li>
+                                            <li><a href="{{ route('iitjeebatch') }}">IIT / JEE Batch</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
                                         <a href="#">XII Science</a>
                                         <ul class="sub-menu">
-                                            <li><a href="products.html">Progressive Batch</a></li>
-                                            <li><a href="products-left.html">FIntensive Batch</a></li>
-                                            <li><a href="products-right.html">IIT / JEE Batch</a></li>
+                                            <li><a href="{{ route('progressivebatch-xii') }}">Progressive Batch</a></li>
+                                            <li><a href="{{ route('intensivebatch-xii') }}">FIntensive Batch</a></li>
+                                            <li><a href="{{ route('iitjeebatch-xii') }}">IIT / JEE Batch</a></li>
                                         </ul>
                                     </li>
+                                    <li><a href="{{ route('prefoundationbatch') }}">Pre Foundation Batch</a></li>
                                 </ul>
                             </li>
                             {{-- <li><a href="course.html">Our Result</a></li>
                             <li><a href="{{ route('gallery') }}">Gallery</a></li> --}}
+                            <li><a href="{{ route('ourresult') }}">Our Result</a></li>
                             <li class="dropdown">
                                 <a href="#">Admission</a>
                                 <ul >
@@ -205,9 +207,9 @@
                         <a href="#" class="main-menu__search search-toggler">
                             <i class="icon-Search"></i>
                         </a><!-- /.search btn -->
-                        <a href="login.html" class="main-menu__login">
+                        {{-- <a href="login.html" class="main-menu__login">
                             <i class="icon-account-1"></i>
-                        </a><!-- /.login btn -->
+                        </a><!-- /.login btn --> --}}
                         <div class="main-menu__info">
                             <span class="icon-Call"></span>
                             <a href="tel:9850511000">98 5051 1 000</a>
