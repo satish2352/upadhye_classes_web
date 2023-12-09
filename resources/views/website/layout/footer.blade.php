@@ -1,5 +1,5 @@
 <footer class="main-footer">
-    <div class="main-footer__bg" style="background-image: url(assets/images/shapes/footer-bg-1.png);"></div>
+    <div class="main-footer__bg" style="background-image: url({{ asset('website/assets/images/shapes/footer-bg-1.png')}});"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-md-5 wow fadeInUp" data-wow-delay="100ms">
@@ -9,10 +9,10 @@
                     </a><!-- /.footer-logo -->
                     <p class="main-footer__about__text">UPADHYE CLASSES stand at top in educational institutes especially for engineering and medical entrance examinations. It is coaching unit for students of XI and XII who aim to pursue career in respective fields.</p>
                     <div class="main-footer__social">
-                        <a href="https://www.facebook.com/Upadhyeclass/"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Frkupadhye"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCn6JXOHr112mYwWmQbFGwNA"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/Upadhyeclass/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/p/CMo0nFYjmJM/?igshid=qyx0qsh45k91" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Frkupadhye" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/channel/UCn6JXOHr112mYwWmQbFGwNA" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div><!-- /.footer-social -->
                 </div><!-- footer-top -->
             </div>
@@ -66,9 +66,16 @@
 
 <section class="copyright text-center">
     <div class="container wow fadeInUp" data-wow-delay="400ms">
-        <p class="copyright__text">Copyright <span class="dynamic-year"></span><!-- /.dynamic-year --> | Upadhye Classes. Designed  <a to="https://sumagoinfotech.com/" class="cursor" target="_blank">
+        <p class="copyright__text">Copyright <span class="dynamic-year"></span><!-- /.dynamic-year --> 
+            | Upadhye Classes Designed by 
+            <a href="https://www.sumagoinfotech.com/index1.php" target="_blank">
+                <img src="{{ asset('website/assets/images/red-heart.png')}}" className="img-fluid" style="width:20px " alt="" />
+              </a>
+              From Nashik 
+              {{-- <a to="https://sumagoinfotech.com/" class="cursor" target="_blank">
             <img src="{{ asset('website/assets/images/logo_sm.png')}}" className="img-fluid " alt="" style="width:18px" >
-          </a></p>
+          </a> --}}
+        </p>
        
     </div><!-- /.container -->
 </section><!-- /.copyright -->
