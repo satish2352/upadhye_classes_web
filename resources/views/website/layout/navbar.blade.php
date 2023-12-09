@@ -13,8 +13,7 @@
                 <div class="container">
                     <div class="main-menu__logo">
                         <a href="/">
-                            <img src="{{ asset('website/assets/images/logo-two.png') }}" width="183" height="48"
-                                alt="Eduact">
+                            <img src="{{ asset('website/assets/images/logo-two.png')}}" width="183" height="48" alt="Eduact">
                         </a>
                     </div><!-- /.main-menu__logo -->
                     <div class="main-menu__nav">
@@ -154,16 +153,18 @@
                             <li class="dropdown">
                                 <a href="#">About Us</a>
                                 <ul>
-                                    <li><a href="{{ route('updadhyeclasses') }}">WHY UPADHYE CLASSES</a></li>
+                                    <li><a
+                                        href="{{ route('updadhyeclasses') }}"
+                                         >WHY UPADHYE CLASSES</a></li>
                                     <li><a href="{{ route('directordesk') }}">DIRECTOR DESK</a></li>
-                                    <li><a href="{{ route('teachingmethodology') }}">OUR TEACHING Methodology</a></li>
+                                    <li><a href="{{route('teachingmethodology')}}">OUR TEACHING Methodology</a></li>
                                     <li><a href="{{ route('gallery') }}">Gallery</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#">Courses</a>
                                 <ul>
-                                    <li><a href="course.html">Crash course Batch</a></li>
+                                    <li><a href="{{ route('crashcoursebatch') }}">Crash course Batch</a></li>
                                     <li><a href="course-carousel.html">Repeaters Batch</a></li>
                                     <li><a href="management-consulting.html">Revision Batch</a></li>
                                     <li class="dropdown">
@@ -188,7 +189,7 @@
                             <li><a href="{{ route('gallery') }}">Gallery</a></li> --}}
                             <li class="dropdown">
                                 <a href="#">Admission</a>
-                                <ul>
+                                <ul >
                                     <li><a href="{{ route('applicatioform') }}">Admission Form</a></li>
                                     <li><a href="{{ route('scolarship') }}">Scolarship</a></li>
                                     <li><a href="{{ route('feespayment') }}">Fees Payment</a></li>

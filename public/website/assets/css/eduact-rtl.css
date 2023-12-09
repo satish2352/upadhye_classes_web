@@ -9016,6 +9016,9 @@ body.megamenu-popup-active .mobile-nav__content {
   margin: -110px 0 0;
 }
 
+.techingmethodology{
+  height: 380px;
+}
 @media (max-width: 767px) {
   .course-one__content {
     margin-top: -80px;
@@ -9536,7 +9539,8 @@ body.megamenu-popup-active .mobile-nav__content {
   min-height: 283px;
   box-shadow: 0px 0px 60px 0px rgba(2, 2, 2, 0.07);
   margin: 0 0 36px;
-  padding: 0 256px 0 30px;
+  /* padding: 0 256px 0 30px; */
+  padding: 0 20px 0 10px;
   display: flex;
   align-items: center;
 }
@@ -9746,7 +9750,7 @@ body.megamenu-popup-active .mobile-nav__content {
 --------------------------------------------------------------*/
 .course-details {
   position: relative;
-  padding: 120px 0;
+  /* padding: 120px 0; */
 }
 
 @media (max-width: 767px) {
@@ -11011,7 +11015,7 @@ body.megamenu-popup-active .mobile-nav__content {
   background-position: top right;
   background-repeat: no-repeat;
   padding: 40px 40px 56px 35px;
-  height: 400px !important;
+  height: 440px !important;
 }
 
 .testimonial-two__item svg {
@@ -11220,8 +11224,8 @@ body.megamenu-popup-active .mobile-nav__content {
   position: absolute;
   right: 0;
   top: 0;
-  width: 303px;
-  height: 338px;
+  /* width: 303px;
+  height: 338px; */
   border-radius: 14px;
   overflow: hidden;
 }
@@ -16643,4 +16647,7 @@ body.boxed-wrapper .hero-banner__thumb {
 }
 .cursor{
   cursor: pointer;
+}
+.icon-color-yekkow{
+  color: var(--eduact-secondary);
 }
