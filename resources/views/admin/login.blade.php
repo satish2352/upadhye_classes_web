@@ -8,7 +8,7 @@
     <title>
         {{ env('APP_NAME') }}
     </title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('website_files/images/home/DM.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo-two.png') }}">
     <!-- css global-->
     <link rel="stylesheet" href="{{ asset('assets/vendors/iconfonts/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
@@ -47,7 +47,7 @@
                         <div class="auth-form-transparent text-left p-3">
                             <!--  Brand Logo -->
                             <div class="brand-logo d-flex justify-content-center">
-                                <img src="{{ asset('website_files/images/home/DMS.png') }}" alt="logo">
+                                <img src="{{ asset('website/assets/images/logo-two.png') }}" alt="logo">
                             </div>
                             <!--  Login Form -->
 
