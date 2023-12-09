@@ -8,10 +8,10 @@
         <div class="page-header__bg jarallax-img"></div><!-- /.page-header-bg -->
         <div class="page-header__overlay"></div><!-- /.page-header-overlay -->
         <div class="container text-center">
-            <h2 class="page-header__title">JEE (Main)</h2><!-- /.page-title -->
+            <h2 class="page-header__title">NoticeBoard</h2><!-- /.page-title -->
             <ul class="page-header__breadcrumb list-unstyled">
-                {{-- <li><a href="index-2.html">Home</a></li> --}}
-                {{-- <li><span>Course</span></li> --}}
+                <li><a href="index-2.html">Home</a></li>
+                <li><span>NoticeBoard</span></li>
             </ul><!-- /.page-breadcrumb list-unstyled -->
         </div><!-- /.container -->
     </section><!-- /.page-header -->
@@ -35,23 +35,31 @@
                         </g>
                     </svg>
                 </h5> --}}
-                <h2 class="section-title__title">About JEE (Main)</h2>
+                <h2 class="section-title__title">NoticeBoard</h2>
             </div><!-- section-title -->
-        <div class="tab fadeInUp animated" id="overview">
-            <div class="course-details__overview">
-                <p class="course-details__overview__text">
-                    The Joint Entrance Examination, JEE (Main) comprises two papers. Paper 1 is conducted for admission to Undergraduate Engineering Programs (B.E/B.Tech.) at NITs, IIITs, other Centrally Funded Technical Institutions (CFTIs), and Institutions/Universities funded/recognized by participating State Governments. JEE (Main) is also an eligibility test for JEE (Advanced), which is conducted for admission to IITs. Paper 2 is conducted for admission to B. Arch and B. Planning courses in the country.
-                </p>
-                <h3 class="neet_title">Upadhye Test Series:</h3>
-                <ul class="list-unstyled course-details__overview__lists">
-                    <li><span class="icon-check"></span>Test Series Starting Date: 16st September, 2023</li>
-                    <li><span class="icon-check"></span>Test Duration: 3:00 Hrs.</li>
-                    <li><span class="icon-check"></span>Mode Of Test: Online</li>
-                    <li><span class="icon-check"></span>Medium of Test: English</li>
-                    <li><span class="icon-check"></span>Course Fee: Rs. 1499/- Only</li>
-                </ul>
+            <div class="row">
+                <div class="col-xl-12 wow fadeInUp" data-wow-delay="200ms">
+                    <div class="col-xl-3 wow fadeInUp " data-wow-delay="200ms">
+                        <div class="course-three__item p-2">
+                            <div class="course-three__content ">
+                                {{-- <ul class="course-details__sidebar__lists clerfix"> --}}
+                                    <div class="d-flex  align-items-center justify-content-center">
+                                    <img src="{{ asset('website/assets/images/pdf.png') }}"
+                                    alt="eduact">
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                    <button type="submit" class="eduact-btn eduact-btn-second">
+                                        <span class="eduact-btn__curve"></span>Download<i class="icon-arrow"></i>
+                                    </button>
+                                    </div>
+                            </div><!-- /.course-content -->
+                        </div><!-- /.course-card-two -->
+                    </div>
+                 
+                </div>
+
+
             </div>
-        </div><!-- tab-content-overview -->
         </div>
     </section>
     <!-- Course End -->

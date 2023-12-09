@@ -195,6 +195,7 @@
                                     <li><a href="{{ route('applicatioform') }}">Admission Form</a></li>
                                     <li><a href="{{ route('scolarship') }}">Scolarship</a></li>
                                     <li><a href="{{ route('feespayment') }}">Fees Payment</a></li>
+                                    <li><a href="{{ route('noticeboard') }}">NoticeBoard  &nbsp;&nbsp;<img src="{{ asset('website/assets/images/img1.png')}}"></a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ route('contactus') }}">Contact</a></li>

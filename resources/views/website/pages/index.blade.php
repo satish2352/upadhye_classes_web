@@ -49,7 +49,9 @@
                                     <div class="main-slider__layer-thumb eduact-tilt"
                                         data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
                                         <img src="{{ asset('website/assets/images/resources/banner1.png') }}"
-                                            alt="eduact">
+                                            alt="eduact"
+                                            style="padding-right: 60px"
+                                            >
                                         {{-- <h3 class="">(IIT POWAI SELECTION)</h3> --}}
                                     </div>
 
@@ -126,7 +128,9 @@
                                     <div class="main-slider__layer-thumb eduact-tilt"
                                         data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
                                         <img src="{{ asset('website/assets/images/resources/banner2.png') }}"
-                                            alt="eduact">
+                                            alt="eduact"
+                                            style="padding-right: 60px"
+                                            >
                                     </div>
                                     <svg viewBox="0 0 884 578" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -200,7 +204,9 @@
                                     <div class="main-slider__layer-thumb eduact-tilt"
                                         data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 2, "speed": 700, "scale": 1 }'>
                                         <img src="{{ asset('website/assets/images/resources/banner3.png') }}"
-                                            alt="eduact">
+                                            alt="eduact"
+                                            style="padding-right: 60px"
+                                            >
                                     </div>
                                     <svg viewBox="0 0 884 578" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -423,7 +429,7 @@
                         </g>
                     </svg>
                 </h5>
-                <h2 class="section-title__title">COURSES OFFERED</h2>
+                <h2 class="wow fadeInRight section-title__title ">COURSES OFFERED</h2>
             </div><!-- section-title -->
             <div class="row">
                 <div class="col-xl-3 col-md-6 wow fadeInUp" data-wow-delay="200ms">
@@ -435,12 +441,12 @@
                             <div class="service-two__icon">
                                 <span class="icon-education"></span>
                             </div><!-- /.service-icon -->
-                            <h3 class="service-two__title">
+                            <h3 class="service-two__title pricing-one_ellipse">
                                 <a href="team.html">IIT JEE (Mains + Advanced)</a>
                             </h3><!-- /.service-title -->
                             <p class="service-two__text">The Joint Entrance Examination, JEE (Main) comprises two papers.
                                 Paper 1 is conducted for</p><!-- /.service-content -->
-                            <a class="service-two__rm" href="team.html">Read More<span
+                            <a class="service-two__rm" href="{{ route('jeemain')}}">Read More<span
                                     class="icon-caret-right"></span></a>
                         </div>
                     </div><!-- /.service-card-one -->
@@ -454,7 +460,7 @@
                             <div class="service-two__icon">
                                 <span class="icon-business"></span>
                             </div><!-- /.service-icon -->
-                            <h3 class="service-two__title">
+                            <h3 class="service-two__title pricing-one_ellipse">
                                 <a href="team-become.html">NEET (Medical)</a>
                             </h3><!-- /.service-title -->
                             <p class="service-two__text">NATIONAL ELIGIBILITY CUM ENTRANCE TEST [ NEET (UG)] will be
@@ -473,7 +479,7 @@
                             <div class="service-two__icon">
                                 <span class="icon-webinar"></span>
                             </div><!-- /.service-icon -->
-                            <h3 class="service-two__title">
+                            <h3 class="service-two__title pricing-one_ellipse">
                                 <a href="course.html">MHT CET</a>
                             </h3><!-- /.service-title -->
                             <p class="service-two__text">NATIONAL ELIGIBILITY CUM ENTRANCE TEST [ NEET (UG)] will be
@@ -492,7 +498,7 @@
                             <div class="service-two__icon">
                                 <span class="icon-neural"></span>
                             </div><!-- /.service-icon -->
-                            <h3 class="service-two__title">
+                            <h3 class="service-two__title pricing-one_ellipse">
                                 <a href="about.html">Junior Division</a>
                             </h3><!-- /.service-title -->
                             <p class="service-two__text">NATIONAL ELIGIBILITY CUM ENTRANCE TEST [ NEET (UG)] will be
@@ -1040,7 +1046,7 @@
                         <div class="category-two__icon">
                             <span class="icon-computer-science"></span>
                         </div><!-- /.category-icon -->
-                        <h3 class="category-two__title"><a href="about.html">NEET Test Series Start from 30th September,
+                        <h3 class="category-two__title"><a href="{{('neet')}}">NEET Test Series Start from 30th September,
                                 2023</a></h3><!-- /.category-title -->
                     </div><!-- /.category-card-one -->
                 </div>

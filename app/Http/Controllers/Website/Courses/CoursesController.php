@@ -43,4 +43,23 @@ class CoursesController extends Controller
             return $e;
         }
     }
+
+    public function getJEEMain()
+    {
+        try {
+            return view('website.pages.subpages.jeemain');
+
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    public function getNeet()
+    {
+        try {
+            return view('website.pages.subpages.neet');
+
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
 }

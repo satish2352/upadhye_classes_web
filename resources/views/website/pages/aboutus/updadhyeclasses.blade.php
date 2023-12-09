@@ -67,13 +67,16 @@
                                 </g>
                             </svg>
                         </h5>
-                        <h2 class="section-title__title">WHY UPADHYE CLASSES ?</h2>
+                        <h2 class="about-two__about-box__title">WHY UPADHYE CLASSES ?</h2>
                     </div><!-- section-title -->
                     
                     <div class="about-two__about-box">
                         <div class="about-two__about-box__top">
-                            <div class="about-two__about-box__icon"><span class="icon-logical-thinking"></span></div>
-                            <h4 class="about-two__about-box__title">Experienced Faculty</h4>
+                            <div class="about-two__about-box__icon">
+                                {{-- <span class="icon-logical-thinking"></span> --}}
+                                <img src="{{ asset('website/assets/images/about/faculty.png')}}" style="width: 40px" alt="eduact">
+                            </div>
+                            <h4 class="blog-details__comment__name">Experienced Faculty</h4>
                         </div>
                         <p class="about-two__about-box__text">
                             The Institute holds a highly experienced, qualified, and professional faculty. The faculty is experienced with their respective subjects and is available at the centers for the students and the parents. Parents/students can communicate and /or take guidance from faculty through easy accessibility on the premises. The faculty is well-informed and closely monitors the learning process of students.
@@ -81,8 +84,11 @@
                     </div><!-- /.icon-box -->
                     <div class="about-two__about-box">
                         <div class="about-two__about-box__top">
-                            <div class="about-two__about-box__icon"><span class="icon-vision"></span></div>
-                            <h4 class="about-two__about-box__title">Excellent Study Material:</h4>
+                            <div class="about-two__about-box__icon">
+                                {{-- <span class="icon-vision"></span> --}}
+                                <img src="{{ asset('website/assets/images/about/book.png')}}" style="width: 40px" alt="eduact">
+                            </div>
+                            <h4 class="blog-details__comment__name">Excellent Study Material:</h4>
                         </div>
                         <p class="about-two__about-box__text">
                             The provision of well-developed state-of-the-art study material is provided for the best and productive learning for our students. Upadhye classe’s study material is well revised and motivating the students to keep on working hard towards success. 
@@ -90,8 +96,12 @@
                     </div><!-- /.icon-box -->
                     <div class="about-two__about-box">
                         <div class="about-two__about-box__top">
-                            <div class="about-two__about-box__icon"><span class="icon-vision"></span></div>
-                            <h4 class="about-two__about-box__title"> Scientific Teaching Methodology</h4>
+                            <div class="about-two__about-box__icon">
+                                {{-- <span class="icon-vision"></span> --}}
+                                <img src="{{ asset('website/assets/images/about/book.png')}}" style="width: 40px" alt="eduact">
+
+                            </div>
+                            <h4 class="blog-details__comment__name"> Scientific Teaching Methodology</h4>
                         </div>
                         <p class="about-two__about-box__text">
                             The institute believes in bringing out the best from our students. Teaching methodology is worked through an in-depth observation of students capabilities and thus bringing out the best in it. We towards getting to know the interests, goals, strengths and weaknesses of the students and put our teaching methodos accordingly.
@@ -99,8 +109,11 @@
                     </div><!-- /.icon-box -->
                     <div class="about-two__about-box">
                         <div class="about-two__about-box__top">
-                            <div class="about-two__about-box__icon"><span class="icon-vision"></span></div>
-                            <h4 class="about-two__about-box__title"> Test System</h4>
+                            <div class="about-two__about-box__icon">
+                                {{-- <span class="icon-vision"></span> --}}
+                                <img src="{{ asset('website/assets/images/about/teaching.png')}}" style="width: 40px" alt="eduact">
+                            </div>
+                            <h4 class="blog-details__comment__name"> Test System</h4>
                         </div>
                         <p class="about-two__about-box__text">
                             U-test series is a well defined and a systematic method provided for students. It is developed in such a way that the students can access to it easily. The test system is broad and detailed covering the subjects according to comparative exam patterns. Our tests are available offline as well as online  
