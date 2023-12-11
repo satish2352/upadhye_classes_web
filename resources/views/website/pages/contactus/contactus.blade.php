@@ -90,7 +90,7 @@
                                 @endif
                             </div>
 
-                            <div class="col-md-4 captcha_set" style="text-align: -webkit-right;">
+                            {{-- <div class="col-md-4 captcha_set" style="text-align: -webkit-right;">
                                 {!! NoCaptcha::renderJs() !!}
                                 {!! NoCaptcha::display() !!}
 
@@ -99,7 +99,7 @@
                                         <span class="red-text">{{ $errors->first('g-recaptcha-response') }}</span>
                                     </span>
                                 @endif
-                            </div>
+                            </div> --}}
 
                             <div class="contact-one__btn-box">
 
