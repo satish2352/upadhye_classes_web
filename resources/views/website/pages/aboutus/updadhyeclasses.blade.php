@@ -28,7 +28,7 @@
                         <img src="{{ asset('website/assets/images/resources/about-2-1-about.jpg')}}" alt="eduact">
                         <div class="about-two__thumb__two-icon"><span class="icon-business"></span></div>
                     </div><!-- /.about-thumb-two -->
-                    <div class="about-two__fact">
+                    {{-- <div class="about-two__fact">
                         <div class="about-two__fact__icon"><span class="icon-trophy"></span></div>
                         <div class="about-two__fact__content">
                             <div class="about-two__fact__count">
@@ -38,7 +38,7 @@
                             </div><!-- /.fact-one__count -->
                             <h3 class="about-two__fact__title">Awesome Awards</h3><!-- /.fact-one__title -->
                         </div>
-                    </div><!-- /.fact-item -->
+                    </div><!-- /.fact-item --> --}}
                     <div class="about-two__thumb__shape1 wow zoomIn" data-wow-delay="300ms">
                         <img src="{{ asset('website/assets/images/shapes/about-2-shape-1.png')}}" alt="eduact">
                     </div><!-- /.about-shape-one -->
