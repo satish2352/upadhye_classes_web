@@ -22,84 +22,265 @@
                 <div class="col-xl-12 col-lg-12">
                     <div class="checkout-page__billing-address">
                         <h2 class="checkout-page__billing-address__title">Enquiry Form</h2>
-                        <form class="checkout-page__form">
+                        <form class="forms-sample" action="{{ url('add-applicatioform') }}" id="regForm" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
                             <div class="row bs-gutter-x-20">
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example">
-                                            <option selected="">Select Branch</option>
-                                            <option value="aandit Colony">Pandit Colony</option>
-                                            <option value="Ashok Stambh">Ashok Stambh</option>
+                                        <select class="selectpicker" aria-label="Default select example"
+                                            name="edu_location_id" id="edu_location_id" required>
+                                            <option value="" selected disabled>Select Branch</option>
+                                            @foreach ($data_output_location_address['data_output_location_address'] as $locationaddress)
+                                                <option value="{{ $locationaddress['id'] }}"
+                                                    {{ old('edu_location_id') == $locationaddress['id'] ? 'selected' : '' }}>
+                                                    {{ $locationaddress['name'] }}
+                                                </option>
+                                            @endforeach
                                         </select>
+                                        @if ($errors->has('edu_location_id'))
+                                            <span class="red-text">{{ $errors->first('edu_location_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example">
-                                            <option selected="">Select Board</option>
+                                        <select class="selectpicker" aria-label="Default select example" name="edu_board_id"
+                                            id="edu_board_id" required>
+                                            <option value="" selected disabled>Select Board</option>
                                             <option value="HSC">HSC</option>
                                             <option value="CBSC">CBSC</option>
-                                            <option value="CBSC">ICSE</option>
-                                            <option value="CBSC">other</option>
+                                            <option value="ICSE">ICSE</option>
+                                            <option value="other">Other</option>
                                         </select>
+                                        @if ($errors->has('edu_board_id'))
+                                            <span class="red-text">{{ $errors->first('edu_board_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
+
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example">
-                                            <option selected="">Select Class</option>
+                                        <select class="selectpicker" aria-label="Default select example" name="edu_class_id"
+                                            id="edu_class_id" required>
+                                            <option value="" selected disabled>Select Class</option>
                                             <option value="Foundation">Foundation</option>
                                             <option value="Aarambh">Aarambh</option>
                                             <option value="Pratigya">Pratigya</option>
                                             <option value="Sanjivani">Sanjivani</option>
                                             <option value="Crash Course">Crash Course</option>
                                         </select>
+                                        @if ($errors->has('edu_class_id'))
+                                            <span class="red-text">{{ $errors->first('edu_class_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
 
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <input type="text" name="full_name" value=""
-                                            placeholder="Please Enter Your Full Name" required="">
+                                        <select class="selectpicker" aria-label="Default select example"
+                                            name="edu_course_id" id="edu_course_id" required>
+                                            <option value="" selected disabled>Select Course</option>
+                                            <option value="Maths">Maths</option>
+                                            <option value="English">English</option>
+                                        </select>
+                                        @if ($errors->has('edu_course_id'))
+                                            <span class="red-text">{{ $errors->first('edu_course_id') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <input type="email" name="email" value=""
-                                            placeholder="Please Enter Your Email" required="">
+                                        <input type="text" name="full_name" id="full_name" value="{{ old('full_name') }}"
+                                            placeholder="Please Enter Your Full Name">
+                                        @if ($errors->has('full_name'))
+                                            <span class="red-text"><?php echo $errors->first('full_name', ':message'); ?></span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <input type="text" name="phone" value=""
-                                            placeholder="Please Enter Your Phone" required="">
+                                        <input type="email" name="email" value="{{ old('email') }}"
+                                            placeholder="Please Enter Your Email">
+                                        @if ($errors->has('email'))
+                                            <span class="red-text">{{ $errors->first('email') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <input type="text" name="phone" value=""
-                                            placeholder="Please Enter alternative Phone Number" required="">
+                                        <input type="text" name="mobile_number" value="{{ old('mobile_number') }}"
+                                            placeholder="Please Enter Your Phone">
+                                        @if ($errors->has('mobile_number'))
+                                            <span class="red-text">{{ $errors->first('mobile_number') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="checkout-page__input-box">
-                                        <input type="text" name="Address" value="" placeholder="Address">
+                                        <input type="text" name="alternative_mobile_number"
+                                            id="alternative_mobile_number" value="{{ old('alternative_mobile_number') }}"
+                                            placeholder="Please Enter alternative Phone Number">
+                                        @if ($errors->has('alternative_mobile_number'))
+                                            <span class="red-text">{{ $errors->first('alternative_mobile_number') }}</span>
+                                        @endif
                                     </div>
                                 </div>
+                                <div class="col-xl-6">
+                                    <div class="checkout-page__input-box">
+                                        <textarea type="text" class="gap-text" name="address" id="address" required>{{ old('address') }}</textarea>
+                                        @if ($errors->has('address'))
+                                            <span class="red-text">{{ $errors->first('address') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 captcha_set" id="g_recaptcha_response"
+                                style="text-align: -webkit-right;">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}
+
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <span class="red-text">{{ $errors->first('g-recaptcha-response') }}</span>
+                                    </span>
+                                @endif
                             </div>
-
+                            </div>
+                            <div class="d-flex">
+                                <button type="submit" id="submitButton" class="eduact-btn eduact-btn-second"><span
+                                        class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></button>
+                            </div>
                         </form>
 
                     </div>
                 </div>
 
-                <div class="d-flex">
-                    <a href="checkout.html" class="eduact-btn eduact-btn-second"><span
-                            class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></a>
-                </div><!-- /.text-right -->
+
             </div>
 
         </div>
     </section>
     <!-- Checkout End -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#regForm").validate({
+                errorClass: "error",
+                rules: {
+                    edu_location_id: {
+                        required: true,
+                    },
+                    edu_board_id: {
+                        required: true,
+                    },
+                    edu_class_id: {
+                        required: true,
+                    },
+                    edu_course_id: {
+                        required: true,
+                    },
+                    address: {
+                        required: true,
+                    },
+                    mobile_number: {
+                        required: true,
+                        spcenotallow: true,
+
+                    },
+                    alternative_mobile_number: {
+                        required: true,
+                        spcenotallow: true,
+
+                    },
+                    full_name: {
+                        required: true,
+                        spcenotallow: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+
+                },
+                messages: {
+                    edu_location_id: {
+                        required: "Select Incident",
+                    },
+                    edu_board_id: {
+                        required: "Select Board",
+                    },
+                    edu_class_id: {
+                        required: "Select Class",
+                    },
+                    edu_course_id: {
+                        required: "Select Course",
+                    },
+                    address: {
+                        required: "Please Enter Address",
+                    },
+                    mobile_number: {
+                        required: "Enter Mobile Number",
+                        pattern: "Invalid Mobile Number",
+                        remote: "This mobile number already exists.",
+                        spcenotallow: "Enter Some Text",
+                    },
+                    alternative_mobile_number: {
+                        required: "Enter Mobile Number",
+                        pattern: "Invalid Mobile Number",
+                        remote: "This mobile number already exists.",
+                        spcenotallow: "Enter Some Text",
+                    },
+                    full_name: {
+                        required: "Enter Description",
+                        spcenotallow: "Enter Some Text",
+                    },
+                    email: {
+                        required: "Enter Description",
+                        spcenotallow: "Enter Some Text",
+                    },
+
+
+                },
+                highlight: function(element, errorClass) {
+                    $(element).removeClass(errorClass);
+                },
+                submitHandler: function(form) {
+                    // Check if reCAPTCHA challenge is completed
+                    if (grecaptcha.getResponse() === "") {
+                        alert("Please complete the reCAPTCHA challenge.");
+                    } else {
+                        // Proceed with form submission
+                        form.submit();
+                    }
+                }
+            });
+
+
+            // if ((grecaptcha.getResponse().length === 0) && $("#regForm").valid()) {
+            //     $('#submitButton').prop('disabled', true);
+            // } else {
+            //     $('#submitButton').prop('disabled', false);
+            // }
+
+            $("input#document_file").hide();
+
+        });
+
+        $.extend($.validator.methods, {
+            spcenotallow: function(b, c, d) {
+                if (!this.depend(d, c)) return "dependency-mismatch";
+                if ("select" === c.nodeName.toLowerCase()) {
+                    var e = a(c).val();
+                    return e && e.length > 0
+                }
+                return this.checkable(c) ? this.getLength(b, c) > 0 : b.trim().length > 0
+            }
+        });
+    </script>
 @endsection

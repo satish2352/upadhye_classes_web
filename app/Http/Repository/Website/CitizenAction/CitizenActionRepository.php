@@ -33,6 +33,23 @@ class CitizenActionRepository  {
             return $e;
         }
     }
+    public function checkMobileNumberExists(Request $request) {
+        $mobileNumber = $request->input('mobile_number');
+      
+        $user = ReportIncidentModal::where('mobile_number', $mobileNumber)->first();
+      
+        if ($user) {
+          return response()->json([
+            'success' => false,
+            'message' => 'This mobile number already exists.',
+          ]);
+        } else {
+          return response()->json([
+            'success' => true,
+            'message' => 'This mobile number does not exist.',
+          ]);
+        }
+    }
     public function getAllVolunteerCitizenSupport()
     {
         try {
@@ -62,9 +79,10 @@ class CitizenActionRepository  {
                 $modal_data->datetime = $request['datetime'];
                 $modal_data->mobile_number = $request['mobile_number'];
                 $modal_data->description =   $request['description'];
+                
+                
                 // $modal_data->media_upload = $englishImageName;
                 $modal_data->save();       
-                    
                 $last_insert_id = $modal_data->id;
 
                 $englishImageName = $last_insert_id . '_english.' . $request->media_upload->extension();
@@ -95,7 +113,10 @@ class CitizenActionRepository  {
                 $modal_data->location = $request['location'];
                 $modal_data->datetime = $request['datetime'];
                 $modal_data->mobile_number = $request['mobile_number'];
+                $modal_data->email_id = $request['email_id'];
+                $modal_data->blood_group = $request['blood_group'];
                 $modal_data->description =   $request['description'];
+                // $modal_data->gps = $request['gps']; // Save GPS data to the database
 
 
                 if($request->is_ngo == 'on') {

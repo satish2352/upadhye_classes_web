@@ -16692,3 +16692,6 @@ body.boxed-wrapper .hero-banner__thumb {
   -webkit-animation: movebounce2 2s linear infinite;
   animation: movebounce2 2s linear infinite;
 }
+.checkout-page__input-box label{
+  color: red !important;
+}

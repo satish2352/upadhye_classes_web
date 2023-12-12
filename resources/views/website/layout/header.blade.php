@@ -36,4 +36,8 @@
 
     <!-- template styles -->
     <link rel="stylesheet" href="{{ asset('website/assets/css/eduact.css')}}" />
+
+ 
+    <script src="{{ asset('website/assets/js/query-3.7.0.min.js') }}"></script>
+    <script src="{{ asset('website/assets/js/query.validate.min.js') }}"></script>
 </head>

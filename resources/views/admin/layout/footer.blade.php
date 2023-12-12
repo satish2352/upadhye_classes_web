@@ -541,6 +541,41 @@
 // DOMContentLoaded  end
 
     </script>
+
+
+<script>
+    $('.delete-btn').click(function(e) {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $("#delete_id").val($(this).attr("data-id"));
+                $("#deleteform").submit();
+            }
+        })
+
+    });
+</script>
+
+<script>
+    $('.show-btn').click(function(e) {
+        $("#show_id").val($(this).attr("data-id"));
+        $("#showform").submit();
+    })
+</script>
+<script>
+    $('.edit-user-btn').click(function(e) {
+        $("#edit_user_id").val($(this).attr("data-id"));
+        $("#edituserform").submit();
+    })
+</script>
 </body>
 
 </html> <!-- partial:partials/_footer.html -->
