@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Services\Website\Application\ApplicationFormServices;
 use Session;
 use Validator;
+use App\Models\ {
+    LocationAddress,
+    EducationBoard,
+    ApplicationForm,
+    EducationClass
+
+};
 class ApplicationFormController extends Controller
 {
     public function __construct()
@@ -14,7 +21,7 @@ class ApplicationFormController extends Controller
         $this->service = new ApplicationFormServices();
     }
 
-    public function getApplicatioform()
+    public function getApplicationform()
     {
         try {
             $data_output_location_address = $this->service->getAllLocationAddress();
@@ -23,18 +30,42 @@ class ApplicationFormController extends Controller
             return $e;
         }
     }
-    public function getAllBoard() {
+    static function getCommonFormData() {
         try {
-            $data_output_all_board = $this->service->getAllBoard();
-            return view('website.pages.application.applicatioform', compact('data_output_all_board'));
+            $retun_data = [];
+    
+            $data_output_all_board = EducationBoard::where('is_active', true)
+                ->select(
+                    'education_board.name',
+                    'education_board.id',
+                )
+                ->get()
+                ->toArray();
+    
+            $retun_data['data_output_all_board'] = $data_output_all_board;
+    
+            $data_output_all_class = EducationClass::where('is_active', true)
+                ->select(
+                    'education_class.name',
+                    'education_class.id',
+                )
+                ->get()
+                ->toArray();
+    
+            $retun_data['data_output_all_class'] = $data_output_all_class;
+            return $retun_data;
         } catch (\Exception $e) {
-            return $e;
+            // Log the error for debugging
+            \Log::error($e);
+    
+            // Return an error response
+            return ['error' => 'An error occurred while fetching data. Please try again later.'];
         }
     }
     
-
     
-    public function addApplicatioform(Request $request) {
+    
+    public function addApplicationform(Request $request) {
        $rules = [
             'edu_location_id' => 'required',
             'edu_board_id' => 'required',

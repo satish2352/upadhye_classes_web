@@ -37,34 +37,34 @@
                 <h2 class="section-title__title">Keep in touch</h2>
             </div><!-- section-title -->
             <div class="contact-one__form-box  text-center">
-                <form action="{{ url('contactus-store') }}" method="POST" enctype="multipart/form-data"
-                    class="contact-one__form contact-form-validated" novalidate="novalidate">
+                <form class="forms-sample" action="{{ url('add-contactus') }}" id="regForm" method="POST"
+                        enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="contact-one__input-box">
+                        <div class="col-md-6 py-3">
+                            <div class="">
                                 <input type="text" placeholder="Your Name" name="full_name"
-                                    value="{{ old('full_name') }}">
+                                    value="{{ old('full_name') }}" class="form-control">
                                 <span id="number-validate" class="red-text"></span>
                                 @if ($errors->has('full_name'))
                                     <span class="red-text"><?php echo $errors->first('full_name', ':message'); ?></span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="contact-one__input-box">
+                        <div class="col-md-6 py-3">
+                            <div class="">
                                 <input type="email" placeholder="Email Address" name="email"
-                                    value="{{ old('email') }}">
+                                    value="{{ old('email') }}" class="form-control">
                                 <span id="number-validate" class="red-text"></span>
                                 @if ($errors->has('email'))
                                     <span class="red-text"><?php echo $errors->first('email', ':message'); ?></span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="contact-one__input-box">
+                        <div class="col-md-6 py-3">
+                            <div class="">
                                 <input type="text" placeholder="Phone" name="mobile_number"
-                                    value="{{ old('mobile_number') }}">
+                                    value="{{ old('mobile_number') }}" class="form-control">
                                 <span id="number-validate" class="red-text"></span>
                                 @if ($errors->has('mobile_number'))
                                     <span class="red-text"><?php echo $errors->first('mobile_number', ':message'); ?></span>
@@ -72,25 +72,25 @@
 
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="contact-one__input-box">
-                                <input type="text" placeholder="Subject" name="subject">
+                        <div class="col-md-6 py-3">
+                            <div class="">
+                                <input type="text" placeholder="Subject" name="subject"  value="{{ old('subject') }}" class="form-control">
                                 <span id="number-validate" class="red-text"></span>
                                 @if ($errors->has('subject'))
                                     <span class="red-text"><?php echo $errors->first('subject', ':message'); ?></span>
                                 @endif
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="contact-one__input-box text-message-box">
-                                <textarea name="message" placeholder="Write a Message"></textarea>
+                        <div class="col-md-12 py-3">
+                            <div class=" text-message-box">
+                                <textarea name="message" id="message" placeholder="Write a Message" class="form-control">{{ old('message') }}</textarea>
                                 <span id="number-validate" class="red-text"></span>
                                 @if ($errors->has('message'))
                                     <span class="red-text"><?php echo $errors->first('message', ':message'); ?></span>
                                 @endif
                             </div>
-
-                            {{-- <div class="col-md-4 captcha_set" style="text-align: -webkit-right;">
+                        </div>
+                            <div class="col-md-4 py-3 captcha_set" style="text-align: -webkit-right;">
                                 {!! NoCaptcha::renderJs() !!}
                                 {!! NoCaptcha::display() !!}
 
@@ -99,16 +99,12 @@
                                         <span class="red-text">{{ $errors->first('g-recaptcha-response') }}</span>
                                     </span>
                                 @endif
-                            </div> --}}
-
-                            <div class="contact-one__btn-box">
-
-                                <button type="submit" class="eduact-btn eduact-btn-second"
-                                    style="float: right;width:300px">
-                                
-                                <span class="eduact-btn__curve"></span>Send a Message<i class="icon-arrow"></i></button>
                             </div>
-                        </div>
+                            <div class="d-flex">
+                                <button type="submit" id="submitButton" class="eduact-btn eduact-btn-second"><span
+                                        class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></button>
+                            </div>
+                        
                     </div>
                 </form>
                 <div class="result"></div>
@@ -259,4 +255,85 @@
         </div>
     </div>
     <!--Google Map End-->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        $("#regForm").validate({
+            errorClass: "error",
+            rules: {
+                full_name: {
+                    required: true,
+                    spcenotallow: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+                mobile_number: {
+                    required: true,
+                    spcenotallow: true,
+                },
+                subject: {
+                    required: true,
+                },
+                message: {
+                    required: true,
+                    spcenotallow: true,
+                },
+            },
+            messages: {
+                full_name: {
+                    required: "Enter Full Name",
+                    spcenotallow: "Enter Some Text",
+                },
+                email: {
+                    required: "Enter Email Id",
+                    spcenotallow: "Enter Some Text",
+                },
+                mobile_number: {
+                    required: "Enter Mobile Number",
+                    pattern: "Invalid Mobile Number",
+                    remote: "This mobile number already exists.",
+                    spcenotallow: "Enter Some Text",
+                },
+                subject: {
+                    required: "Enter Subject",
+                },
+                message: {
+                    required: "Enter Message",
+                },
+            },
+            highlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            submitHandler: function(form) {
+                // Check if reCAPTCHA challenge is completed
+                if (grecaptcha.getResponse() === "") {
+                    alert("Please complete the reCAPTCHA challenge.");
+                } else {
+                    // Proceed with form submission
+                    form.submit();
+                }
+            }
+        });
+
+        $("input#document_file").hide();
+
+    });
+
+    $.extend($.validator.methods, {
+        spcenotallow: function(b, c, d) {
+            if (!this.depend(d, c)) return "dependency-mismatch";
+            if ("select" === c.nodeName.toLowerCase()) {
+                var e = a(c).val();
+                return e && e.length > 0
+            }
+            return this.checkable(c) ? this.getLength(b, c) > 0 : b.trim().length > 0
+        }
+    });
+</script>
 @endsection

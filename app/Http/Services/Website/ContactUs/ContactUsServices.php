@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Services\Website\ContactUs;
 
-use App\Http\Repository\Website\ContactUs\ContactRepository;
+use App\Http\Repository\Website\ContactUs\ContactUsRepository;
 
 // use App\Marquee;
 use Carbon\Carbon;
 
 
-class ContactServices
+class ContactUsServices
 {
 
 	protected $repo;
@@ -17,12 +17,14 @@ class ContactServices
      */
     public function __construct()
     {
-        $this->repo = new ContactRepository();
+        $this->repo = new ContactUsRepository();
     }
     public function addAll($request)
     {
         try {
             $add_contact = $this->repo->addAll($request);
+            print_r($add_contact);
+            die();
             if ($add_contact) {
                 return ['status' => 'success', 'msg' => 'Contact Added Successfully.'];
             } else {

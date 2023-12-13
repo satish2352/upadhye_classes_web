@@ -7,18 +7,18 @@ use Illuminate\Support\Carbon;
 use Session;
 use App\Models\ {
     LocationAddress,
-    EducationBoard,
+    FessPaymentForm,
     ApplicationForm
 
 };
 
-class ApplicationFormRepository  {
+class FessPaymentFormRepository  {
     public function getAllLocationAddress() {
     try {
-        $locationaddress = LocationAddress::where('is_active', '=', true);
-        $data_output_location_address = $locationaddress->select('id', 'name')->get()->toArray();
+        $scolarshipform = LocationAddress::where('is_active', '=', true);
+        $data_output_scolarshipform = $scolarshipform->select('id', 'name')->get()->toArray();
         return [
-            'data_output_location_address' => $data_output_location_address
+            'data_output_scolarshipform' => $data_output_scolarshipform
         ];
     } catch (\Exception $e) {
         return $e;
@@ -28,27 +28,26 @@ class ApplicationFormRepository  {
  
 
 
-  public function addApplicationform($request)
+  public function addFessPaymentForm($request)
   {
    
       try {
-          $modal_data = new ApplicationForm();
+          $modal_data = new FessPaymentForm();
           $modal_data->full_name = $request['full_name'];
           $modal_data->email = $request['email'];
           $modal_data->mobile_number = $request['mobile_number'];
-          $modal_data->alternative_mobile_number = $request['alternative_mobile_number'];
+          $modal_data->amount = $request['amount'];
           $modal_data->edu_location_id = $request['edu_location_id'];
-          $modal_data->edu_board_id = $request['edu_board_id'];
-          $modal_data->edu_class_id = $request['edu_class_id'];
-          $modal_data->edu_course_id = $request['edu_course_id'];
+          $modal_data->edu_course = $request['edu_course'];
+          $modal_data->edu_mode = $request['edu_mode'];
           $modal_data->address = $request['address'];  
+          $modal_data->remark = $request['remark'];  
           $modal_data->save();
           // dd($modal_data);
           $last_insert_id = $modal_data->id;
-          $modal_data = ApplicationForm::find($last_insert_id); // Assuming $request directly contains the ID
+          $modal_data = FessPaymentForm::find($last_insert_id); // Assuming $request directly contains the ID
           $modal_data->save();
-        // print_r($modal_data);
-        // die();
+        
           return $last_insert_id;
       } catch (\Exception $e) {
           return [

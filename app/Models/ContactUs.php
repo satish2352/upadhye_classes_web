@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EducationClass extends Model
+class ContactUs extends Model
 {
     use HasFactory;
-    protected $table = 'education_class';
+    protected $table = 'contactus_form';
     protected $primaryKey = 'id';
-    protected $fillable = ['name'];
+    protected $fillable = ['full_name', 'email','mobile_number','subject','message'];
 }

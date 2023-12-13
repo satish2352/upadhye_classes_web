@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCitizenVolunteerModalsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateCitizenVolunteerModalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('citizen_volunteer_modals', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('incident');
-            $table->string('location');
-            $table->string('datetime');
+        Schema::create('contactus_form', function (Blueprint $table) {
+            $table->id();
+            $table->string('full_name');
+            $table->string('email');
             $table->string('mobile_number');
-            $table->string('media_upload')->default('null');
-            $table->text('description');
-
+            $table->text('subject');
+            $table->text('message');
             $table->string('is_deleted')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
@@ -35,7 +33,6 @@ class CreateCitizenVolunteerModalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('citizen_volunteer_modals');
-    
+        Schema::dropIfExists('contactus_form');
     }
-}
+};

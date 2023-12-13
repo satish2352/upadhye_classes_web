@@ -1,6 +1,10 @@
 @extends('website.layout.master')
 
 @section('content')
+    <?php
+    $common_form_data = App\Http\Controllers\Website\Application\ApplicationFormController::getCommonFormData();
+    ?>
+
     <div class="stricky-header stricked-menu main-menu main-header-two">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div><!-- /.stricky-header -->
@@ -26,9 +30,9 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row bs-gutter-x-20">
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example"
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <select class="form-control" aria-label="Default select example"
                                             name="edu_location_id" id="edu_location_id" required>
                                             <option value="" selected disabled>Select Branch</option>
                                             @foreach ($data_output_location_address['data_output_location_address'] as $locationaddress)
@@ -43,15 +47,17 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example" name="edu_board_id"
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <select class="form-control" aria-label="Default select example" name="edu_board_id"
                                             id="edu_board_id" required>
                                             <option value="" selected disabled>Select Board</option>
-                                            <option value="HSC">HSC</option>
-                                            <option value="CBSC">CBSC</option>
-                                            <option value="ICSE">ICSE</option>
-                                            <option value="other">Other</option>
+                                            @foreach ($common_form_data['data_output_all_board'] as $allboard)
+                                                <option value="{{ $allboard['id'] }}"
+                                                    {{ old('edu_board_id') == $allboard['id'] ? 'selected' : '' }}>
+                                                    {{ $allboard['name'] }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('edu_board_id'))
                                             <span class="red-text">{{ $errors->first('edu_board_id') }}</span>
@@ -59,16 +65,18 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example" name="edu_class_id"
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <select class="form-control" aria-label="Default select example" name="edu_class_id"
                                             id="edu_class_id" required>
                                             <option value="" selected disabled>Select Class</option>
-                                            <option value="Foundation">Foundation</option>
-                                            <option value="Aarambh">Aarambh</option>
-                                            <option value="Pratigya">Pratigya</option>
-                                            <option value="Sanjivani">Sanjivani</option>
-                                            <option value="Crash Course">Crash Course</option>
+
+                                            @foreach ($common_form_data['data_output_all_class'] as $allclass)
+                                                <option value="{{ $allclass['id'] }}"
+                                                    {{ old('edu_class_id') == $allclass['id'] ? 'selected' : '' }}>
+                                                    {{ $allclass['name'] }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('edu_class_id'))
                                             <span class="red-text">{{ $errors->first('edu_class_id') }}</span>
@@ -76,9 +84,9 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <select class="selectpicker" aria-label="Default select example"
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <select class="form-control"  aria-label="Default select example"
                                             name="edu_course_id" id="edu_course_id" required>
                                             <option value="" selected disabled>Select Course</option>
                                             <option value="Maths">Maths</option>
@@ -89,198 +97,184 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <input type="text" name="full_name" id="full_name" value="{{ old('full_name') }}"
-                                            placeholder="Please Enter Your Full Name">
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <input type="text" name="full_name" id="full_name"
+                                            value="{{ old('full_name') }}" placeholder="Please Enter Your Full Name" class="form-control">
                                         @if ($errors->has('full_name'))
                                             <span class="red-text"><?php echo $errors->first('full_name', ':message'); ?></span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
                                         <input type="email" name="email" value="{{ old('email') }}"
-                                            placeholder="Please Enter Your Email">
+                                            placeholder="Please Enter Your Email" class="form-control">
                                         @if ($errors->has('email'))
                                             <span class="red-text">{{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
                                         <input type="text" name="mobile_number" value="{{ old('mobile_number') }}"
-                                            placeholder="Please Enter Your Phone">
+                                            placeholder="Please Enter Your Phone" class="form-control">
                                         @if ($errors->has('mobile_number'))
                                             <span class="red-text">{{ $errors->first('mobile_number') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
                                         <input type="text" name="alternative_mobile_number"
                                             id="alternative_mobile_number" value="{{ old('alternative_mobile_number') }}"
-                                            placeholder="Please Enter alternative Phone Number">
+                                            placeholder="Please Enter alternative Phone Number" class="form-control">
                                         @if ($errors->has('alternative_mobile_number'))
                                             <span class="red-text">{{ $errors->first('alternative_mobile_number') }}</span>
                                         @endif
                                     </div>
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="checkout-page__input-box">
-                                        <textarea type="text" class="gap-text" name="address" id="address" required>{{ old('address') }}</textarea>
+                                <div class="col-xl-6 py-3">
+                                    <div class="">
+                                        <input type="text" name="address" id="address"
+                                            value="{{ old('address') }}" placeholder="Please Enter Your Full Name" class="form-control">
                                         @if ($errors->has('address'))
-                                            <span class="red-text">{{ $errors->first('address') }}</span>
+                                            <span class="red-text"><?php echo $errors->first('address', ':message'); ?></span>
                                         @endif
                                     </div>
                                 </div>
+                               <div class="col-md-4 py-3 captcha_set" id="g_recaptcha_response"
+                                    style="text-align: -webkit-right;">
+                                    {!! NoCaptcha::renderJs() !!}
+                                    {!! NoCaptcha::display() !!}
 
-                                <div class="col-md-4 captcha_set" id="g_recaptcha_response"
-                                style="text-align: -webkit-right;">
-                                {!! NoCaptcha::renderJs() !!}
-                                {!! NoCaptcha::display() !!}
-
-                                @if ($errors->has('g-recaptcha-response'))
-                                    <span class="help-block">
-                                        <span class="red-text">{{ $errors->first('g-recaptcha-response') }}</span>
-                                    </span>
-                                @endif
-                            </div>
+                                    @if ($errors->has('g-recaptcha-response'))
+                                        <span class="help-block">
+                                            <span class="red-text">{{ $errors->first('g-recaptcha-response') }}</span>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
                             <div class="d-flex">
                                 <button type="submit" id="submitButton" class="eduact-btn eduact-btn-second"><span
                                         class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></button>
                             </div>
                         </form>
-
                     </div>
                 </div>
-
-
             </div>
 
         </div>
     </section>
     <!-- Checkout End -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+<script>
+    $(document).ready(function() {
 
-
-
-    <script>
-        $(document).ready(function() {
-
-            $("#regForm").validate({
-                errorClass: "error",
-                rules: {
-                    edu_location_id: {
-                        required: true,
-                    },
-                    edu_board_id: {
-                        required: true,
-                    },
-                    edu_class_id: {
-                        required: true,
-                    },
-                    edu_course_id: {
-                        required: true,
-                    },
-                    address: {
-                        required: true,
-                    },
-                    mobile_number: {
-                        required: true,
-                        spcenotallow: true,
-
-                    },
-                    alternative_mobile_number: {
-                        required: true,
-                        spcenotallow: true,
-
-                    },
-                    full_name: {
-                        required: true,
-                        spcenotallow: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
+        $("#regForm").validate({
+            errorClass: "error",
+            rules: {
+                edu_location_id: {
+                    required: true,
+                },
+                edu_board_id: {
+                    required: true,
+                },
+                edu_class_id: {
+                    required: true,
+                },
+                edu_course_id: {
+                    required: true,
+                },
+                address: {
+                    required: true,
+                },
+                mobile_number: {
+                    required: true,
+                    spcenotallow: true,
 
                 },
-                messages: {
-                    edu_location_id: {
-                        required: "Select Incident",
-                    },
-                    edu_board_id: {
-                        required: "Select Board",
-                    },
-                    edu_class_id: {
-                        required: "Select Class",
-                    },
-                    edu_course_id: {
-                        required: "Select Course",
-                    },
-                    address: {
-                        required: "Please Enter Address",
-                    },
-                    mobile_number: {
-                        required: "Enter Mobile Number",
-                        pattern: "Invalid Mobile Number",
-                        remote: "This mobile number already exists.",
-                        spcenotallow: "Enter Some Text",
-                    },
-                    alternative_mobile_number: {
-                        required: "Enter Mobile Number",
-                        pattern: "Invalid Mobile Number",
-                        remote: "This mobile number already exists.",
-                        spcenotallow: "Enter Some Text",
-                    },
-                    full_name: {
-                        required: "Enter Description",
-                        spcenotallow: "Enter Some Text",
-                    },
-                    email: {
-                        required: "Enter Description",
-                        spcenotallow: "Enter Some Text",
-                    },
-
+                alternative_mobile_number: {
+                    required: true,
+                    spcenotallow: true,
 
                 },
-                highlight: function(element, errorClass) {
-                    $(element).removeClass(errorClass);
+                full_name: {
+                    required: true,
+                    spcenotallow: true,
                 },
-                submitHandler: function(form) {
-                    // Check if reCAPTCHA challenge is completed
-                    if (grecaptcha.getResponse() === "") {
-                        alert("Please complete the reCAPTCHA challenge.");
-                    } else {
-                        // Proceed with form submission
-                        form.submit();
-                    }
+                email: {
+                    required: true,
+                    email: true,
+                },
+
+            },
+            messages: {
+                edu_location_id: {
+                    required: "Select Branch",
+                },
+                edu_board_id: {
+                    required: "Select Board",
+                },
+                edu_class_id: {
+                    required: "Select Class",
+                },
+                edu_course_id: {
+                    required: "Select Course",
+                },
+                address: {
+                    required: "Please Enter Address",
+                },
+                mobile_number: {
+                    required: "Enter Mobile Number",
+                    pattern: "Invalid Mobile Number",
+                    remote: "This mobile number already exists.",
+                    spcenotallow: "Enter Some Text",
+                },
+                alternative_mobile_number: {
+                    required: "Enter Alternative Mobile Number",
+                    pattern: "Invalid Mobile Number",
+                    remote: "This mobile number already exists.",
+                    spcenotallow: "Enter Some Text",
+                },
+                full_name: {
+                    required: "Enter Description",
+                    spcenotallow: "Enter Some Text",
+                },
+                email: {
+                    required: "Enter Email Id",
+                    spcenotallow: "Enter Some Text",
+                },
+
+            },
+            highlight: function(element, errorClass) {
+                $(element).removeClass(errorClass);
+            },
+            submitHandler: function(form) {
+                // Check if reCAPTCHA challenge is completed
+                if (grecaptcha.getResponse() === "") {
+                    alert("Please complete the reCAPTCHA challenge.");
+                } else {
+                    // Proceed with form submission
+                    form.submit();
                 }
-            });
-
-
-            // if ((grecaptcha.getResponse().length === 0) && $("#regForm").valid()) {
-            //     $('#submitButton').prop('disabled', true);
-            // } else {
-            //     $('#submitButton').prop('disabled', false);
-            // }
-
-            $("input#document_file").hide();
-
-        });
-
-        $.extend($.validator.methods, {
-            spcenotallow: function(b, c, d) {
-                if (!this.depend(d, c)) return "dependency-mismatch";
-                if ("select" === c.nodeName.toLowerCase()) {
-                    var e = a(c).val();
-                    return e && e.length > 0
-                }
-                return this.checkable(c) ? this.getLength(b, c) > 0 : b.trim().length > 0
             }
         });
-    </script>
+
+        $("input#document_file").hide();
+
+    });
+
+    $.extend($.validator.methods, {
+        spcenotallow: function(b, c, d) {
+            if (!this.depend(d, c)) return "dependency-mismatch";
+            if ("select" === c.nodeName.toLowerCase()) {
+                var e = a(c).val();
+                return e && e.length > 0
+            }
+            return this.checkable(c) ? this.getLength(b, c) > 0 : b.trim().length > 0
+        }
+    });
+</script>
 @endsection

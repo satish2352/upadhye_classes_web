@@ -16694,3 +16694,8 @@ body.boxed-wrapper .hero-banner__thumb {
 .checkout-page__input-box label{
   color: red !important;
 }
+.error{
+  color: red !important;
+  text-align: left !important;
+  display: flex;
+}

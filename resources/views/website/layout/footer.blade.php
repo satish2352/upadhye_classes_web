@@ -136,7 +136,6 @@
 </a>
 <!-- back-to-top-end -->
 
-
 <script src="{{ asset('website/assets/vendors/jquery/jquery-3.5.1.min.js')}}"></script>
 <script src="{{ asset('website/assets/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('website/assets/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
@@ -160,6 +159,9 @@
 <script src="{{ asset('website/assets/vendors/countdown/countdown.min.js')}}"></script>
 <!-- template js -->
 <script src="{{ asset('website/assets/js/eduact.js')}}"></script>
+
+
+
 </body>
 
 

@@ -1,13 +1,13 @@
 <?php
 namespace App\Http\Services\Website\Application;
 
-use App\Http\Repository\Website\Application\ApplicationFormRepository;
+use App\Http\Repository\Website\Application\FessPaymentFormRepository;
 
 // use App\Marquee;
 use Carbon\Carbon;
 
 
-class ApplicationFormServices
+class FessPaymentFormServices
 {
 
 	protected $repo;
@@ -17,7 +17,7 @@ class ApplicationFormServices
      */
     public function __construct()
     {
-        $this->repo = new ApplicationFormRepository();
+        $this->repo = new FessPaymentFormRepository();
     }
     public function getAllLocationAddress()
     {
@@ -27,10 +27,9 @@ class ApplicationFormServices
             return $e;
         }
     } 
-    public function addApplicatioform($request){
+    public function addFessPaymentForm($request){
         try {
-            $last_id = $this->repo->addApplicatioform($request);
-         
+            $last_id = $this->repo->addFessPaymentForm($request);
             if ($last_id) {
                 return ['status' => 'success', 'msg' => 'Added Successfully.'];
             } else {
