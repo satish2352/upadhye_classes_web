@@ -1,6 +1,9 @@
 @extends('website.layout.master')
 
 @section('content')
+<?php
+    $common_form_data = App\Http\Controllers\Website\IndexController::getCommonFormData();
+    ?>
     <div class="stricky-header stricked-menu main-menu main-header-two">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div><!-- /.stricky-header -->
@@ -95,7 +98,7 @@
                                         <select class="form-control" aria-label="Default select example"
                                             name="edu_location_id" id="edu_location_id" required>
                                             <option value="" selected disabled>Select Branch</option>
-                                            @foreach ($data_output_scolarshipform['data_output_scolarshipform'] as $locationaddress)
+                                            @foreach ($common_form_data['data_output_location_address'] as $locationaddress)
                                             <option value="{{ $locationaddress['id'] }}"
                                                 {{ old('edu_location_id') == $locationaddress['id'] ? 'selected' : '' }}>
                                                 {{ $locationaddress['name'] }}

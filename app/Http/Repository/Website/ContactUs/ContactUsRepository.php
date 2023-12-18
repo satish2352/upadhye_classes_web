@@ -17,14 +17,13 @@ class ContactUsRepository{
 		public function addAll($request)
 {
     try {
-        // dd($request);
+      
         $contact = new ContactUs();
         $contact->full_name = $request['full_name'];
         $contact->email = $request['email'];
         $contact->mobile_number = $request['mobile_number'];
-        $contact->contact_type = $request['contact_type'];
         $contact->subject = $request['subject'];
-        $contact->suggestion = $request['suggestion'];
+        $contact->message = $request['message'];
         $contact->save(); 
 
 		return $contact;

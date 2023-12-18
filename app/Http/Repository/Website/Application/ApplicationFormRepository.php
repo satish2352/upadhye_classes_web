@@ -13,24 +13,8 @@ use App\Models\ {
 };
 
 class ApplicationFormRepository  {
-    public function getAllLocationAddress() {
-    try {
-        $locationaddress = LocationAddress::where('is_active', '=', true);
-        $data_output_location_address = $locationaddress->select('id', 'name')->get()->toArray();
-        return [
-            'data_output_location_address' => $data_output_location_address
-        ];
-    } catch (\Exception $e) {
-        return $e;
-    }
-  }
-
- 
-
-
   public function addApplicationform($request)
   {
-   
       try {
           $modal_data = new ApplicationForm();
           $modal_data->full_name = $request['full_name'];

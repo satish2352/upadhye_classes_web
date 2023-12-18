@@ -65,10 +65,10 @@
                 <ul class="nav flex-column sub-menu">
 
                     <li class="nav-item d-none d-lg-block"><a class="nav-link active"
-                            href="{{ route('website-contact') }}">Admission Form</a></li>
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link active" href="">Scolarship</a></li>
-
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link active" href="">Fees Payment</a>
+                            href="{{ route('list-application-form') }}">Admission Form</a></li>
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-scolarship-form') }}">Scolarship</a></li>
+                    
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="">Fees Payment</a>
                     </li>
 
                 </ul>
