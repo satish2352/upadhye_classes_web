@@ -314,7 +314,7 @@
         document.getElementById("frm_register").submit();
     }
 </script>
-<script>
+{{-- <script>
     ClassicEditor
         .create(document.querySelector('.english_title'))
         .catch(error => {
@@ -341,7 +341,7 @@
         .catch(error => {
             console.error(error);
         });
-</script>
+</script> --}}
 
 
 <!-- Summernote Editor -->

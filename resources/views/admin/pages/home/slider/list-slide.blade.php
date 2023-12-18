@@ -1,17 +1,13 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <?php $data_permission = getPermissionForCRUDPresentOrNot('list-slide', session('permissions'));
-    ?>
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
                     Slide List
-                    @if (in_array('per_add', $data_permission))
-                        <a href="{{ route('add-slide') }}" class="btn btn-sm btn-primary ml-3">+
-                            Add</a>
-                    @endif
+                    <a href="{{ route('add-slide') }}" class="btn btn-sm btn-primary ml-3">+
+                        Add</a>
 
                 </h3>
                 <nav aria-label="breadcrumb">
@@ -33,12 +29,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Title </th>
-                                                    <th>शीर्षक </th>
-                                                    <th>Description </th>
-                                                    <th>वर्णन </th>
+                                                    <th>Rank Number </th>
                                                     <th>Image </th>
-                                                    <th>छायाचित्र </th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -47,19 +39,11 @@
                                                 @foreach ($slider as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ strip_tags($item->english_title) }}</td>
-                                                        <td>{{ strip_tags($item->marathi_title) }}</td>
-                                                        <td>{{ strip_tags($item->english_description) }}</td>
-                                                        <td>{{ strip_tags($item->marathi_description) }}</td>
+                                                        <td>{{ strip_tags($item->rank_no) }}</td>
                                                         <td> <img class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $item->english_image }}"
-                                                                alt=" {{ strip_tags($item['english_title']) }} Image" />
+                                                                src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $item->image }}"
+                                                                alt=" {{ strip_tags($item['rank_no']) }} Image" />
                                                         </td>
-                                                        <td> <img class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $item->marathi_image }}"
-                                                                alt=" {{ strip_tags($item['marathi_title']) }} छायाचित्र" />
-                                                        </td>
-
                                                         <td>
                                                             <label class="switch">
                                                                 <input data-id="{{ $item->id }}" type="checkbox"
@@ -73,23 +57,15 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                @if (in_array('per_update', $data_permission))
-                                                                    <a href="{{ route('edit-slide', base64_encode($item->id)) }}"
-                                                                        class="btn btn-sm btn-outline-primary m-1"
-                                                                        title="Edit Slide"><i
-                                                                            class="fas fa-pencil-alt"></i></a>
-                                                                @endif
-
+                                                                <a href="{{ route('edit-slide') }}"
+                                                                    class="btn btn-sm btn-outline-primary m-1"
+                                                                    title="Edit Slide"><i class="fas fa-pencil-alt"></i></a>
                                                                 <a data-id="{{ $item->id }}"
                                                                     class="show-btn btn btn-sm btn-outline-primary m-1"
                                                                     title="Show Slide "><i class="fas fa-eye"></i></a>
-                                                                @if (in_array('per_delete', $data_permission))
-                                                                    <a data-id="{{ $item->id }}"
-                                                                        class="delete-btn btn btn-sm btn-outline-danger m-1"
-                                                                        title="Delete Slide"><i
-                                                                            class="fas fa-archive"></i></a>
-                                                                @endif
-
+                                                                <a data-id="{{ $item->id }}"
+                                                                    class="delete-btn btn btn-sm btn-outline-danger m-1"
+                                                                    title="Delete Slide"><i class="fas fa-archive"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>
