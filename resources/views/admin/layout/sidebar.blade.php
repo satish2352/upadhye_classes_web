@@ -24,16 +24,6 @@
                 </div>
             </div>
         </li>
-        {{-- @if (in_array('dashboard', $data_for_url)) --}}
-        {{-- <li class="{{ request()->is('dashboard*') ? 'nav-item active' : 'nav-item' }}">
-            <a class="{{ request()->is('dashboard*') ? 'nav-link active' : 'nav-link' }}"
-                href="{{ route('/dashboard') }}">
-                <i class="fa fa-home menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li> --}}
-        {{-- @endif           --}}
-
         <li class="nav-item active">
             <a class="nav-link active" data-toggle="collapse" href="#master" aria-expanded="false"
                 aria-controls="master">
@@ -54,7 +44,26 @@
                 </ul>
             </div>
         </li>
+        {{-- <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#adminssion" aria-expanded="false" aria-controls="master">
+                <i class="fa fa-th-large menu-icon"></i>
+                <span class="menu-title">Home</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="adminssion">
+                <ul class="nav flex-column sub-menu">
 
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link active"
+                            href="{{ route('list-slide') }}">Slider</a></li>
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-scolarship-form') }}">Scolarship</a></li>
+                    
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Fees Payment</a>
+                        
+                    </li>
+
+                </ul>
+            </div>
+        </li> --}}
         <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#adminssion" aria-expanded="false" aria-controls="master">
                 <i class="fa fa-th-large menu-icon"></i>
@@ -68,13 +77,19 @@
                             href="{{ route('list-application-form') }}">Admission Form</a></li>
                     <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-scolarship-form') }}">Scolarship</a></li>
                     
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="">Fees Payment</a>
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Fees Payment</a>
+                        
                     </li>
 
                 </ul>
             </div>
         </li>
-
+        <li class="nav-item">
+              <a class="nav-link" href="{{ route('list-contactus-form') }}">
+                  <i class="fas fa-window-restore menu-icon"></i>
+                  <span class="menu-title">Contact Us</span>
+              </a>
+          </li>
     </ul>
 </nav>
 <!-- partial -->
