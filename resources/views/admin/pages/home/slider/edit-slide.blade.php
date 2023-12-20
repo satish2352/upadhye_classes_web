@@ -24,109 +24,32 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="english_title">Title </label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control" name="english_title" id="english_title"
-                                                placeholder="Enter the Title"
-                                                value=" @if (old('english_title')) {{ old('english_title') }}@else{{ $slider->english_title }} @endif">
-                                            <label class="error py-2" for="english_title" id="english_title_error"></label>
-                                            @if ($errors->has('english_title'))
-                                                <span class="red-text"><?php echo $errors->first('english_title', ':message'); ?></span>
+                                            <label for="rank_no">Rank Number </label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control" name="rank_no" id="rank_no"
+                                                placeholder="Enter the Rank Number"
+                                                value=" @if (old('rank_no')) {{ old('rank_no') }}@else{{ $editData->rank_no }} @endif">
+                                            <label class="error py-2" for="rank_no" id="rank_no_error"></label>
+                                            @if ($errors->has('rank_no'))
+                                                <span class="red-text"><?php echo $errors->first('rank_no', ':message'); ?></span>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="marathi_title">शीर्षक</label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control" name="marathi_title" id="marathi_title"
-                                                placeholder="Enter the Title"
-                                                value="@if (old('marathi_title')) {{ old('marathi_title') }}@else{{ $slider->marathi_title }} @endif">
-                                            <label class="error py-2" for="marathi_title" id="marathi_title_error"></label>
-                                            @if ($errors->has('marathi_title'))
-                                                <span class="red-text"><?php echo $errors->first('marathi_title', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="english_description">Description</label>&nbsp<span
-                                                class="red-text">*</span>
-                                            <textarea class="form-control english_description" name="english_description" id="english_description"
-                                                placeholder="Enter the Description">
-                                                <label class="error py-2" for="english_description" id="english_description_error"></label>
-                                            @if (old('english_description'))
-{{ old('english_description') }}@else{{ $slider->english_description }}
-@endif
-                                            </textarea>
-                                            @if ($errors->has('english_description'))
-                                                <span class="red-text"><?php echo $errors->first('english_description', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="marathi_description"> वर्णन </label>&nbsp<span
-                                                class="red-text">*</span>
-                                            <textarea class="form-control marathi_description" name="marathi_description" id="marathi_description"
-                                                placeholder="वर्णन प्रविष्ट करा">
-                                            @if (old('marathi_description'))
-{{ old('marathi_description') }}@else{{ $slider->marathi_description }}
-@endif
-                                            </textarea>
-                                            <label class="error py-2" for="english_description"
-                                                id="english_description_error"></label>
-
-                                            <label class="error py-2" for="marathi_description"
-                                                id="marathi_description_error"></label>
-                                            @if ($errors->has('marathi_description'))
-                                                <span class="red-text"><?php echo $errors->first('marathi_description', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="english_image"> Image</label>
-                                            <input type="file" name="english_image" class="form-control"
-                                                id="english_image" accept="image/*" placeholder="image">
-                                            @if ($errors->has('english_image'))
-                                                <div class="red-text"><?php echo $errors->first('english_image', ':message'); ?>
+                                            <label for="image"> Image</label>
+                                            <input type="file" name="image" class="form-control"
+                                                id="image" accept="image/*" placeholder="image">
+                                            @if ($errors->has('image'))
+                                                <div class="red-text"><?php echo $errors->first('image', ':message'); ?>
                                                 </div>
                                             @endif
                                         </div>
                                         <img id="english"
-                                            src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $slider->english_image }}"
+                                            src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $editData->image }}"
                                             class="img-fluid img-thumbnail" width="150">
                                         <img id="english_imgPreview" src="#" alt="pic"
                                             class="img-fluid img-thumbnail" width="150" style="display:none">
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="marathi_image">छायाचित्र </label>
-                                            <input type="file" name="marathi_image" id="marathi_image" accept="image/*"
-                                                class="form-control">
-                                            @if ($errors->has('marathi_image'))
-                                                <div class="red-text"><?php echo $errors->first('marathi_image', ':message'); ?>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <img id="marathi"
-                                            src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $slider->marathi_image }}"
-                                            class="img-fluid img-thumbnail" width="150">
-                                        <img id="marathi_imgPreview" src="#" alt="pic"
-                                            class="img-fluid img-thumbnail" width="150" style="display:none">
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 mt-3">
-                                        <div class="form-group">
-                                            <label for="url"> URL</label>&nbsp<span class="red-text">*</span>
-                                            <input type="text" class="form-control" placeholder="Enter the URL"
-                                                value="@if (old('url')) {{ old('url') }}@else{{ $slider->url }} @endif"
-                                                name="url" id="url">
-                                            @if ($errors->has('url'))
-                                                <span class="red-text"><?php echo $errors->first('url', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                    </div>                                   
                                     <div class="col-md-12 col-sm-12 text-center">
                                         <button type="submit" class="btn btn-sm btn-success" id="submitButton">
                                             Save &amp; Update
@@ -137,7 +60,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="id" id="id" class="form-control"
-                                    value="{{ $slider->id }}" placeholder="">
+                                    value="{{ $editData->id }}" placeholder="">
 
                                 {{-- <input type="text" name="currentMarathiImage" id="currentMarathiImage"
                                     class="form-control" value="" placeholder=""> --}}
@@ -155,28 +78,21 @@
         <script>
             $(document).ready(function() {
                 var currentEnglishImage = $("#currentEnglishImage").val();
-                var currentMarathiImage = $("#currentMarathiImage").val();
-        
+             
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const english_title = $('#english_title').val();
-                    const marathi_title = $('#marathi_title').val();
-                    const english_description = $('#english_description').val();
-                    const marathi_description = $('#marathi_description').val();
-                    const english_image = $('#english_image').val();
-                    const marathi_image = $('#marathi_image').val();
-        
+                    const rank_no = $('#rank_no').val();
+                    const image = $('#image').val();
+                  
                     // Update the old PDF values if there are any selected files
-                    if (english_image !== currentEnglishImage) {
-                        $("#currentEnglishImage").val(english_image);
+                    if (image !== currentEnglishImage) {
+                        $("#currentEnglishImage").val(image);
                     }
-                    if (marathi_image !== currentMarathiImage) {
-                        $("#currentMarathiImage").val(marathi_image);
-                    }
+                   
                 }
         
                 // Call the checkFormValidity function on file input change
-                $('input, #english_image, #marathi_image').on('change', function() {
+                $('input, #image').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
@@ -205,47 +121,22 @@
                 var form = $("#regForm");
                 var validator = form.validate({
                     rules: {
-                        english_title: {
+                        rank_no: {
                             required: true,
                         },
-                        marathi_title: {
-                            required: true,
-                        },
-                        english_description: {
-                            required: true,
-                        },
-                        marathi_description: {
-                            required: true,
-                        },
-                        english_image: {
+                        image: {
                             validImage: true,
                             fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
                         },
-                        marathi_image: {
-                            validImage: true,
-                            fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
-                        },
+                      
                     },
                     messages: {
-                        english_title: {
-                            required: "Please Enter the Title",
+                        rank_no: {
+                            required: "Please Enter the Rank Number",
                         },
-                        marathi_title: {
-                            required: "कृपया शीर्षक प्रविष्ट करा",
-                        },
-                        english_description: {
-                            required: "Please Enter the Description",
-                        },
-                        marathi_description: {
-                            required: "कृपया वर्णन प्रविष्ट करा",
-                        },
-                        english_image: {
+                        image: {
                     validImage: "Only JPG, JPEG, PNG images are allowed.",
                     fileSize: "The file size must be between 180 KB and 2048 KB.",
-                },
-                marathi_image: {
-                    validImage: "फक्त JPG, JPEG, PNG छायाचित्रंना परवानगी आहे.",
-                    fileSize: "फाईलचा आकार 180 KB and 2048 KB दरम्यान असणे आवश्यक आहे.",
                 },
                     },
                     submitHandler: function(form) {
@@ -262,24 +153,13 @@
                 });
         
                 // You can remove the following two blocks if you don't need to display selected images on the page
-                $("#english_image").change(function() {
+                $("#image").change(function() {
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         // Display the selected image for English
                         // You can remove this if you don't need to display the image on the page
                         $("#currentEnglishImageDisplay").attr('src', e.target.result);
-                        validator.element("#english_image"); // Revalidate the file input
-                    };
-                    reader.readAsDataURL(this.files[0]);
-                });
-        
-                $("#marathi_image").change(function() {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Display the selected image for Marathi
-                        // You can remove this if you don't need to display the image on the page
-                        $("#currentMarathiImageDisplay").attr('src', e.target.result);
-                        validator.element("#marathi_image"); // Revalidate the file input
+                        validator.element("#image"); // Revalidate the file input
                     };
                     reader.readAsDataURL(this.files[0]);
                 });

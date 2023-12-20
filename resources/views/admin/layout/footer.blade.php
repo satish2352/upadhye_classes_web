@@ -1,3 +1,26 @@
+<script src="{{ asset('assets/js/jquery-3.7.0.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.validate.min.js') }}"></script>
+    
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    var summernoteInstance1 = $('#description').summernote({
+        placeholder: 'Enter Content',
+        tabsize: 2,
+        height: 100
+    });
+
+    summernoteInstance1.summernote('disable');
+
+    $('#summernote_id .note-editable').on('click', function() {
+        summernoteInstance1.summernote('enable');
+        summernoteInstance1.summernote('toolbar', [
+            ['style', ['bold', 'italic', 'underline']],
+            ['insert', ['link', 'picture']]
+        ]);
+    });
+</script>
+
 <script type="text/javascript">
     /*window.addEventListener('load', e => {
   if ('serviceWorker' in navigator) {
@@ -314,34 +337,14 @@
         document.getElementById("frm_register").submit();
     }
 </script>
-{{-- <script>
+<script>
     ClassicEditor
-        .create(document.querySelector('.english_title'))
+        .create(document.querySelector('.description'))
         .catch(error => {
             console.error(error);
         });
 </script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('.marathi_title'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('.english_description'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('.marathi_description'))
-        .catch(error => {
-            console.error(error);
-        });
-</script> --}}
+
 
 
 <!-- Summernote Editor -->
@@ -373,23 +376,7 @@
         });
     });
 </script>
-<script>
-    $(document).ready(() => {
-        $("#marathi_image").change(function() {
-            $('#marathi').css('display', 'none');
-            $("#marathi_imgPreview").show();
-            const file = this.files[0];
-            if (file) {
-                let reader = new FileReader();
-                reader.onload = function(event) {
-                    $("#marathi_imgPreview")
-                        .attr("src", event.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    });
-</script>
+
 <script>
     $(document).ready(() => {
         $("#english_image_new").change(function() {

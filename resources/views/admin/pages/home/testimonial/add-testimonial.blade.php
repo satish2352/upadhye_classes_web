@@ -4,12 +4,12 @@
     <div class="main-panel">
         <div class="content-wrapper mt-6">
             <div class="page-header">
-                <h3 class="page-title">Slide
+                <h3 class="page-title">Testimonial
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list-slide') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Slide </li>
+                        <li class="breadcrumb-item"><a href="{{ route('list-testimonial') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Testimonial </li>
                     </ol>
                 </nav>
             </div>
@@ -17,18 +17,29 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample" action="{{ route('add-slide') }}" method="POST"
+                            <form class="forms-sample" action="{{ route('add-testimonial') }}" method="POST"
                                 enctype="multipart/form-data" id="regForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="rank_no">Rank Number</label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control mb-2" name="rank_no" id="rank_no"
-                                                placeholder="Enter the Rank Number" name="rank_no"
-                                                value="{{ old('rank_no') }}">
-                                            @if ($errors->has('rank_no'))
-                                                <span class="red-text"><?php echo $errors->first('rank_no', ':message'); ?></span>
+                                            <label for="title">Title</label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control mb-2" name="title" id="title"
+                                                placeholder="Enter the Title" name="title"
+                                                value="{{ old('title') }}">
+                                            @if ($errors->has('title'))
+                                                <span class="red-text"><?php echo $errors->first('title', ':message'); ?></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="position">position</label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control mb-2" name="position" id="position"
+                                                placeholder="Enter the position" name="position"
+                                                value="{{ old('position') }}">
+                                            @if ($errors->has('position'))
+                                                <span class="red-text"><?php echo $errors->first('position', ':message'); ?></span>
                                             @endif
                                         </div>
                                     </div>
@@ -42,13 +53,22 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group" id="summernote_id">
+                                            <label for="description">Description <span class="red-text">*</span></label>
+                                            <textarea class="form-control" name="description" id="description" placeholder="Enter Page Content">{{ old('description') }}</textarea>
+                                            @if ($errors->has('description'))
+                                                <span class="red-text">{{ $errors->first('description') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="col-md-12 col-sm-12 text-center">
                                         <button type="submit" class="btn btn-sm btn-success" id="submitButton"
                                             {{-- disabled --}}>
                                             Save &amp; Submit
                                         </button>
                                         {{-- <button type="reset" class="btn btn-sm btn-danger">Cancel</button> --}}
-                                        <span><a href="{{ route('list-slide') }}"
+                                        <span><a href="{{ route('list-testimonial') }}"
                                                 class="btn btn-sm btn-primary ">Back</a></span>
                                     </div>
                                 </div>
@@ -62,15 +82,16 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const rank_no = $('#rank_no').val();
+                    const title = $('#title').val();
+                    const description = $('#description textarea').val();
                     const image = $('#image').val();
 
                     // Enable the submit button if all fields are valid
-                    if (rank_no && image) {
-                        $('#submitButton').prop('disabled', false);
-                    } else {
-                        $('#submitButton').prop('disabled', true);
-                    }
+                    // if (title && description && image) {
+                    //     $('#submitButton').prop('disabled', false);
+                    // } else {
+                    //     $('#submitButton').prop('disabled', true);
+                    // }
                 }
                 // Custom validation method to check file extension
                 $.validator.addMethod("fileExtension", function(value, element, param) {
@@ -95,23 +116,31 @@
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
-                        rank_no: {
+                        title: {
+                            required: true,
+                        },
+                        description: {
                             required: true,
                         },
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 2048], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [10, 1024], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            imageDimensions: [100, 100, 800, 800], // Min width x height and Max width x height
                         },
                     },
                     messages: {
-                        rank_no: {
-                            required: "Please enter the Rank Number.",
+                        title: {
+                            required: "Please enter the Title.",
+                        },
+                        description: {
+                            required: "Please Enter the Description",
                         },
                         image: {
-                            required: "Please upload an Image (JPG, JPEG, PNG).",
+                            required: "Please upload an Image (jpg, jpeg, png).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 10 KB and 2 MB.",
+                            fileSize: "File size must be between 10 KB and 1024 KB.",
+                            imageDimensions: "Image dimensions must be between 100x100 and 800x800 pixels.",
                         },
                     },
                 });

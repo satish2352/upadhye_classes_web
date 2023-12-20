@@ -5,15 +5,15 @@
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
-                    Slide List
-                    <a href="{{ route('add-slide') }}" class="btn btn-sm btn-primary ml-3">+
+                    Testimonial List
+                    <a href="{{ route('add-testimonial') }}" class="btn btn-sm btn-primary ml-3">+
                         Add</a>
 
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list-slide') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Slide List</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list-testimonial') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Testimonial List</li>
                     </ol>
                 </nav>
             </div>
@@ -29,20 +29,20 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Rank Number </th>
+                                                    <th>Title </th>
                                                     <th>Image </th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($getOutput as $item)
+                                                @foreach ($slider as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ strip_tags($item->rank_no) }}</td>
+                                                        <td>{{ strip_tags($item->title) }}</td>
                                                         <td> <img class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $item->image }}"
-                                                                alt=" {{ strip_tags($item['rank_no']) }} Image" />
+                                                                src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $item->image }}"
+                                                                alt=" {{ strip_tags($item['title']) }} Image" />
                                                         </td>
                                                         <td>
                                                             <label class="switch">
@@ -57,7 +57,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                <a href="{{ route('edit-slide', base64_encode($item->id)) }}"
+                                                                <a href="{{ route('edit-testimonial', base64_encode($item->id)) }}"
                                                                     class="btn btn-sm btn-outline-primary m-1"
                                                                     title="Edit Slide"><i
                                                                         class="fas fa-pencil-alt"></i></a>
@@ -84,15 +84,15 @@
                 </div>
             </div>
         </div>
-        <form method="POST" action="{{ url('/delete-slide') }}" id="deleteform">
+        <form method="POST" action="{{ url('/delete-testimonial') }}" id="deleteform">
             @csrf
             <input type="hidden" name="delete_id" id="delete_id" value="">
         </form>
-        <form method="POST" action="{{ url('/show-slide') }}" id="showform">
+        <form method="POST" action="{{ url('/show-testimonial') }}" id="showform">
             @csrf
             <input type="hidden" name="show_id" id="show_id" value="">
         </form>
-        <form method="POST" action="{{ url('/update-active-slide') }}" id="activeform">
+        <form method="POST" action="{{ url('/update-active-testimonial') }}" id="activeform">
             @csrf
             <input type="hidden" name="active_id" id="active_id" value="">
         </form>

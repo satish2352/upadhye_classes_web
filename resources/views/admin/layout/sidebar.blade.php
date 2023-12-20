@@ -44,26 +44,25 @@
                 </ul>
             </div>
         </li>
-        {{-- <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#adminssion" aria-expanded="false" aria-controls="master">
-                <i class="fa fa-th-large menu-icon"></i>
+        <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#home" aria-expanded="false" aria-controls="master">
+                <i class="fa fa-home menu-icon"></i>
                 <span class="menu-title">Home</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="adminssion">
+            <div class="collapse" id="home">
                 <ul class="nav flex-column sub-menu">
-
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link active"
-                            href="{{ route('list-slide') }}">Slider</a></li>
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-scolarship-form') }}">Scolarship</a></li>
-                    
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Fees Payment</a>
-                        
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link active" href="{{ route('list-slide') }}">Slider</a></li>
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-courses-offered') }}">Courses Offered</a></li>
+                    {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Sub Slider</a> --}}
+                    {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Marquee</a> --}}
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-upcoming-courses') }}">Upcoming Courses</a>
+                    {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}"> Reasons Choose Upadhye Classes</a> --}}
+                     <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-testimonial') }}">Testimonial </a>
                     </li>
-
                 </ul>
             </div>
-        </li> --}}
+        </li>
         <li class="nav-item ">
             <a class="nav-link" data-toggle="collapse" href="#adminssion" aria-expanded="false" aria-controls="master">
                 <i class="fa fa-th-large menu-icon"></i>

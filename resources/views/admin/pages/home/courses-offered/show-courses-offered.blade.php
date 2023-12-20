@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-start align-items-center">
                             <h3 class="page-title">
-                                Slide
+                                Courses Offered
                             </h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
                             <div>
-                                <a href="{{ route('list-slide') }}" class="btn btn-sm btn-primary ml-3">Back</a>
+                                <a href="{{ route('list-courses-offered') }}" class="btn btn-sm btn-primary ml-3">Back</a>
                             </div>
                         </div>
 
@@ -26,10 +26,10 @@
                                 <div class="col-12">
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label>Rank Number :</label>
+                                            <label>Title :</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->rank_no) }}</label>
+                                            <label>{{ strip_tags($showData->title) }}</label>
                                         </div>
                                     </div>                                 
                                     <div class="row ">
@@ -37,8 +37,8 @@
                                             <label> Image :</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <img src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $showData->image }}"
-                                                style="width:300px; height:150px;" alt=" {{ strip_tags($showData['rank_no']) }} Image"/>
+                                            <img src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $showData->image }}"
+                                                style="width:300px; height:150px;" alt=" {{ strip_tags($showData['title']) }} Image"/>
                                         </div>
                                     </div>
                                 </div>
