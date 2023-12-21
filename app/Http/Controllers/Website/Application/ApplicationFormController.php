@@ -27,6 +27,17 @@ class ApplicationFormController extends Controller
             return $e;
         }
     }
+
+    public function getLocation(Request $request)
+    {
+        $classId = $request->input('classId');
+    
+        $locations = LocationAddress::where('location_id', $classId)
+                        ->get(['location_id', 'name']);
+    
+        return response()->json(['location_id' => $locations]);
+    }
+    
     public function addApplicationform(Request $request) {
        $rules = [
             'edu_location_id' => 'required',

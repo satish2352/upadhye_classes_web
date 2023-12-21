@@ -128,23 +128,70 @@
                 function checkFormValidity() {
                     const title = $('#title').val();
                 }
-
-
-
-
                 // Call the checkFormValidity function on input change
                 $('input, textarea').on('input change', checkFormValidity);
-
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
+                        },
+                        description: {
+                            required: true,
+                            spcenotallow: true,
+                        },
+                        start_date: {
+                            required: true,
+                        },
+                        duration: {
+                            required: true,
+                            spcenotallow: true,
+                        },
+                        test_mode: {
+                            required: true,
+                        },
+                        test_medium: {
+                            required: true,
+                        },
+                        course_fess: {
+                            required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
                         title: {
                             required: "Please enter the Title.",
+                            spcenotallow: "Enter Some Text",
+                        },
+                        description: {
+                            required: "Please enter the Description.",
+                            spcenotallow: "Enter Some Text",
+                        },
+                        start_date: {
+                            required: "Please enter the Start Date.",
+                        },
+                        duration: {
+                            required: "Please enter the Duration.",
+                            spcenotallow: "Enter Some Time",
+                        },
+                        test_mode: {
+                            required: "Please enter the Duration.",
+                        },
+                        test_medium: {
+                            required: "Please enter the Duration.",
+                        },
+                        course_fess: {
+                            required: "Please enter the Duration.",
+                            spcenotallow: "Enter Some Amount",
                         },
                     },
                 });

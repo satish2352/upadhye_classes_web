@@ -1,15 +1,21 @@
 <?php
-namespace App\Http\Services\Admin\Home;
-use App\Http\Repository\Admin\Home\UpcomingCoursesRepository;
-use Carbon\Carbon;
-// use App\Helpers\helpercustom; // Import the namespace of your helper file
+namespace App\Http\Services\Admin\Master;
 
-use Config;
-class UpcomingCoursesServices
-{
+use App\Http\Repository\Admin\Master\MarqueeTabRepository;
+
+use App\IncidentType;
+use Carbon\Carbon;
+
+
+class MarqueeTabServices{
+
 	protected $repo;
+
+    /**
+     * TopicService constructor.
+     */
     public function __construct(){
-        $this->repo = new UpcomingCoursesRepository();
+        $this->repo = new MarqueeTabRepository();
     }
     public function getAll(){
         try {
@@ -18,13 +24,14 @@ class UpcomingCoursesServices
             return $e;
         }
     }
-    public function addAll($request){
+
+    public function addAll($request) {
         try {
-            $last_id = $this->repo->addAll($request);
-            if ($last_id) {
-                return ['status' => 'success', 'msg' => 'Upcoming Courses Added Successfully.'];
+            $add_Incidenttype = $this->repo->addAll($request);
+            if ($add_Incidenttype) {
+                return ['status' => 'success', 'msg' => 'Incident Type Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => ' Upcoming Courses get Not Added.'];
+                return ['status' => 'error', 'msg' => 'Incident Type Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -39,22 +46,17 @@ class UpcomingCoursesServices
     }
     public function updateAll($request){
         try {
-            $return_data = $this->repo->updateAll($request);            
-            
-            if ($return_data) {
-                return ['status' => 'success', 'msg' => 'Upcoming Courses Updated Successfully.'];
+            $update_Incidenttype = $this->repo->updateAll($request);
+            if ($update_Incidenttype) {
+                return ['status' => 'success', 'msg' => 'Incident Type Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Upcoming Courses  Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Incident Type Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
         }      
     }
-    public function updateOne($id){
-        return $this->repo->updateOne($id);
-    }   
-    public function deleteById($id)
-    {
+    public function deleteById($id){
         try {
             $delete = $this->repo->deleteById($id);
             if ($delete) {
@@ -66,4 +68,11 @@ class UpcomingCoursesServices
             return ['status' => 'error', 'msg' => $e->getMessage()];
         } 
     }
+   
+    public function updateOne($id)
+    {
+        return $this->repo->updateOne($id);
+    }
+
+
 }

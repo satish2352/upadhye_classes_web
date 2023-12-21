@@ -37,9 +37,9 @@ class TestimonialServices
             uploadImage($request, 'image', $path, $ImageName);
            
             if ($last_id) {
-                return ['status' => 'success', 'msg' => 'Slide Added Successfully.'];
+                return ['status' => 'success', 'msg' => 'Testimonial Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => ' Slide get Not Added.'];
+                return ['status' => 'error', 'msg' => ' Testimonial get Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -74,9 +74,9 @@ class TestimonialServices
             // print_r($return_data);
             // die();
             if ($return_data) {
-                return ['status' => 'success', 'msg' => 'Slide Updated Successfully.'];
+                return ['status' => 'success', 'msg' => 'Testimonial Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Slide  Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Testimonial  Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];

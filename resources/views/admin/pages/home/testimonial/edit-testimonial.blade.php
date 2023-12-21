@@ -35,31 +35,28 @@
                                                 <span class="red-text"><?php echo $errors->first('title', ':message'); ?></span>
                                             @endif
                                         </div>
-                                    </div>
-                                    {{-- <div class="col-lg-6 col-md-6 col-sm-6">
+                                    </div>   
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="image"> Image</label>
-                                            <input type="file" name="image" class="form-control"
-                                                id="image" accept="image/*" placeholder="image">
-                                            @if ($errors->has('image'))
-                                                <div class="red-text"><?php //echo $errors->first('image', ':message'); ?>
-                                                </div>
+                                            <label for="position">Position </label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control" name="position" id="position"
+                                                placeholder="Enter the Position"
+                                                value="@if (old('position')) {{ old('position') }}@else{{ $editData->position }} @endif"
+                                                >
+>
+                                            <label class="error py-2" for="position" id="position_error"></label>
+                                            @if ($errors->has('position'))
+                                                <span class="red-text"><?php echo $errors->first('position', ':message'); ?></span>
                                             @endif
                                         </div>
-                                        <img id="english"
-                                            src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $editData->image }}"
-                                            class="img-fluid img-thumbnail" width="150">
-                                        <img id="english_imgPreview" src="#" alt="pic"
-                                            class="img-fluid img-thumbnail" width="150" style="display:none">
-                                    </div>     --}}
-                                    
+                                    </div>                                   
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group" id="summernote_id">
-                                            <label for="english_description">Page Content</label>&nbsp<span
+                                            <label for="english_description">Description</label>&nbsp<span
                                                 class="red-text">*</span>
                                                 <span class="summernote1">
                                             <textarea class="form-control" name="description" id="description" placeholder="Enter the Description">
-                                             @if (old('description')){{ old('description') }}@else{{ $html_english }}@endif 
+                                             @if (old('description')){{ old('description') }}@else{{ $editData->description }}@endif 
                                         </textarea>
                                                 </span>
                                             @if ($errors->has('description'))
@@ -67,6 +64,22 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="image"> Image</label>
+                                            <input type="file" name="image" class="form-control"
+                                                id="image" accept="image/*" placeholder="image">
+                                            @if ($errors->has('image'))
+                                                <div class="red-text"><?php echo $errors->first('image', ':message'); ?>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <img id="english"
+                                            src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $editData->image }}"
+                                            class="img-fluid img-thumbnail" width="150">
+                                        <img id="english_imgPreview" src="#" alt="pic"
+                                            class="img-fluid img-thumbnail" width="150" style="display:none">
+                                    </div>   
                                     <div class="col-md-12 col-sm-12 text-center">
                                         <button type="submit" class="btn btn-sm btn-success" id="submitButton">
                                             Save &amp; Update
@@ -131,19 +144,25 @@
                         title: {
                             required: true,
                         },
+                        position: {
+                            required: true,
+                        },
                         description: {
                             required: true,
                         },
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 150], // Min 10KB and Max 2MB (2 * 1024 KB)
-                            imageDimensions: [100, 100, 800, 800], // Min width x height and Max width x height
+                            fileSize: [10, 500], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            imageDimensions: [50, 50, 800, 800], // Min width x height and Max width x height
                         },
                     },
                     messages: {
                         title: {
                             required: "Please enter the Title.",
+                        },
+                        position: {
+                            required: "Please Enter the Position",
                         },
                         description: {
                             required: "Please Enter the Description",
@@ -151,11 +170,11 @@
                         image: {
                             required: "Please upload an Image (jpg, jpeg, png).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 10 KB and 150 KB.",
-                            imageDimensions: "Image dimensions must be between 100x100 and 800x800 pixels.",
+                            fileSize: "File size must be between 10 KB and 500 KB.",
+                            imageDimensions: "Image dimensions must be between 50x50 and 800x800 pixels.",
                         },
                     },
                 });
             });
-        </script>       
+        </script>   
     @endsection

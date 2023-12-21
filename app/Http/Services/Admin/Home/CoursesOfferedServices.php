@@ -28,9 +28,9 @@ class CoursesOfferedServices
             uploadImage($request, 'image', $path, $ImageName);
            
             if ($last_id) {
-                return ['status' => 'success', 'msg' => 'Slide Added Successfully.'];
+                return ['status' => 'success', 'msg' => 'Courses Offered Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => ' Slide get Not Added.'];
+                return ['status' => 'error', 'msg' => ' Courses Offered get Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -75,9 +75,9 @@ class CoursesOfferedServices
             // print_r($return_data);
             // die();
             if ($return_data) {
-                return ['status' => 'success', 'msg' => 'Slide Updated Successfully.'];
+                return ['status' => 'success', 'msg' => 'Courses Offered Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Slide  Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Courses Offered Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];

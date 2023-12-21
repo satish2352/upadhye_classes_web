@@ -37,6 +37,7 @@
                     <li class="nav-item d-none d-lg-block"><a class="nav-link active"
                             href="{{ route('website-contact') }}">Role</a></li>
 
+                            <li  href="{{ route('list-marquee-tab') }}" class="nav-item d-none d-lg-block"><a class="nav-link active" href="">Marquee Tab</a>
 
                     <li  href="{{ route('list-location-address') }}" class="nav-item d-none d-lg-block"><a class="nav-link active" href="">Location Address</a>
                     </li>
@@ -55,7 +56,7 @@
                     <li class="nav-item d-none d-lg-block"><a class="nav-link active" href="{{ route('list-slide') }}">Slider</a></li>
                     <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-courses-offered') }}">Courses Offered</a></li>
                     {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Sub Slider</a> --}}
-                    {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}">Marquee</a> --}}
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-marquee') }}">Marquee</a>
                     <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-upcoming-courses') }}">Upcoming Courses</a>
                     {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-fesspayment-form') }}"> Reasons Choose Upadhye Classes</a> --}}
                      <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{ route('list-testimonial') }}">Testimonial </a>

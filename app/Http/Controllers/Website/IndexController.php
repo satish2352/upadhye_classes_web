@@ -9,7 +9,8 @@ use Validator;
 use App\Models\ {
     LocationAddress,
     EducationBoard,
-    EducationClass
+    EducationClass,
+    MarqueeTab
 
 };
 
@@ -56,6 +57,18 @@ class IndexController extends Controller
                 ->toArray();
     
             $retun_data['data_output_all_class'] = $data_output_all_class;
+
+            
+            $data_output_marquee_tab = MarqueeTab::where('is_active', true)
+                ->select(
+                    'marquee_tab.title',
+                    'marquee_tab.id',
+                )
+                ->get()
+                ->toArray();
+    
+            $retun_data['data_output_marquee_tab'] = $data_output_marquee_tab;
+            
             return $retun_data;
         } catch (\Exception $e) {
             // Log the error for debugging

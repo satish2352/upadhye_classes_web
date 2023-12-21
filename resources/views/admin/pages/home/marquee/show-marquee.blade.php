@@ -10,15 +10,14 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-start align-items-center">
                             <h3 class="page-title">
-                                Testimonial
+                                Marquee
                             </h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
                             <div>
-                                <a href="{{ route('list-testimonial') }}" class="btn btn-sm btn-primary ml-3">Back</a>
+                                <a href="{{ route('list-marquee') }}" class="btn btn-sm btn-primary ml-3">Back</a>
                             </div>
                         </div>
-
                     </div>
                     <div class="card mt-2">
                         <div class="card-body">
@@ -28,33 +27,24 @@
                                         <div class="col-lg-3 col-md-3 col-sm-3">
                                             <label>Title :</label>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->title) }}</label>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <label>{{ strip_tags($marquees->title) }}</label>
                                         </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label>Position :</label>
+                                            <label>Marquee Tab :</label>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->position) }}</label>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <label>{{ strip_tags($marquees->marquee_title) }}</label>
                                         </div>
                                     </div>
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label>Description :</label>
+                                            <label>URL :</label>
                                         </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->description) }}</label>
-                                        </div>
-                                    </div>                                 
-                                    <div class="row ">
-                                        <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label> Image :</label>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <img src="{{ Config::get('DocumentConstant.TESTIMONIAL_VIEW') }}{{ $showData->image }}"
-                                                style="width:300px; height:150px;" alt=" {{ strip_tags($showData['title']) }} Image"/>
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <label>{{ strip_tags($marquees->url) }}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +54,5 @@
                 </div>
             </div>
         </div>
-
-
         <!-- content-wrapper ends -->
     @endsection

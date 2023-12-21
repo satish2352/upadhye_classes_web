@@ -11,85 +11,49 @@ use App\Models\ {
 use Config;
 
 class TestimonialRepository  {
-	public function getAll(){
+    public function getAll(){
         try {
-            return Testimonial::all();
+            $data_output = Testimonial::orderBy('updated_at', 'desc')->get();
+            return $data_output;
         } catch (\Exception $e) {
             return $e;
         }
     }
-
-	public function addAll($request){
-    
-        try {
-            $data =array();
-           
-            $slides = new Testimonial();
-            $slides->titile = $request['titile'];
-            $slides->description = $request['description'];
-            $slides->position = $request['position'];
-            $slides->save(); 
-            $last_insert_id = $slides->id;
-            dd($last_insert_id);
-            die();
-
-            $ImageName = $last_insert_id .'_' . rand(100000, 999999) . '_image.' . $request->image->extension();
-            
-            $slide = Testimonial::find($last_insert_id); // Assuming $request directly contains the ID
-            $slide->image = $ImageName; // Save the image filename to the database
-            $slide->save();
-            $data['ImageName'] =$ImageName;
-
-
-            
-            return $data;
-           
-        } catch (\Exception $e) {
-            return [
-                'msg' => $e,
-                'status' => 'error'
-            ];
-        }
-    }
-
     public function getById($id){
         try {
-            $slider = Testimonial::find($id);
-            if ($slider) {
-                return $slider;
+            $dataOutputByid = Testimonial::find($id);
+            if ($dataOutputByid) {
+                return $dataOutputByid;
             } else {
                 return null;
             }
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to get by id slide.',
+                'msg' => 'Failed to get by id Data.',
                 'status' => 'error'
             ];
         }
     }
-    
     public function updateAll($request){
         try {
             $return_data = array();
-            $slide_data = Testimonial::find($request->id);
+            $dataOutput = Testimonial::find($request->id);
 
-            if (!$slide_data) {
+            if (!$dataOutput) {
                 return [
-                    'msg' => 'Report Incident Crowdsourcing not found.',
+                    'msg' => 'Update Data not found.',
                     'status' => 'error'
                 ];
             }
-
             // Store the previous image names
-            $previousEnglishImage = $slide_data->image;
+            $previousEnglishImage = $dataOutput->image;
 
             // Update the fields from the request
-            $slide_data->titile = $request['titile'];
-            $slide_data->description = $request['description'];
-            $slides->position = $request['position'];
-            $slide_data->save();
-            $last_insert_id = $slide_data->id;
+            $dataOutput->rank_no = $request['rank_no'];
+            
+            $dataOutput->save();
+            $last_insert_id = $dataOutput->id;
 
             $return_data['last_insert_id'] = $last_insert_id;
             $return_data['image'] = $previousEnglishImage;
@@ -97,51 +61,47 @@ class TestimonialRepository  {
         
         } catch (\Exception $e) {
             return [
-                'msg' => 'Failed to update Report Incident Crowdsourcing.',
+                'msg' => 'Failed to Update Data.',
                 'status' => 'error',
                 'error' => $e->getMessage() // Return the error message for debugging purposes
             ];
         }
     }
-
     public function updateOne($request){
         try {
-            $slide = Testimonial::find($request); // Assuming $request directly contains the ID
+            $updateOutput = Testimonial::find($request); // Assuming $request directly contains the ID
 
-            // Assuming 'is_active' is a field in the Slider model
-            if ($slide) {
-                $is_active = $slide->is_active === 1 ? 0 : 1;
-                $slide->is_active = $is_active;
-                $slide->save();
-
+            // Assuming 'is_active' is a field in the Testimonial model
+            if ($updateOutput) {
+                $is_active = $updateOutput->is_active === 1 ? 0 : 1;
+                $updateOutput->is_active = $is_active;
+                $updateOutput->save();
                 return [
-                    'msg' => 'Slide updated successfully.',
+                    'msg' => 'Data Updated Successfully.',
                     'status' => 'success'
                 ];
             }
-
             return [
-                'msg' => 'Slide not found.',
+                'msg' => 'Data not Found.',
                 'status' => 'error'
             ];
         } catch (\Exception $e) {
             return [
-                'msg' => 'Failed to update slide.',
+                'msg' => 'Failed to Update Data.',
                 'status' => 'error'
             ];
         }
     }
-
     public function deleteById($id){
             try {
-                $slider = Testimonial::find($id);
-                if ($slider) {
-                    if (file_exists_s3(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->image)){
-                        removeImage(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->image);
+                $deleteDataById = Testimonial::find($id);
+                if ($deleteData) {
+                    if (file_exists_view(Config::get('DocumentConstant.Testimonial_DELETE') . $deleteDataById->image)){
+                        removeImage(Config::get('DocumentConstant.Testimonial_DELETE') . $deleteDataById->image);
                     }
-                    $slider->delete();
+                    $deleteDataById->delete();
                     
-                    return $slider;
+                    return $deleteDataById;
                 } else {
                     return null;
                 }
@@ -149,6 +109,4 @@ class TestimonialRepository  {
                 return $e;
             }
     }
-
-
 }

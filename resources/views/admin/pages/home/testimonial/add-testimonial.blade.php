@@ -119,19 +119,25 @@
                         title: {
                             required: true,
                         },
+                        position: {
+                            required: true,
+                        },
                         description: {
                             required: true,
                         },
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 1024], // Min 10KB and Max 2MB (2 * 1024 KB)
-                            imageDimensions: [100, 100, 800, 800], // Min width x height and Max width x height
+                            fileSize: [10, 500], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            imageDimensions: [50, 50, 800, 800], // Min width x height and Max width x height
                         },
                     },
                     messages: {
                         title: {
                             required: "Please enter the Title.",
+                        },
+                        position: {
+                            required: "Please Enter the Position",
                         },
                         description: {
                             required: "Please Enter the Description",
@@ -139,8 +145,8 @@
                         image: {
                             required: "Please upload an Image (jpg, jpeg, png).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 10 KB and 1024 KB.",
-                            imageDimensions: "Image dimensions must be between 100x100 and 800x800 pixels.",
+                            fileSize: "File size must be between 10 KB and 500 KB.",
+                            imageDimensions: "Image dimensions must be between 50x50 and 800x800 pixels.",
                         },
                     },
                 });
