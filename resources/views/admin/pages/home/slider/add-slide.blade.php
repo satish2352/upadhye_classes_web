@@ -63,15 +63,17 @@
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
                     const rank_no = $('#rank_no').val();
-                    const image = $('#image').val();
-
-                    // Enable the submit button if all fields are valid
-                    if (rank_no && image) {
-                        $('#submitButton').prop('disabled', false);
-                    } else {
-                        $('#submitButton').prop('disabled', true);
-                    }
+                    const image = $('#image').val();                   
                 }
+                $('input').on('input change', checkFormValidity);
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Custom validation method to check file extension
                 $.validator.addMethod("fileExtension", function(value, element, param) {
                     // Get the file extension
@@ -97,6 +99,7 @@
                     rules: {
                         rank_no: {
                             required: true,
+                            spcenotallow: true,
                         },
                         image: {
                             required: true,
@@ -107,6 +110,7 @@
                     messages: {
                         rank_no: {
                             required: "Please enter the Rank Number.",
+                            spcenotallow: "Enter Some Number",
                         },
                         image: {
                             required: "Please upload an Image (JPG, JPEG, PNG).",

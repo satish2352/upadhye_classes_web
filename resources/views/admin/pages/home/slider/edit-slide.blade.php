@@ -61,42 +61,41 @@
                                 </div>
                                 <input type="hidden" name="id" id="id" class="form-control"
                                     value="{{ $editData->id }}" placeholder="">
-
                                 {{-- <input type="text" name="currentMarathiImage" id="currentMarathiImage"
                                     class="form-control" value="" placeholder=""> --}}
-
-
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- Make sure you have jQuery and jquery.validate.js included before this script -->
         <script>
             $(document).ready(function() {
                 var currentEnglishImage = $("#currentEnglishImage").val();
-             
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
                     const rank_no = $('#rank_no').val();
                     const image = $('#image').val();
-                  
                     // Update the old PDF values if there are any selected files
                     if (image !== currentEnglishImage) {
                         $("#currentEnglishImage").val(image);
                     }
-                   
                 }
-        
+                $('input').on('input change', checkFormValidity);
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Call the checkFormValidity function on file input change
                 $('input, #image').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
-        
                 $.validator.addMethod("validImage", function(value, element) {
                     // Check if a file is selected
                     if (element.files && element.files.length > 0) {
@@ -123,16 +122,17 @@
                     rules: {
                         rank_no: {
                             required: true,
+                            spcenotallow: true,
                         },
                         image: {
                             validImage: true,
                             fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
                         },
-                      
                     },
                     messages: {
                         rank_no: {
                             required: "Please Enter the Rank Number",
+                            spcenotallow: "Enter Some Number",
                         },
                         image: {
                     validImage: "Only JPG, JPEG, PNG images are allowed.",

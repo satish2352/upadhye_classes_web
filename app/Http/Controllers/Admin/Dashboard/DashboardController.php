@@ -73,7 +73,7 @@ class DashboardController extends Controller {
     {
         $return_data = array();
 
-        return view('admin.pages.dashboard',compact('return_data'));
+        return view('admin.pages.dashboard');
     }
 
 

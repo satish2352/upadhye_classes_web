@@ -18,7 +18,7 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample" action="{{ route('update-slide') }}" method="post" id="regForm"
+                            <form class="forms-sample" action="{{ route('update-courses-offered') }}" method="post" id="regForm"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -47,7 +47,7 @@
                                             src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $editData->image }}"
                                             class="img-fluid img-thumbnail" width="150">
                                         <img id="english_imgPreview" src="#"
-                                            alt=" {{ strip_tags($editData['title']) }} छायाचित्र"
+                                            alt=" {{ strip_tags($editData['title']) }} Image"
                                             class="img-fluid img-thumbnail" width="150" style="display:none">
                                     </div>
 
@@ -85,31 +85,33 @@
             </div>
         </div>
 
-        <script>
-            $(document).ready(function() {
+        {{-- <script>
+            $(document).ready(function () {
                 var currentEnglishImage = $("#currentEnglishImage").val();
-             
+        
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
                     const title = $('#title').val();
-                    const image = $('#image').val();
                     const description = $('#description').val();
-                    
-                  
-                    // Update the old PDF values if there are any selected files
+                    const image = $('#image').val();
+        
+                    // Update the old image values if there are any selected files
                     if (image !== currentEnglishImage) {
                         $("#currentEnglishImage").val(image);
                     }
-                   
                 }
         
-                // Call the checkFormValidity function on file input change
-                $('input,textarea, #image').on('change', function() {
-                    checkFormValidity();
-                    validator.element(this); // Revalidate the file input
-                });
+                $('input, textarea').on('input change', checkFormValidity);
         
-                $.validator.addMethod("validImage", function(value, element) {
+                $.validator.addMethod("spcenotallow", function (value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length > 0;
+                }, "Enter Some Text");
+        
+                $.validator.addMethod("validImage", function (value, element) {
                     // Check if a file is selected
                     if (element.files && element.files.length > 0) {
                         var extension = element.files[0].name.split('.').pop().toLowerCase();
@@ -119,7 +121,7 @@
                     return true; // No file selected, so consider it valid
                 }, "Only JPG, JPEG, PNG images are allowed.");
         
-                $.validator.addMethod("fileSize", function(value, element, param) {
+                $.validator.addMethod("fileSize", function (value, element, param) {
                     // Check if a file is selected
                     if (element.files && element.files.length > 0) {
                         // Convert bytes to KB
@@ -129,63 +131,72 @@
                     return true; // No file selected, so consider it valid
                 }, "File size must be between {0} KB and {1} KB.");
         
+                // You need to define the imageDimensions method here
+                $.validator.addMethod("imageDimensions", function (value, element, param) {
+                    // Your implementation for image dimension validation
+                    // Replace this with your actual validation logic
+                    return true;
+                }, "Image dimensions must be between {0}x{1} and {2}x{3} pixels.");
+        
+                // Update the accept attribute to validate based on file extension
+                $('#image').attr('accept', 'image/jpeg, image/png');
+        
                 // Initialize the form validation
                 var form = $("#regForm");
                 var validator = form.validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
                         },
                         description: {
                             required: true,
                         },
                         image: {
-                            required: true,
-                            fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 150], // Min 10KB and Max 2MB (2 * 1024 KB)
-                            imageDimensions: [100, 100, 800, 800], // Min width x height and Max width x height
+                            validImage: true,
+                            fileSize: [180, 2048], // Min 180KB and Max 2MB (2048 * 1024 KB)
+                            // You need to replace the placeholder with actual dimensions
+                            imageDimensions: [50, 50, 800, 800], // Min width x height and Max width x height
                         },
-                      
                     },
                     messages: {
                         title: {
                             required: "Please Enter the Rank Number",
+                            spcenotallow: "Enter Some Number",
                         },
                         description: {
                             required: "Please Enter the Rank description",
                         },
                         image: {
-                            required: "Please upload an Image (jpg, jpeg, png).",
-                            fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 10 KB and 150 KB.",
-                            imageDimensions: "Image dimensions must be between 100x100 and 800x800 pixels.",
+                            validImage: "Only JPG, JPEG, PNG images are allowed.",
+                            fileSize: "The file size must be between 180 KB and 2048 KB.",
+                            imageDimensions: "Image dimensions must be between 50x50 and 800x800 pixels.",
                         },
                     },
-                    submitHandler: function(form) {
+                    submitHandler: function (form) {
                         form.submit();
                     }
                 });
         
                 // Submit the form when the "Update" button is clicked
-                $("#submitButton").click(function() {
+                $("#submitButton").click(function () {
                     // Validate the form
                     if (form.valid()) {
                         form.submit();
                     }
                 });
         
-                // You can remove the following two blocks if you don't need to display selected images on the page
-                $("#image").change(function() {
+                // Display selected images on the page (optional)
+                $("#image").change(function () {
                     var reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Display the selected image for English
-                        // You can remove this if you don't need to display the image on the page
+                    reader.onload = function (e) {
+                        // Display the selected image
                         $("#currentEnglishImageDisplay").attr('src', e.target.result);
                         validator.element("#image"); // Revalidate the file input
                     };
                     reader.readAsDataURL(this.files[0]);
                 });
             });
-        </script>    
-
+        </script> --}}
+        
     @endsection

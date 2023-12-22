@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 text-center">
-                                        <button type="submit" class="btn btn-sm btn-success" id="submitButton" disabled>
+                                        <button type="submit" class="btn btn-sm btn-success" id="submitButton">
                                             Save &amp; Submit
                                         </button>
                                         {{-- <button type="reset" class="btn btn-danger">Cancel</button> --}}
@@ -51,16 +51,8 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const name = $('#name').val();
-
-                    // Enable the submit button if all fields are valid
-                    if (name) {
-                        $('#submitButton').prop('disabled', false);
-                    } else {
-                        $('#submitButton').prop('disabled', true);
-                    }
+                    const name = $('#name').val();                    
                 }
-
                 // Call the checkFormValidity function on input change
                 $('input').on('input change', checkFormValidity);
                 $.validator.addMethod("spcenotallow", function(value, element) {

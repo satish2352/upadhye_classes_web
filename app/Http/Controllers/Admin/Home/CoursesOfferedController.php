@@ -84,24 +84,22 @@ class CoursesOfferedController extends Controller
         }
         public function update(Request $request){
             $rules = [
-                'title' => 'required',
-                'description' => 'required',
+                'rank_no' => 'required',
                 
             ];
     
-            if($request->has('image')) {
-                $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MAX_SIZE").'|dimensions:min_width=100,min_height=100,max_width=800,max_height=800|min:'.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MIN_SIZE");
-            }
+            // if($request->has('image')) {
+            //     $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MAX_SIZE").'|dimensions:min_width=400,min_height=300,max_width=1500,max_height=1200|min:'.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MIN_SIZE");
+            // }
            
             $messages = [   
-                'title.required'=>'Please enter title.',
-                'description.required' => 'Please  enter description.',
-                'image.required' => 'The image is required.',
-                'image.image' => 'The image must be a valid image file.',
-                'image.mimes' => 'The image must be in JPEG, PNG, JPG format.',
-                'image.max' => 'The image size must not exceed '.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MAX_SIZE").'KB .',
-                'image.min' => 'The image size must not be less than '.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MIN_SIZE").'KB .',
-                'image.dimensions' => 'The image dimensions must be between 100x100 and 800x800 pixels.',
+                // 'rank_no.required'=>'Please enter Rank Number.',
+                // 'image.required' => 'The image is required.',
+                // 'image.image' => 'The image must be a valid image file.',
+                // 'image.mimes' => 'The image must be in JPEG, PNG, JPG format.',
+                // 'image.max' => 'The image size must not exceed '.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MAX_SIZE").'KB .',
+                // 'image.min' => 'The image size must not be less than '.Config::get("AllFileValidation.COURSES_OFFERED_IMAGE_MIN_SIZE").'KB .',
+                // 'image.dimensions' => 'The image dimensions must be between 1500x500 and 2000x1000 pixels.',
                
             ];
     

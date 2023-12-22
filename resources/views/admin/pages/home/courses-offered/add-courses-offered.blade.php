@@ -52,8 +52,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 text-center">
-                                        <button type="submit" class="btn btn-sm btn-success" id="submitButton"
-                                            {{-- disabled --}}>
+                                        <button type="submit" class="btn btn-sm btn-success" id="submitButton"  >
                                             Save &amp; Submit
                                         </button>
                                         {{-- <button type="reset" class="btn btn-sm btn-danger">Cancel</button> --}}
@@ -73,15 +72,9 @@
                 function checkFormValidity() {
                     const title = $('#title').val();
                     const description = $('#description textarea').val();
-                    const image = $('#image').val();
-
-                    // Enable the submit button if all fields are valid
-                    // if (title && description && image) {
-                    //     $('#submitButton').prop('disabled', false);
-                    // } else {
-                    //     $('#submitButton').prop('disabled', true);
-                    // }
+                    const image = $('#image').val();                    
                 }
+                
                 // Custom validation method to check file extension
                 $.validator.addMethod("fileExtension", function(value, element, param) {
                     // Get the file extension
@@ -101,12 +94,21 @@
 
                 // Call the checkFormValidity function on input change
                 $('input, textarea, #image').on('input change', checkFormValidity);
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
 
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
                         },
                         description: {
                             required: true,
@@ -114,13 +116,14 @@
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 150], // Min 10KB and Max 2MB (2 * 1024 KB)
-                            imageDimensions: [100, 100, 800, 800], // Min width x height and Max width x height
+                            fileSize: [5, 200], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            imageDimensions: [50, 50, 800, 800], // Min width x height and Max width x height
                         },
                     },
                     messages: {
                         title: {
                             required: "Please enter the Title.",
+                            spcenotallow: "Enter Some Title",
                         },
                         description: {
                             required: "Please Enter the Description",

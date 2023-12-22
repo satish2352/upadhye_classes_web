@@ -76,8 +76,7 @@ class CoursesOfferedRepository  {
             $previousEnglishImage = $dataOutput->image;
 
             // Update the fields from the request
-            $dataOutput->title = $request['title'];
-            $dataOutput->description = $request['description'];
+            $dataOutput->rank_no = $request['rank_no'];
             
             $dataOutput->save();
             $last_insert_id = $dataOutput->id;
@@ -103,6 +102,8 @@ class CoursesOfferedRepository  {
                 $is_active = $updateOutput->is_active === 1 ? 0 : 1;
                 $updateOutput->is_active = $is_active;
                 $updateOutput->save();
+
+
                 return [
                     'msg' => 'Data Updated Successfully.',
                     'status' => 'success'

@@ -68,13 +68,13 @@ class CoursesOfferedServices
                 
                 // $englishImageName = $return_data['last_insert_id'] . '_' . rand(100000, 999999) . '_image.' . $request->image->extension();
                 uploadImage($request, 'image', $path, $englishImageName);
-                $slide_data = CoursesOffered::find($return_data['last_insert_id']);
+                $slide_data = Slider::find($return_data['last_insert_id']);
                 $slide_data->image = $englishImageName;
                 $slide_data->save();
             }
                 
-            // print_r($return_data);
-            // die();
+            dd($return_data);
+            die();
             if ($return_data) {
                 return ['status' => 'success', 'msg' => 'Slide Updated Successfully.'];
             } else {
