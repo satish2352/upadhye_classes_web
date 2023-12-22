@@ -1,13 +1,22 @@
 @extends('admin.layout.master')
 
 @section('content')
+<<<<<<< HEAD:resources/views/admin/pages/menu/roles/list-role.blade.php
  
+=======
+>>>>>>> 03c1251d2028d34f7da13a52a0bd25b3c3cf1aa5:resources/views/admin/pages/home/slider/list-slide.blade.php
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
+<<<<<<< HEAD:resources/views/admin/pages/menu/roles/list-role.blade.php
                     Role List
                         <a href="{{ route('add-role') }}" class="btn btn-sm btn-primary ml-3">+ Add</a>
+=======
+                    Slide List
+                    <a href="{{ route('add-slide') }}" class="btn btn-sm btn-primary ml-3">+
+                        Add</a>
+>>>>>>> 03c1251d2028d34f7da13a52a0bd25b3c3cf1aa5:resources/views/admin/pages/home/slider/list-slide.blade.php
 
                 </h3>
                 <nav aria-label="breadcrumb">
@@ -29,27 +38,21 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Role Name</th>
+                                                    <th>Rank Number </th>
+                                                    <th>Image </th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($roles as $item)
+                                                @foreach ($getOutput as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->role_name }}</td>
-                                                        <!-- <td>
-                                                                    <button data-id="{{ $item->id }}" type="submit"
-                                                                        class="active-btn btn btn-sm btn-outline-primary m-1"
-                                                                        data-toggle="tooltip" data-placement="top"
-                                                                        title="{{ $item->is_active ? 'Active' : 'Inactive' }}">
-                                                                        <span class="status-icon {{ $item->is_active ? '1' : '0' }}">
-                                                                            <i
-                                                                                class="fa {{ $item->is_active ? 'fa-thumbs-up' : 'fa-thumbs-down' }}"></i>
-                                                                        </span>
-                                                                    </button>
-                                                                </td> -->
+                                                        <td>{{ strip_tags($item->rank_no) }}</td>
+                                                        <td> <img class="img-size"
+                                                                src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $item->image }}"
+                                                                alt=" {{ strip_tags($item['rank_no']) }} Image" />
+                                                        </td>
                                                         <td>
                                                             <label class="switch">
                                                                 <input data-id="{{ $item->id }}" type="checkbox"
@@ -61,18 +64,24 @@
                                                             </label>
 
                                                         </td>
-                                                        <td class="d-flex">
-                                                                <a href="{{ route('edit-role', base64_encode($item->id)) }}"
+                                                        <td>
+                                                            <div class="d-flex">
+                                                                <a href="{{ route('edit-slide', base64_encode($item->id)) }}"
                                                                     class="btn btn-sm btn-outline-primary m-1"
-                                                                    title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                                    title="Edit Slide"><i
+                                                                        class="fas fa-pencil-alt"></i></a>
 
                                                             <a data-id="{{ $item->id }}"
                                                                 class="show-btn btn btn-sm btn-outline-primary m-1"
                                                                 title="Show"><i class="fas fa-eye"></i></a>
                                                                 <a data-id="{{ $item->id }}"
-                                                                    class="delete-btn btn btn-sm btn-outline-danger m-1"
-                                                                    title="Delete"><i class="fas fa-archive"></i></a>
+                                                                    class="show-btn btn btn-sm btn-outline-primary m-1"
+                                                                    title="Show Slide "><i class="fas fa-eye"></i></a>
 
+                                                                <a data-id="{{ $item->id }}"
+                                                                    class="delete-btn btn btn-sm btn-outline-danger m-1"
+                                                                    title="Delete Slide"><i class="fas fa-archive"></i></a>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach

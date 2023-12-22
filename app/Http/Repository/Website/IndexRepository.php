@@ -8,8 +8,11 @@ use Session;
 use App\Models\ {
     SocialIcon,
 	Marquee,
+    MarqueeTab,
     Slider,
-    DisasterManagementWebPortal,
+    CoursesOffered,
+    UpcomingCourses,
+    Testimonial,
     DisasterManagementNews,
     EmergencyContact,
     DepartmentInformation,
@@ -39,22 +42,7 @@ class IndexRepository  {
         }
     }	
 
-    public function getAllSubHeader()
-    {
-        try {
-            $data_output = Slider::where('is_active','=',true);
-            if (Session::get('language') == 'mar') {
-                $data_output =  $data_output->select('marathi_title','marathi_description','marathi_image','url');
-            } else {
-                $data_output = $data_output->select('english_title','english_description','english_image','url');
-            }
-            $data_output =  $data_output->get()
-                            ->toArray();
-            return  $data_output;
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }	
+  	
 //     public function getAllMarquee()
 // {
 //     try {
@@ -78,56 +66,84 @@ class IndexRepository  {
 //         return $e;
 //     }
 // }
-	public function getAllMarquee()
-    {
-        try {
-            $data_output = Marquee::where('is_active','=',true);
-            if (Session::get('language') == 'mar') {
-                $data_output =  $data_output->select('marathi_title','url');
-            } else {
-                $data_output = $data_output->select('english_title','url');
-            }
-            $data_output =  $data_output->get()
-                            ->toArray();
-            return  $data_output;
-        //    echo $data_output;
-        //    die();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }   
-    public function getAllSlider()
-    {
-        try {
-            $data_output = Slider::where('is_active','=',true);
-            if (Session::get('language') == 'mar') {
-                $data_output =  $data_output->select('marathi_title','marathi_description','marathi_image','url');
-            } else {
-                $data_output = $data_output->select('english_title','english_description','english_image','url');
-            }
-            $data_output =  $data_output->get()
-                            ->toArray();
-            return  $data_output;
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }	
-    public function getAllDisasterManagementWebPortal()
-    {
-        try {
-            $data_output = DisasterManagementWebPortal::where('is_active','=',true);
-            if (Session::get('language') == 'mar') {
-                $data_output =  $data_output->select('marathi_name','marathi_title','marathi_description','marathi_designation','marathi_image');
-            } else {
-                $data_output = $data_output->select('english_name','english_title','english_description','english_designation','english_image');
-            }
-            $data_output =  $data_output->get()
-                            ->toArray();
-            return  $data_output;
-        } catch (\Exception $e) {
-            return $e;
-        }
+	// public function getAllMarquee()
+    // {
+    //     try {
+    //         $data_output = Marquee::where('is_active','=',true);
+    //         if (Session::get('language') == 'mar') {
+    //             $data_output =  $data_output->select('marathi_title','url');
+    //         } else {
+    //             $data_output = $data_output->select('english_title','url');
+    //         }
+    //         $data_output =  $data_output->get()
+    //                         ->toArray();
+    //         return  $data_output;
+    //     //    echo $data_output;
+    //     //    die();
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    // }   
+    public function getAllSlider(){
+    try {
+        $data_output = Slider::where('is_active', true);
+
+        // Select all fields regardless of language
+        $data_output = $data_output->select('rank_no', 'image');
+
+        $data_output = $data_output->get()->toArray();
+        return $data_output;
+    } catch (\Exception $e) {
+        return $e;
     }
+  }
+  public function getAllCoursesOffered(){
+    try {
+        $data_output = CoursesOffered::where('is_active', true);
+        // Select all fields regardless of language
+        $data_output = $data_output->select('id','title','description', 'image');
+        $data_output = $data_output->get()->toArray();
+        return $data_output;
+    } catch (\Exception $e) {
+        return $e;
+    }
+  }
+  public function getAllUpcomingCourses(){
+    try {
+        $data_output = UpcomingCourses::where('is_active', true);
+        // Select all fields regardless of language
+        $data_output = $data_output->select('id','title','description','start_date','duration','test_mode','test_medium', 'course_fess');
+        $data_output = $data_output->get()->toArray();
+        
+        return $data_output;
+    } catch (\Exception $e) {
+        return $e;
+    }
+  }
+  public function getAllTestimonial(){
+    try {
+        $data_output = Testimonial::where('is_active', true);
+        // Select all fields regardless of language
+        $data_output = $data_output->select('id','title','description','position','image');
+        $data_output = $data_output->get()->toArray();
+        
+        return $data_output;
+    } catch (\Exception $e) {
+        return $e;
+    }
+  }
+
+ // Repository file
+public function getAllMarqueeTabAvailableCategories()
+{
+    try {
+        $data_output = MarqueeTab::where('is_active', true)->select('id', 'title')->get()->toArray();
+        return $data_output;
+    } catch (\Exception $e) {
+        return $e;
+    }
+}
+
     public function getAllDisasterManagementNews()
     {
         try {

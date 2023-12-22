@@ -1,48 +1,40 @@
 <?php
 namespace App\Http\Repository\Admin\Home;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\QueryException;
 use DB;
 use Illuminate\Support\Carbon;
 // use Session;
 use App\Models\ {
-	Slider
+Slider
 };
 use Config;
 
 class SliderRepository  {
-	public function getAll(){
+
+    public function getAll(){
         try {
-            return Slider::all();
+            $data_output = Slider::orderBy('updated_at', 'desc')->get();
+            return $data_output;
         } catch (\Exception $e) {
             return $e;
         }
     }
-
-	public function addAll($request){
+     public function addAll($request){
         try {
             $data =array();
-            $slides = new Slider();
-            $slides->english_title = $request['english_title'];
-            $slides->marathi_title = $request['marathi_title'];
-            $slides->english_description = $request['english_description'];
-            $slides->marathi_description = $request['marathi_description'];
-            $slides->url = $request['url'];
-            // $slides->english_scrolltime = $request['english_scrolltime'];
+            $dataOutput = new Slider();
+            $dataOutput->rank_no = $request['rank_no'];
         
-            $slides->save(); 
-            $last_insert_id = $slides->id;
+            $dataOutput->save(); 
+            $last_insert_id = $dataOutput->id;
 
-            $englishImageName = $last_insert_id .'_' . rand(100000, 999999) . '_english.' . $request->english_image->extension();
-            $marathiImageName = $last_insert_id .'_' . rand(100000, 999999) . '_marathi.' . $request->marathi_image->extension();
+            $ImageName = $last_insert_id .'_' . rand(100000, 999999) . '_image.' . $request->image->extension();
             
-            $slide = Slider::find($last_insert_id); // Assuming $request directly contains the ID
-            $slide->english_image = $englishImageName; // Save the image filename to the database
-            $slide->marathi_image = $marathiImageName; // Save the image filename to the database
-            $slide->save();
+            $finalOutput = Slider::find($last_insert_id); // Assuming $request directly contains the ID
+            $finalOutput->image = $ImageName; // Save the image filename to the database
+            $finalOutput->save();
             
-            $data['englishImageName'] =$englishImageName;
-            $data['marathiImageName'] =$marathiImageName;
+            $data['ImageName'] =$ImageName;
             return $data;
 
         } catch (\Exception $e) {
@@ -52,105 +44,89 @@ class SliderRepository  {
             ];
         }
     }
-
     public function getById($id){
         try {
-            $slider = Slider::find($id);
-            if ($slider) {
-                return $slider;
+            $dataOutputByid = Slider::find($id);
+            if ($dataOutputByid) {
+                return $dataOutputByid;
             } else {
                 return null;
             }
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to get by id slide.',
+                'msg' => 'Failed to get by id Data.',
                 'status' => 'error'
             ];
         }
     }
-    
     public function updateAll($request){
         try {
             $return_data = array();
-            $slide_data = Slider::find($request->id);
+            $dataOutput = Slider::find($request->id);
 
-            if (!$slide_data) {
+            if (!$dataOutput) {
                 return [
-                    'msg' => 'Report Incident Crowdsourcing not found.',
+                    'msg' => 'Update Data not found.',
                     'status' => 'error'
                 ];
             }
-
             // Store the previous image names
-            $previousEnglishImage = $slide_data->english_image;
-            $previousMarathiImage = $slide_data->marathi_image;
+            $previousEnglishImage = $dataOutput->image;
 
             // Update the fields from the request
-            $slide_data->english_title = $request['english_title'];
-            $slide_data->marathi_title = $request['marathi_title'];
-            $slide_data->english_description = $request['english_description'];
-            $slide_data->marathi_description = $request['marathi_description'];
-            $slide_data->url = $request['url'];
+            $dataOutput->rank_no = $request['rank_no'];
             
-            $slide_data->save();
-            $last_insert_id = $slide_data->id;
+            $dataOutput->save();
+            $last_insert_id = $dataOutput->id;
 
             $return_data['last_insert_id'] = $last_insert_id;
-            $return_data['english_image'] = $previousEnglishImage;
-            $return_data['marathi_image'] = $previousMarathiImage;
+            $return_data['image'] = $previousEnglishImage;
             return  $return_data;
         
         } catch (\Exception $e) {
             return [
-                'msg' => 'Failed to update Report Incident Crowdsourcing.',
+                'msg' => 'Failed to Update Data.',
                 'status' => 'error',
                 'error' => $e->getMessage() // Return the error message for debugging purposes
             ];
         }
     }
-
     public function updateOne($request){
         try {
-            $slide = Slider::find($request); // Assuming $request directly contains the ID
+            $updateOutput = Slider::find($request); // Assuming $request directly contains the ID
 
             // Assuming 'is_active' is a field in the Slider model
-            if ($slide) {
-                $is_active = $slide->is_active === 1 ? 0 : 1;
-                $slide->is_active = $is_active;
-                $slide->save();
-
+            if ($updateOutput) {
+                $is_active = $updateOutput->is_active === 1 ? 0 : 1;
+                $updateOutput->is_active = $is_active;
+                $updateOutput->save();
                 return [
-                    'msg' => 'Slide updated successfully.',
+                    'msg' => 'Data Updated Successfully.',
                     'status' => 'success'
                 ];
             }
-
             return [
-                'msg' => 'Slide not found.',
+                'msg' => 'Data not Found.',
                 'status' => 'error'
             ];
         } catch (\Exception $e) {
             return [
-                'msg' => 'Failed to update slide.',
+                'msg' => 'Failed to Update Data.',
                 'status' => 'error'
             ];
         }
     }
-
     public function deleteById($id){
             try {
-                $slider = Slider::find($id);
-                if ($slider) {
-                    if (file_exists_s3(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->english_image)){
-                        removeImage(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->english_image);
+                $deleteDataById = Slider::find($id);
+                if ($deleteData) {
+                    if (file_exists_view(Config::get('DocumentConstant.SLIDER_DELETE') . $deleteDataById->image)){
+                        removeImage(Config::get('DocumentConstant.SLIDER_DELETE') . $deleteDataById->image);
                     }
-                    if (file_exists_s3(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->marathi_image)){
-                        removeImage(Config::get('DocumentConstant.SLIDER_DELETE') . $slider->marathi_image);
-                    }
-                    $slider->delete();
+                    $deleteDataById->delete();
                     
-                    return $slider;
+                    return $deleteDataById;
                 } else {
                     return null;
                 }
@@ -158,6 +134,5 @@ class SliderRepository  {
                 return $e;
             }
     }
-
 
 }

@@ -20,84 +20,24 @@
         <div class="container">
             <div class="row">
                 <!-- gallery-item-start -->
+                @if (empty($data_output))
+                <div class="container">
+                    <div class="row">
+                        <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                    </div>
+                </div>
+            @else
+                @foreach ($data_output as $gallery)
                 <div class="col-lg-3 col-md-6">
                     <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-1.jpg')}}" alt="eduact">
+                        <img src="{{ Config::get('DocumentConstant.GALLERY_VIEW') }}{{ $gallery['image'] }}" alt="eduact">
                         <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-1.jpg')}}"></a>
+                            <a class="img-popup" href="{{ Config::get('DocumentConstant.GALLERY_VIEW') }}{{ $gallery['image'] }}"></a>
                         </div>
                     </div>
                 </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-2.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-2.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-3.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-3.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-4.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-4.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-5.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-5.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-6.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-6.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-7.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-7.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- gallery-item-end -->
-                <!-- gallery-item-start -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="gallery-page__single">
-                        <img src="{{ asset('website/assets/images/gallery/gallery-8.jpg')}}" alt="eduact">
-                        <div class="gallery-page__icon">
-                            <a class="img-popup" href="{{ asset('website/assets/images/gallery/gallery-8.jpg')}}"></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                @endif
                 <!-- gallery-item-end -->
             </div>
         </div>
