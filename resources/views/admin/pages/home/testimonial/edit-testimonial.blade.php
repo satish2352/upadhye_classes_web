@@ -68,7 +68,7 @@
                                         <div class="form-group">
                                             <label for="image"> Image</label>
                                             <input type="file" name="image" class="form-control"
-                                                id="image" accept="image/*" placeholder="image">
+                                                id="english_image" accept="image/*" placeholder="image">
                                             @if ($errors->has('image'))
                                                 <div class="red-text"><?php echo $errors->first('image', ':message'); ?>
                                                 </div>

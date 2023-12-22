@@ -117,7 +117,7 @@
                     messages: {
                         image: {
                     validImage: "Only JPG, JPEG, PNG images are allowed.",
-                    fileSize: "The file size must be between 180 KB and 2048 KB.",
+                    fileSize: "The file size must be between 10 KB and 2048 KB.",
                 },
                     },
                     submitHandler: function(form) {

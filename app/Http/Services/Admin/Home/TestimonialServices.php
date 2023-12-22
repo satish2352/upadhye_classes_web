@@ -37,9 +37,9 @@ class TestimonialServices
             uploadImage($request, 'image', $path, $ImageName);
            
             if ($last_id) {
-                return ['status' => 'success', 'msg' => 'Testimonial Added Successfully.'];
+                return ['status' => 'success', 'msg' => 'Slide Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => ' Testimonial get Not Added.'];
+                return ['status' => 'error', 'msg' => ' Slide get Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];

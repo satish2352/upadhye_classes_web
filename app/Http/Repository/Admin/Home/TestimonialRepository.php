@@ -19,6 +19,32 @@ class TestimonialRepository  {
             return $e;
         }
     }
+    public function addAll($request){
+        try {
+            $data =array();
+            $dataOutput = new Testimonial();
+            $dataOutput->title = $request['title'];
+            $dataOutput->description = $request['description'];
+            
+            $dataOutput->save(); 
+            $last_insert_id = $dataOutput->id;
+
+            $ImageName = $last_insert_id .'_' . rand(100000, 999999) . '_image.' . $request->image->extension();
+            
+            $finalOutput = Slider::find($last_insert_id); // Assuming $request directly contains the ID
+            $finalOutput->image = $ImageName; // Save the image filename to the database
+            $finalOutput->save();
+            
+            $data['ImageName'] =$ImageName;
+            return $data;
+
+        } catch (\Exception $e) {
+            return [
+                'msg' => $e,
+                'status' => 'error'
+            ];
+        }
+    }
     public function getById($id){
         try {
             $dataOutputByid = Testimonial::find($id);
@@ -50,8 +76,8 @@ class TestimonialRepository  {
             $previousEnglishImage = $dataOutput->image;
 
             // Update the fields from the request
-            $dataOutput->rank_no = $request['rank_no'];
-            
+            $dataOutput->title = $request['title'];
+            $dataOutput->description = $request['description'];
             $dataOutput->save();
             $last_insert_id = $dataOutput->id;
 

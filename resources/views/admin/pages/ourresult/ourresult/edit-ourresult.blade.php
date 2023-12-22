@@ -26,7 +26,7 @@
                                         <div class="form-group">
                                             <label for="image"> Image</label>
                                             <input type="file" name="image" class="form-control mb-2"
-                                                id="image" accept="image/*" placeholder="image"
+                                                id="english_image" accept="image/*" placeholder="image"
                                                 value="{{ old('english_title') }}">
                                             @if ($errors->has('image'))
                                                 <span class="red-text"><?php echo $errors->first('image', ':message'); ?></span>

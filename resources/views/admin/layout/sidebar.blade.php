@@ -116,8 +116,7 @@
                             href="{{ route('list-ourresult-category') }}">Our Result Gallery</a></li>
 
                     <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                            href="{{ route('list-ourresult') }}">Our
-                            Result</a>
+                            href="{{ route('list-ourresult') }}">Our Result</a>
 
                     </li>
 

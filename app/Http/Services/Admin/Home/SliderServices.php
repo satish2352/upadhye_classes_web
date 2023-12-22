@@ -2,6 +2,9 @@
 namespace App\Http\Services\Admin\Home;
 use App\Http\Repository\Admin\Home\SliderRepository;
 use Carbon\Carbon;
+use App\Models\ {
+    Slider
+    };
 // use App\Helpers\helpercustom; // Import the namespace of your helper file
 
 use Config;

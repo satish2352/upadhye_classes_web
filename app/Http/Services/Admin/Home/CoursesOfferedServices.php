@@ -43,6 +43,7 @@ class CoursesOfferedServices
             return $e;
         }
     }
+
     public function updateAll($request){
         try {
             $return_data = $this->repo->updateAll($request);
@@ -75,14 +76,17 @@ class CoursesOfferedServices
             // print_r($return_data);
             // die();
             if ($return_data) {
-                return ['status' => 'success', 'msg' => 'Courses Offered Updated Successfully.'];
+                return ['status' => 'success', 'msg' => 'Slide Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Courses Offered Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Slide  Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
         }      
     }
+
+
+   
     public function updateOne($id){
         return $this->repo->updateOne($id);
     }   
