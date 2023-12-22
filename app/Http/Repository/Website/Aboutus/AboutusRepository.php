@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Repository\Website\Aboutus;
+namespace App\Http\Repository\Website\AboutUs;
 
 use Illuminate\Database\QueryException;
 use DB;
@@ -10,7 +10,7 @@ use App\Models\ {
 
 };
 
-class AboutusRepository  {
+class AboutUsRepository  {
     public function getAllGallery()
     {
         try {

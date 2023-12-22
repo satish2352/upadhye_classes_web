@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Services\Website\Aboutus;
+namespace App\Http\Services\Website\AboutUs;
 
-use App\Http\Repository\Website\Aboutus\AboutusRepository;
+use App\Http\Repository\Website\AboutUs\AboutUsRepository;
 
 // use App\Marquee;
 use Carbon\Carbon;
