@@ -1,19 +1,28 @@
 @extends('admin.layout.master')
 
 @section('content')
+<<<<<<< HEAD:resources/views/admin/pages/menu/roles/list-role.blade.php
+ 
+=======
+>>>>>>> 03c1251d2028d34f7da13a52a0bd25b3c3cf1aa5:resources/views/admin/pages/home/slider/list-slide.blade.php
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
+<<<<<<< HEAD:resources/views/admin/pages/menu/roles/list-role.blade.php
+                    Role List
+                        <a href="{{ route('add-role') }}" class="btn btn-sm btn-primary ml-3">+ Add</a>
+=======
                     Slide List
                     <a href="{{ route('add-slide') }}" class="btn btn-sm btn-primary ml-3">+
                         Add</a>
+>>>>>>> 03c1251d2028d34f7da13a52a0bd25b3c3cf1aa5:resources/views/admin/pages/home/slider/list-slide.blade.php
 
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list-slide') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Slide List</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list-role') }}">Master</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Role List</li>
                     </ol>
                 </nav>
             </div>
@@ -51,7 +60,7 @@
                                                                     class="active-btn btn btn-sm btn-outline-primary m-1"
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title="{{ $item->is_active ? 'Active' : 'Inactive' }}">
-                                                                <span class="slider round"></span>
+                                                                <span class="slider round "></span>
                                                             </label>
 
                                                         </td>
@@ -62,6 +71,9 @@
                                                                     title="Edit Slide"><i
                                                                         class="fas fa-pencil-alt"></i></a>
 
+                                                            <a data-id="{{ $item->id }}"
+                                                                class="show-btn btn btn-sm btn-outline-primary m-1"
+                                                                title="Show"><i class="fas fa-eye"></i></a>
                                                                 <a data-id="{{ $item->id }}"
                                                                     class="show-btn btn btn-sm btn-outline-primary m-1"
                                                                     title="Show Slide "><i class="fas fa-eye"></i></a>
@@ -84,18 +96,16 @@
                 </div>
             </div>
         </div>
-        <form method="POST" action="{{ url('/delete-slide') }}" id="deleteform">
+        <form method="POST" action="{{ url('/delete-role') }}" id="deleteform">
             @csrf
             <input type="hidden" name="delete_id" id="delete_id" value="">
         </form>
-        <form method="POST" action="{{ url('/show-slide') }}" id="showform">
+        <form method="POST" action="{{ url('/show-role') }}" id="showform">
             @csrf
             <input type="hidden" name="show_id" id="show_id" value="">
         </form>
-        <form method="POST" action="{{ url('/update-active-slide') }}" id="activeform">
+        <form method="POST" action="{{ url('/update-one-role') }}" id="activeform">
             @csrf
             <input type="hidden" name="active_id" id="active_id" value="">
         </form>
-
-        <!-- content-wrapper ends -->
     @endsection
