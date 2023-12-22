@@ -19,14 +19,6 @@ class ApplicationFormServices
     {
         $this->repo = new ApplicationFormRepository();
     }
-    public function getAllLocationAddress()
-    {
-        try {
-            return $this->repo->getAllLocationAddress();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    } 
     public function addApplicatioform($request){
         try {
             $last_id = $this->repo->addApplicatioform($request);

@@ -7,7 +7,6 @@ use App\Http\Services\Website\ContactUs\ContactUsServices;
 use Session;
 use Validator;
 
-
 class ContactUsController extends Controller
 {
     public function __construct()
@@ -50,7 +49,7 @@ class ContactUsController extends Controller
             $validation = Validator::make($request->all(),$rules,$messages);
             if($validation->fails() )
             {
-                return redirect('feedback-suggestions')
+                return redirect('contactus')
                     ->withInput()
                     ->withErrors($validation);
             }

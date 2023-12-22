@@ -13,21 +13,6 @@ use App\Models\ {
 };
 
 class FessPaymentFormRepository  {
-    public function getAllLocationAddress() {
-    try {
-        $scolarshipform = LocationAddress::where('is_active', '=', true);
-        $data_output_scolarshipform = $scolarshipform->select('id', 'name')->get()->toArray();
-        return [
-            'data_output_scolarshipform' => $data_output_scolarshipform
-        ];
-    } catch (\Exception $e) {
-        return $e;
-    }
-  }
-
- 
-
-
   public function addFessPaymentForm($request)
   {
    

@@ -1,18 +1,15 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <?php
-    //  $data_permission = getPermissionForCRUDPresentOrNot('list-location-address', session('permissions'));
-    ?>
+   
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
                     Incident Type
-                    {{-- @if (in_array('per_add'))
+                  
                         <a href="{{ route('add-location-address') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
-                    @endif --}}
 
                 </h3>
                 <nav aria-label="breadcrumb">

@@ -19,14 +19,6 @@ class FessPaymentFormServices
     {
         $this->repo = new FessPaymentFormRepository();
     }
-    public function getAllLocationAddress()
-    {
-        try {
-            return $this->repo->getAllLocationAddress();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    } 
     public function addFessPaymentForm($request){
         try {
             $last_id = $this->repo->addFessPaymentForm($request);

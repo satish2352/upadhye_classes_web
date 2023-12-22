@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('course_duration')->default('null');
             $table->text('admission_procedure')->default('null');
             $table->text('eligibility')->default('null');
-            $table->text('preparation ')->default('null');
+            $table->text('preparation')->default('null');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

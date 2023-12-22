@@ -21,11 +21,9 @@ class FessPaymentFormController extends Controller
     {
         $this->service = new FessPaymentFormServices();
     }
-    public function getAllLocationAddress()
-    {
+    public function getAllFessPaymentForm(){
         try {
-            $data_output_scolarshipform = $this->service->getAllLocationAddress();
-            return view('website.pages.application.feespayment', compact('data_output_scolarshipform'));
+            return view('website.pages.application.feespayment');
         } catch (\Exception $e) {
             return $e;
         }

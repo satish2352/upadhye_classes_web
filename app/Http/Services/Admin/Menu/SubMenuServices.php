@@ -1,13 +1,10 @@
 <?php
-namespace App\Http\Services\ContactUs;
+namespace App\Http\Services\Admin\Menu;
 
-use App\Http\Repository\ContactUs\ContactUsRepository;
-
-use App\Contact;
-use Carbon\Carbon;
+use App\Http\Repository\Admin\Menu\SubMenuRepository;
 
 
-class ContactUsServives
+class SubMenuServices
 {
 
 	protected $repo;
@@ -17,7 +14,7 @@ class ContactUsServives
      */
     public function __construct()
     {
-        $this->repo = new ContactUsRepository();
+        $this->repo = new SubMenuRepository();
     }
     public function getAll()
     {
@@ -31,11 +28,24 @@ class ContactUsServives
     public function addAll($request)
     {
         try {
-            $add_contact = $this->repo->addAll($request);
-            if ($add_contact) {
-                return ['status' => 'success', 'msg' => 'Contact Added Successfully.'];
+            $add_constitutionhistory = $this->repo->addAll($request);
+            if ($add_constitutionhistory) {
+                return ['status' => 'success', 'msg' => 'Sub Menu Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Contact Crowdsourcing Not Added.'];
+                return ['status' => 'error', 'msg' => 'Sub Menu Not Added.'];
+            }  
+        } catch (Exception $e) {
+            return ['status' => 'error', 'msg' => $e->getMessage()];
+        }      
+    }
+
+    public function updateAll($request) {
+        try {
+            $update_constitutionhistory = $this->repo->updateAll($request);
+            if ($update_constitutionhistory) {
+                return ['status' => 'success', 'msg' => 'Sub Menu Updated Successfully.'];
+            } else {
+                return ['status' => 'error', 'msg' => 'Sub Menu Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -50,22 +60,9 @@ class ContactUsServives
             return $e;
         }
     }
-
-    public function updateAll($request)
+    
+    public function deleteById($id)
     {
-        try {
-            $update_contact = $this->repo->updateAll($request);
-            if ($update_contact) {
-                return ['status' => 'success', 'msg' => 'Contact Updated Successfully.'];
-            } else {
-                return ['status' => 'error', 'msg' => 'Contact Not Updated.'];
-            }  
-        } catch (Exception $e) {
-            return ['status' => 'error', 'msg' => $e->getMessage()];
-        }      
-    }
-
-    public function deleteById($id){
         try {
             $delete = $this->repo->deleteById($id);
             if ($delete) {
@@ -77,6 +74,7 @@ class ContactUsServives
             return ['status' => 'error', 'msg' => $e->getMessage()];
         } 
     }
+   
 
 
 

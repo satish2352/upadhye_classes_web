@@ -20,51 +20,13 @@ class ApplicationFormController extends Controller
     {
         $this->service = new ApplicationFormServices();
     }
-
-    public function getApplicationform()
-    {
+    public function getApplicationform(){
         try {
-            $data_output_location_address = $this->service->getAllLocationAddress();
-            return view('website.pages.application.applicatioform', compact('data_output_location_address'));
+            return view('website.pages.application.applicatioform');
         } catch (\Exception $e) {
             return $e;
         }
     }
-    static function getCommonFormData() {
-        try {
-            $retun_data = [];
-    
-            $data_output_all_board = EducationBoard::where('is_active', true)
-                ->select(
-                    'education_board.name',
-                    'education_board.id',
-                )
-                ->get()
-                ->toArray();
-    
-            $retun_data['data_output_all_board'] = $data_output_all_board;
-    
-            $data_output_all_class = EducationClass::where('is_active', true)
-                ->select(
-                    'education_class.name',
-                    'education_class.id',
-                )
-                ->get()
-                ->toArray();
-    
-            $retun_data['data_output_all_class'] = $data_output_all_class;
-            return $retun_data;
-        } catch (\Exception $e) {
-            // Log the error for debugging
-            \Log::error($e);
-    
-            // Return an error response
-            return ['error' => 'An error occurred while fetching data. Please try again later.'];
-        }
-    }
-    
-    
-    
     public function addApplicationform(Request $request) {
        $rules = [
             'edu_location_id' => 'required',
@@ -127,62 +89,4 @@ class ApplicationFormController extends Controller
             return redirect('applicatioform')->withInput()->with(['msg' => $e->getMessage(), 'status' => 'error']);
         }
     }
-
-
-
-
-
-
-
-
-
-//     public function getAllLocationAddress()
-// {
-//     try {
-//         $menu = $this->menu;
-//         $data_output = $this->service->getAllLocationAddress();
-//         $data_output_location_address = $data_output['data_output_location_address'];
-//         dd($data_output_location_address, "savita");
-//     } catch (\Exception $e) {
-//         return $e;
-//     }
-
-// Remove 'language' from the compact function
-//     return view('website.pages.application.application', compact('data_output_location_address'));
-// }
-
-    // =================
-    // public function addApplicatioform()
-    // {
-    //     try {
-    //         // return view('website.pages.aboutus.updadhyeclasses');
-    //         return view('website.pages.application.applicatioform');
-
-    //     } catch (\Exception $e) {
-    //         return $e;
-    //     }
-    // }
-    public function getScolarship()
-    {
-        try {
-            // return view('website.pages.aboutus.updadhyeclasses');
-            return view('website.pages.application.scolarship');
-
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }
-
-    public function getFeespayment()
-    {
-        try {
-            // return view('website.pages.aboutus.updadhyeclasses');
-            return view('website.pages.application.feespayment');
-
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }
-
-   
 }

@@ -19,7 +19,59 @@ class CoursesSeeder extends Seeder
             [
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
-                'course_name' => 'Cyclone Biparjoy moved after Gujarat. Vigilance warning to 4 states',
+                'course_name' => 'Crash course Batch',
+                'is_active' => true,
+            ]);
+			
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'REPEATERS BATCH',
+                'is_active' => true,
+            ]);
+			
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'REVISION BATCH',
+                'is_active' => true,
+            ]);
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'PROGRESSIVE BATCH',
+                'is_active' => true,
+            ]);
+			
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'INTENSIVE BATCH',
+                'is_active' => true,
+            ]);
+			
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'IIT - JEE BATCH',
+                'is_active' => true,
+            ]);
+			
+			Courses::create(
+            [
+                'created_at' => \Carbon\Carbon::now(),
+                'updated_at' => \Carbon\Carbon::now(),
+                'course_name' => 'PROGRESSIVE BATCH',
                 'is_active' => true,
             ]);
     }

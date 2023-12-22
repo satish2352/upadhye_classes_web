@@ -23,8 +23,6 @@ class ContactUsServices
     {
         try {
             $add_contact = $this->repo->addAll($request);
-            print_r($add_contact);
-            die();
             if ($add_contact) {
                 return ['status' => 'success', 'msg' => 'Contact Added Successfully.'];
             } else {

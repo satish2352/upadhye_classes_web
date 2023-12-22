@@ -19,14 +19,6 @@ class ScolarshipFormServices
     {
         $this->repo = new ScolarshipFormRepository();
     }
-    public function getAllLocationAddress()
-    {
-        try {
-            return $this->repo->getAllLocationAddress();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    } 
     public function addScolarshipForm($request){
         try {
             $last_id = $this->repo->addScolarshipForm($request);
