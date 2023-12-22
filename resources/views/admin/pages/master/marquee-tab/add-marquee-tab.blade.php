@@ -54,24 +54,30 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const title = $('#title').val();
-
-                    
+                    const title = $('#title').val();                    
                 }
-
                 // Call the checkFormValidity function on input change
                 $('input').on('input change', checkFormValidity);
-
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
                         title: {
                             required: "Please Enter the Title",
+                            spcenotallow: "Enter Some Text",
                         },
                     },
                 });

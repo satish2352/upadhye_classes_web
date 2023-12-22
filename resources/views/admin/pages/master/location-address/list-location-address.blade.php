@@ -1,24 +1,21 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <?php
-    //  $data_permission = getPermissionForCRUDPresentOrNot('list-location-address', session('permissions'));
-    ?>
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
-                    Incident Type
-                    {{-- @if (in_array('per_add'))
+                    Location Address
+                  
                         <a href="{{ route('add-location-address') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
-                    @endif --}}
+                
 
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('list-location-address') }}">Master</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Incident Type</li>
+                        <li class="breadcrumb-item active" aria-current="page"> Location Address</li>
                     </ol>
                 </nav>
             </div>
@@ -34,8 +31,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Title</th>
-                                                    <th>शीर्षक</th>
+                                                    <th>Name</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -44,8 +40,7 @@
                                                 @foreach ($incidenttype_data as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ strip_tags($item->english_title) }}</td>
-                                                        <td>{{ strip_tags($item->marathi_title) }}</td>
+                                                        <td>{{ strip_tags($item->name) }}</td>
                                                         <td>
                                                             <label class="switch">
                                                                 <input data-id="{{ $item->id }}" type="checkbox"
@@ -59,21 +54,21 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                {{-- @if (in_array('per_update'))
+                                                               
                                                                     <a
                                                                         href="{{ route('edit-location-address', base64_encode($item->id)) }}"
                                                                         class="btn btn-sm btn-outline-primary m-1"
                                                                         title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                                @endif --}}
+                                                             
 
-                                                                {{-- <a data-id="{{ $item->id }}"
+                                                               <a data-id="{{ $item->id }}"
                                                                     class="show-btn btn btn-sm btn-outline-primary m-1"
                                                                     title="Show"><i class="fas fa-eye"></i></a>
-                                                                @if (in_array('per_delete'))
+                                                               
                                                                     <a data-id="{{ $item->id }}"
                                                                         class="delete-btn btn btn-sm btn-outline-danger m-1"
                                                                         title="Delete"><i class="fas fa-archive"></i></a>
-                                                                @endif --}}
+                                                              
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -97,7 +92,7 @@
             @csrf
             <input type="hidden" name="show_id" id="show_id" value="">
         </form>
-        <form method="POST" action="{{ url('/update-one-incident_type') }}" id="activeform">
+        <form method="POST" action="{{ url('/update-one-location-address') }}" id="activeform">
             @csrf
             <input type="hidden" name="active_id" id="active_id" value="">
         </form>

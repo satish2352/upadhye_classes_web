@@ -4,13 +4,13 @@
     <div class="main-panel">
         <div class="content-wrapper mt-6">
             <div class="page-header">
-                <h3 class="page-title">
-                    Incident Type
+                <h3 class="page-Name">
+                    Location Address
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('list-location-address') }}">Master</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Incident Type</li>
+                        <li class="breadcrumb-item active" aria-current="page"> Location Address</li>
                     </ol>
                 </nav>
             </div>
@@ -24,23 +24,11 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="english_title">Title</label>&nbsp<span class="red-text">*</span>
-                                            <input type="text" class="form-control mb-2" name="english_title"
-                                                id="english_title" value="{{ old('english_title') }}"
-                                                placeholder="Enter the Title">
-                                            @if ($errors->has('english_title'))
-                                                <span class="red-text"><?php echo $errors->first('english_title', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="marathi_title">शीर्षक</label>&nbsp<span class="red-text">*</span>
-                                            <input type="text" class="form-control mb-2" name="marathi_title"
-                                                id="marathi_title" value="{{ old('marathi_title') }}"
-                                                placeholder="शीर्षक प्रविष्ट करा">
-                                            @if ($errors->has('marathi_title'))
-                                                <span class="red-text"><?php echo $errors->first('marathi_title', ':message'); ?></span>
+                                            <label for="name">Name</label>&nbsp<span class="red-text">*</span>
+                                            <input type="text" class="form-control mb-2" name="name" id="name"
+                                                value="{{ old('name') }}" placeholder="Enter the Name">
+                                            @if ($errors->has('name'))
+                                                <span class="red-text"><?php echo $errors->first('name', ':message'); ?></span>
                                             @endif
                                         </div>
                                     </div>
@@ -63,11 +51,10 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const english_title = $('#english_title').val();
-                    const marathi_title = $('#marathi_title').val();
+                    const name = $('#name').val();
 
                     // Enable the submit button if all fields are valid
-                    if (english_title && marathi_title) {
+                    if (name) {
                         $('#submitButton').prop('disabled', false);
                     } else {
                         $('#submitButton').prop('disabled', true);
@@ -76,23 +63,26 @@
 
                 // Call the checkFormValidity function on input change
                 $('input').on('input change', checkFormValidity);
-
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
-                        english_title: {
+                        name: {
                             required: true,
-                        },
-                        marathi_title: {
-                            required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
-                        english_title: {
-                            required: "Please Enter the Title",
-                        },
-                        marathi_title: {
-                            required: "कृपया शीर्षक प्रविष्ट करा",
+                        name: {
+                            required: "Please Enter the Name",
+                            spcenotallow: "Enter Some Text",
                         },
                     },
                 });

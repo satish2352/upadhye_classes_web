@@ -29,9 +29,9 @@ class LocationAddressServices{
         try {
             $add_Incidenttype = $this->repo->addAll($request);
             if ($add_Incidenttype) {
-                return ['status' => 'success', 'msg' => 'Incident Type Added Successfully.'];
+                return ['status' => 'success', 'msg' => 'Location Address Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Incident Type Not Added.'];
+                return ['status' => 'error', 'msg' => 'Location Address Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -48,9 +48,9 @@ class LocationAddressServices{
         try {
             $update_Incidenttype = $this->repo->updateAll($request);
             if ($update_Incidenttype) {
-                return ['status' => 'success', 'msg' => 'Incident Type Updated Successfully.'];
+                return ['status' => 'success', 'msg' => 'Location Address Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Incident Type Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Location Address Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];

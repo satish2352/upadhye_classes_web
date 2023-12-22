@@ -5,16 +5,16 @@
         <div class="content-wrapper mt-6">
             <div class="page-header">
                 <h3 class="page-title">
-                    Incident Type
+                    Location Address
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('list-location-address') }}">Master</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Update Incident Type
+                        <li class="breadcrumb-item active" aria-current="page"> Update Location Address
                         </li>
                     </ol>
                 </nav>
-            </div>
+            </div>           
             <div class="row">
                 <div class="col-12 grid-margin">
                     <div class="card">
@@ -23,25 +23,14 @@
                                 id="regForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
-                                            <label for="english_title">Title</label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control mb-2" name="english_title" id="english_title"
-                                                placeholder="Enter the Title"
-                                                value="@if (old('english_title')) {{ old('english_title') }}@else{{ $incidenttype_data->english_title }} @endif">
-                                            @if ($errors->has('english_title'))
-                                                <span class="red-text"><?php echo $errors->first('english_title', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="marathi_title">शीर्षक</label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control mb-2" name="marathi_title" id="marathi_title"
-                                                placeholder="शीर्षक प्रविष्ट करा"
-                                                value="@if (old('marathi_title')) {{ old('marathi_title') }}@else{{ $incidenttype_data->marathi_title }} @endif">
-                                            @if ($errors->has('marathi_title'))
-                                                <span class="red-text"><?php echo $errors->first('marathi_title', ':message'); ?></span>
+                                            <label for="name">Name</label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control mb-2" name="name" id="name"
+                                                placeholder="Enter the Name"
+                                                value="@if (old('name')) {{ old('name') }}@else{{ $incidenttype_data->name }} @endif">
+                                            @if ($errors->has('name'))
+                                                <span class="red-text"><?php echo $errors->first('name', ':message'); ?></span>
                                             @endif
                                         </div>
                                     </div>
@@ -64,31 +53,34 @@
         <script>
             $(document).ready(function() {
                 function checkFormValidity() {
-                    const english_title = $('#english_title').val();
-                    const marathi_title = $('#marathi_title').val();
+                    const name = $('#name').val();
                 }
                 // Call the checkFormValidity function on file input change
                 $('input').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 var form = $("#regForm");
                 var validator = form.validate({
                     rules: {
-                        english_title: {
+                        name: {
                             required: true,
-                        },
-                        marathi_title: {
-                            required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
-                        english_title: {
-                            required: "Please Enter the Title",
-                        },
-                        marathi_title: {
-                            required: "कृपया शीर्षक प्रविष्ट करा",
+                        name: {
+                            required: "Please Enter the Name",
+                            spcenotallow: "Enter Some Text",
                         },
                     },
                     submitHandler: function(form) {

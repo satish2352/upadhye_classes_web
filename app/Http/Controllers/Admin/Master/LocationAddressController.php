@@ -31,18 +31,12 @@ class LocationAddressController extends Controller
 
     public function store(Request $request) {
         $rules = [
-            'english_title' => 'required|unique:incident_type|regex:/^[a-zA-Z\s]+$/u|max:255',
-            'marathi_title' => 'required|unique:incident_type|max:255',
+            'name' => 'required|unique:location_address|regex:/^[a-zA-Z\s]+$/u|max:255',
          ];
         $messages = [   
-            'english_title'       =>  'Please enter title.',
-            'english_title.regex' => 'Please  enter text only.',
-            'english_title.unique' => 'Title already exist.',
-            'marathi_title.unique' => 'शीर्षक आधीच अस्तित्वात आहे.',
-            'english_title.max'   => 'Please  enter text length upto 255 character only.',
-            'marathi_title.required'       =>'कृपया शीर्षक प्रविष्ट करा.',
-            'marathi_title.unique'  =>  'तुमचा घटना शीर्षक आधीपासून अस्तित्वात आहे .',
-            'marathi_title.max'   => 'कृपया केवळ २५५ वर्णांपर्यंत मजकूराची लांबी प्रविष्ट करा.',            
+            'name'       =>  'Please enter title.',
+            'name.regex' => 'Please  enter text only.',
+            'name.unique' => 'Title already exist.',
         ];
 
         try {
@@ -88,18 +82,14 @@ class LocationAddressController extends Controller
 {
     $id = $request->input('id'); // Assuming the 'id' value is present in the request
     $rules = [
-        'english_title' => ['required', 'max:255','regex:/^[a-zA-Z\s]+$/u', Rule::unique('incident_type', 'english_title')->ignore($id, 'id')],
-        'marathi_title' => ['required', 'max:255', Rule::unique('incident_type', 'marathi_title')->ignore($id, 'id')],
+        'name' => ['required', 'max:255','regex:/^[a-zA-Z\s]+$/u', Rule::unique('location_address', 'name')->ignore($id, 'id')],
     ];
 
     $messages = [
-        'english_title.required' => 'Please enter an title.',
-        'english_title.regex' => 'Please  enter text only.',
-        'english_title.max' => 'Please enter an  title with a maximum of 255 characters.',
-        'english_title.unique' => 'The title already exists.',
-        'marathi_title.required' => 'कृपया  शीर्षक प्रविष्ट करा.',
-        'marathi_title.max' => 'कृपया २५५ अक्षरांपर्यंत  शीर्षक प्रविष्ट करा.',
-        'marathi_title.unique' => 'शीर्षक आधीच अस्तित्वात आहे.',
+        'name.required' => 'Please enter an title.',
+        'name.regex' => 'Please  enter text only.',
+        'name.max' => 'Please enter an  title with a maximum of 255 characters.',
+        'name.unique' => 'The title already exists.',
     ];
 
     try {

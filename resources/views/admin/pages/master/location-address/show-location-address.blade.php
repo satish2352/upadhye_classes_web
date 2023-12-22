@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-start align-items-center">
                             <h3 class="page-title">
-                                Incident Type
+                                Location Address
                             </h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
@@ -27,18 +27,10 @@
 
                                     <div class="row ">
                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label>Title :</label>
+                                            <label>Name :</label>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label>{{ strip_tags($incidenttype_data->english_title) }}</label>
-                                        </div>
-                                    </div>
-                                    <div class="row ">
-                                        <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label>शीर्षक :</label>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <label>{{ strip_tags($incidenttype_data->marathi_title) }}</label>
+                                            <label>{{ strip_tags($incidenttype_data->name) }}</label>
                                         </div>
                                     </div>
                                 </div>

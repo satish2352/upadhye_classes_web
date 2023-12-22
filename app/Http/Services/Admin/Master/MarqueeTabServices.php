@@ -29,9 +29,9 @@ class MarqueeTabServices{
         try {
             $add_Incidenttype = $this->repo->addAll($request);
             if ($add_Incidenttype) {
-                return ['status' => 'success', 'msg' => 'Incident Type Added Successfully.'];
+                return ['status' => 'success', 'msg' => 'Marquee Tab Added Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Incident Type Not Added.'];
+                return ['status' => 'error', 'msg' => 'Marquee Tab Not Added.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];
@@ -48,9 +48,9 @@ class MarqueeTabServices{
         try {
             $update_Incidenttype = $this->repo->updateAll($request);
             if ($update_Incidenttype) {
-                return ['status' => 'success', 'msg' => 'Incident Type Updated Successfully.'];
+                return ['status' => 'success', 'msg' => 'Marquee Tab Updated Successfully.'];
             } else {
-                return ['status' => 'error', 'msg' => 'Incident Type Not Updated.'];
+                return ['status' => 'error', 'msg' => 'Marquee Tab Not Updated.'];
             }  
         } catch (Exception $e) {
             return ['status' => 'error', 'msg' => $e->getMessage()];

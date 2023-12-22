@@ -44,7 +44,7 @@ class MarqueeTabRepository{
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to get by Id Incident Type.',
+                'msg' => 'Failed to get by Id Marquee Tab.',
                 'status' => 'error'
             ];
         }
@@ -55,7 +55,7 @@ class MarqueeTabRepository{
             
             if (!$incidenttype_data) {
                 return [
-                    'msg' => 'Incident Type data not found.',
+                    'msg' => 'Marquee Tab data not found.',
                     'status' => 'error'
                 ];
             }
@@ -64,13 +64,13 @@ class MarqueeTabRepository{
             $incidenttype_data->save();        
         
             return [
-                'msg' => 'Incident Type data updated successfully.',
+                'msg' => 'Marquee Tab data updated successfully.',
                 'status' => 'success'
             ];
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to update Incident Type data.',
+                'msg' => 'Failed to update Marquee Tab data.',
                 'status' => 'error'
             ];
         }

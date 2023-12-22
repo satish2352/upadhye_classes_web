@@ -23,7 +23,7 @@
                                 id="regForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <label for="title">Title</label>&nbsp<span class="red-text">*</span>
                                             <input class="form-control mb-2" name="title" id="title"
@@ -60,17 +60,27 @@
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 var form = $("#regForm");
                 var validator = form.validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
                         title: {
                             required: "Please Enter the Title",
+                            spcenotallow: "Enter Some Text",
                         },
                     },
                     submitHandler: function(form) {

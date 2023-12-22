@@ -33,31 +33,25 @@
         </li>
         <li class="{{request()->is('list-marquee-tab*') 
             ? 'nav-item active' : 'nav-item' }}">
-            <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false"
-                aria-controls="master">
+            <a class="nav-link" data-toggle="collapse" href="#master" aria-expanded="false" aria-controls="master">
                 <i class="fa fa-th-large menu-icon"></i>
                 <span class="menu-title">Master</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="master">
                 <ul class="nav flex-column sub-menu">
-
                     <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                            href="{{ route('website-contact') }}">Role</a></li>
-
-                    <li href="{{ route('list-marquee-tab') }}" class="nav-item d-none d-lg-block"><a
-                            class="nav-link" href="">Marquee Tab</a>
-
-                    <li href="{{ route('list-location-address') }}" class="nav-item d-none d-lg-block"><a
-                            class="nav-link" href="">Location Address</a>
+                            href="{{ route('list-marquee-tab') }}">Marquee</a></li>
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link"
+                            href="{{ route('list-location-address') }}">Location Address</a>
+                   
                     </li>
-
                 </ul>
             </div>
         </li>
         <li class="{{request()->is('list-slide*') 
             ? 'nav-item active' : 'nav-item' }}">
-            <a class="nav-link" data-toggle="collapse" href="#home" aria-expanded="false" aria-controls="master">
+            <a class="nav-link" data-toggle="collapse" href="#home" aria-expanded="false" aria-controls="home">
                 <i class="fas fa-bars menu-icon"></i>
                 <span class="menu-title">Home</span>
                 <i class="menu-arrow"></i>
@@ -105,12 +99,12 @@
         </li>
         <li class="{{request()->is('list-ourresult-category*') 
             ? 'nav-item active' : 'nav-item' }}">
-            <a class="nav-link" data-toggle="collapse" href="#adminssion" aria-expanded="false" aria-controls="master">
+            <a class="nav-link" data-toggle="collapse" href="#ourresult" aria-expanded="false" aria-controls="master">
                 <i class="fas fa-bars menu-icon"></i>
                 <span class="menu-title">Our Result</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="adminssion">
+            <div class="collapse" id="ourresult">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item d-none d-lg-block"><a class="nav-link"
                             href="{{ route('list-ourresult-category') }}">Our Result Gallery</a></li>

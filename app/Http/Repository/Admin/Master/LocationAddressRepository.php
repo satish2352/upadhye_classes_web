@@ -21,7 +21,7 @@ class LocationAddressRepository{
 	public function addAll($request){
         try {
             $incidenttype_data = new LocationAddress();
-            $incidenttype_data->english_title = $request['english_title'];
+            $incidenttype_data->name = $request['name'];
           
             $incidenttype_data->save();       
                 
@@ -45,7 +45,7 @@ class LocationAddressRepository{
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to get by Id Incident Type.',
+                'msg' => 'Failed to get by Id Location Address Type.',
                 'status' => 'error'
             ];
         }
@@ -56,24 +56,23 @@ class LocationAddressRepository{
             
             if (!$incidenttype_data) {
                 return [
-                    'msg' => 'Incident Type data not found.',
+                    'msg' => 'Location Address data not found.',
                     'status' => 'error'
                 ];
             }
         // Store the previous image names
-            $incidenttype_data->english_title = $request['english_title'];
-            $incidenttype_data->marathi_title = $request['marathi_title'];
+            $incidenttype_data->name = $request['name'];
             // $incidenttype_data->url = $request['url'];
             $incidenttype_data->save();        
         
             return [
-                'msg' => 'Incident Type data updated successfully.',
+                'msg' => 'Location Address Type data updated successfully.',
                 'status' => 'success'
             ];
         } catch (\Exception $e) {
             return $e;
             return [
-                'msg' => 'Failed to update Incident Type data.',
+                'msg' => 'Failed to update Location Address Type data.',
                 'status' => 'error'
             ];
         }

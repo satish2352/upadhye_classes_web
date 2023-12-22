@@ -123,6 +123,7 @@ class GalleryRepository  {
                     $deleteDataById->delete();
                     
                     return $deleteDataById;
+                    
                 } else {
                     return null;
                 }

@@ -42,7 +42,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/update-location-address', ['as' => 'update-location-address', 'uses' => 'App\Http\Controllers\Admin\Master\LocationAddressController@update']);
     Route::post('/show-location-address', ['as' => 'show-location-address', 'uses' => 'App\Http\Controllers\Admin\Master\LocationAddressController@show']);
     Route::post('/delete-location-address', ['as' => 'delete-location-address', 'uses' => 'App\Http\Controllers\Admin\Master\LocationAddressController@destroy']);
-    Route::post('/update-one-incident_type', ['as' => 'update-one-incident_type', 'uses' => 'App\Http\Controllers\Admin\Master\LocationAddressController@updateOne']);
+    Route::post('/update-one-location-address', ['as' => 'update-one-location-address', 'uses' => 'App\Http\Controllers\Admin\Master\LocationAddressController@updateOne']);
     
 // ==============Slider============
     Route::get('/list-slide', ['as' => 'list-slide', 'uses' => 'App\Http\Controllers\Admin\Home\SliderController@index']);

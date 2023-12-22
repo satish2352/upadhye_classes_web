@@ -1,14 +1,13 @@
 @extends('admin.layout.master')
 
 @section('content')
-    <?php $data_permission = getPermissionForCRUDPresentOrNot('list-main-menu', session('permissions'));
-    ?>
+  
     <div class="main-panel">
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
                     Our Result Category
-                    @if (in_array('per_add', $data_permission))
+                    @if (in_array('per_add'))
                         <a href="{{ route('add-ourresult-category') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
                     @endif
@@ -56,21 +55,21 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                @if (in_array('per_update', $data_permission))
+                                                              
                                                                     <a href="{{ route('edit-ourresult-category', base64_encode($item->id)) }}"
                                                                         class="btn btn-sm btn-outline-primary m-1"><i
                                                                             class="fas fa-pencil-alt"></i></a>
-                                                                @endif
+                                                            
 
                                                                 <a data-id="{{ $item->id }}"
                                                                     class="show-btn btn btn-sm btn-outline-primary m-1"><i
                                                                         class="fas fa-eye"></i></a>
-                                                                @if (in_array('per_delete', $data_permission))
+                                                              
                                                                     <a data-id="{{ $item->id }}"
                                                                         class="delete-btn btn btn-sm btn-outline-danger m-1"
                                                                         title="Delete Disaster News"><i
                                                                             class="fas fa-archive"></i></a>
-                                                                @endif
+                                                               
 
                                                             </div>
                                                         </td>
