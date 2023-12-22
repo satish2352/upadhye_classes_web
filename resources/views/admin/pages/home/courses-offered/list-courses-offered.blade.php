@@ -30,6 +30,7 @@
                                                 <tr>
                                                     <th>Sr. No.</th>
                                                     <th>Title </th>
+                                                    <th>Description </th>
                                                     <th>Image </th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -40,6 +41,7 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ strip_tags($item->title) }}</td>
+                                                        <td>{{ strip_tags($item->description) }}</td>
                                                         <td> <img class="img-size"
                                                                 src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $item->image }}"
                                                                 alt=" {{ strip_tags($item['title']) }} Image" />

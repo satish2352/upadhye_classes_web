@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers\Website\Gallery;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Website\Gallery\GalleryServices;
+// use App\Http\Services\LoginRegister\LoginService;
+use Session;
+
+// use App\Models\ {
+// };
 
 class GalleryController extends Controller
 {
-    public function getGallery()
+    public function __construct()
+    {
+        // self::$loginServe = new LoginService();
+        $this->service = new GalleryServices();
+    }
+    
+    public function getAllGallery()
     {
         try {
-            // return view('website.pages.aboutus.updadhyeclasses');
-            return view('website.pages.gallery.gallery');
 
+            $menu = $this->menu;
+            $data_output = $this->service->getAllGallery();
         } catch (\Exception $e) {
             return $e;
         }
-    }
+        return view('website.pages.gallery.gallery',compact('data_output'));
+    }  
 }

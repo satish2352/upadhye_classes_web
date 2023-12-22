@@ -6816,8 +6816,21 @@ body.megamenu-popup-active .mobile-nav__content {
   font-weight: 500;
   max-width: 230px;
   margin: 0 auto 32px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-wrap: break-word;
 }
-
+/* .service-two__text_ellipse{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-wrap: break-word;
+} */
 .service-two__rm {
   position: relative;
   display: flex;

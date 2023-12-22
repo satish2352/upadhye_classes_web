@@ -7,7 +7,7 @@ use App\Http\Repository\Website\Aboutus\AboutusRepository;
 use Carbon\Carbon;
 
 
-class AboutusServices
+class AboutUsServices
 {
 
 	protected $repo;
@@ -43,5 +43,14 @@ class AboutusServices
         } catch (\Exception $e) {
             return $e;
         }
-    }    
+    }   
+    
+    public function getAllGallery()
+    {
+        try {
+            return $this->repo->getAllGallery();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }   
 }

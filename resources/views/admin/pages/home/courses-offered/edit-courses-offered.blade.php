@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="image">Image</label>
                                             <input type="file" name="image" class="form-control mb-2"
-                                                id="english_image" accept="image/*" placeholder="image">
+                                                id="image" accept="image/*" placeholder="image">
                                             @if ($errors->has('image'))
                                                 <span class="red-text"><?php echo $errors->first('image', ':message'); ?></span>
                                             @endif
@@ -53,7 +53,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group" id="summernote_id">
-                                            <label for="english_description">Page Content</label>&nbsp<span
+                                            <label for="english_description">Description</label>&nbsp<span
                                                 class="red-text">*</span>
                                             <span class="summernote1">
                                                 <textarea class="form-control" name="description" id="description" placeholder="Enter the Description">
@@ -70,7 +70,7 @@
                                             Save &amp; Update
                                         </button>
                                         {{-- <button type="reset" class="btn btn-sm btn-danger">Cancel</button> --}}
-                                        <span><a href="{{ route('list-slide') }}"
+                                        <span><a href="{{ route('list-courses-offered') }}"
                                                 class="btn btn-sm btn-primary ">Back</a></span>
                                     </div>
                                 </div>
@@ -93,18 +93,18 @@
                 function checkFormValidity() {
                     const title = $('#title').val();
                     const english_description = $('#english_description').val();
-                    const english_image = $('#english_image').val();
+                    const image = $('#image').val();
 
 
                     // Update the old PDF values if there are any selected files
-                    if (english_image !== currentEnglishImage) {
-                        $("#currentEnglishImage").val(english_image);
+                    if (image !== currentEnglishImage) {
+                        $("#currentEnglishImage").val(image);
                     }
 
                 }
 
                 // Call the checkFormValidity function on file input change
-                $('input, #english_image').on('change', function() {
+                $('input, #image').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
@@ -170,13 +170,13 @@
                 });
 
                 // You can remove the following two blocks if you don't need to display selected images on the page
-                $("#english_image").change(function() {
+                $("#image").change(function() {
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         // Display the selected image for English
                         // You can remove this if you don't need to display the image on the page
                         $("#currentEnglishImageDisplay").attr('src', e.target.result);
-                        validator.element("#english_image"); // Revalidate the file input
+                        validator.element("#image"); // Revalidate the file input
                     };
                     reader.readAsDataURL(this.files[0]);
                 });
@@ -196,8 +196,8 @@
                     const image = $('#image').val();
 
                      // Update the old PDF values if there are any selected files
-                     if (english_image !== currentEnglishImage) {
-                        $("#currentEnglishImage").val(english_image);
+                     if (image !== currentEnglishImage) {
+                        $("#currentEnglishImage").val(image);
                     }
                 }
                 // Custom validation method to check file extension

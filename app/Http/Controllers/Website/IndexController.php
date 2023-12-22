@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Services\Website\IndexServices;
 use Session;
 use Validator;
 use App\Models\ {
@@ -16,15 +17,29 @@ use App\Models\ {
 
 class IndexController extends Controller
 {
-    public function index()
+    public function __construct()
+    {
+        $this->service = new IndexServices();  
+    }
+    public function index(Request $request)
     {
         try {
-            return view('website.pages.index');
+            $data_output_slider = $this->service->getAllSlider();
+            $data_output_courses_offered = $this->service->getAllCoursesOffered();
+            $data_output_upcoming_courses = $this->service->getAllUpcomingCourses();
+            $data_output_testimonial = $this->service->getAllTestimonial();
+            
+         
+            return view('website.pages.index', compact('data_output_slider','data_output_courses_offered','data_output_upcoming_courses','data_output_testimonial'));
         } catch (\Exception $e) {
             return $e;
         }
     }
 
+    public function getAllAjaxMultimedia(Request $request) {
+        $return_data = $this->service->getAllGallery($request);
+        return $return_data['gallery_data'];
+    }
     static function getCommonFormData() {
         try {
             $retun_data = [];
@@ -57,7 +72,6 @@ class IndexController extends Controller
                 ->toArray();
     
             $retun_data['data_output_all_class'] = $data_output_all_class;
-
             
             $data_output_marquee_tab = MarqueeTab::where('is_active', true)
                 ->select(
@@ -78,5 +92,6 @@ class IndexController extends Controller
             return ['error' => 'An error occurred while fetching data. Please try again later.'];
         }
     }
+    
     
 }

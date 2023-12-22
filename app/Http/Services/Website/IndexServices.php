@@ -28,22 +28,6 @@ class IndexServices
             return $e;
         }
     }  
-    public function getAllSubHeader()
-    {
-        try {
-            return $this->repo->getAllSubHeader();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }  
-    public function getAllMarquee()
-    {
-        try {
-            return $this->repo->getAllMarquee();
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }  
     public function getAllSlider()
     {
         try {
@@ -52,14 +36,32 @@ class IndexServices
             return $e;
         }
     }  
-    public function getAllDisasterManagementWebPortal()
+    public function getAllCoursesOffered()
     {
         try {
-            return $this->repo->getAllDisasterManagementWebPortal();
+            return $this->repo->getAllCoursesOffered();
         } catch (\Exception $e) {
             return $e;
         }
     } 
+
+    public function getAllUpcomingCourses()
+    {
+        try {
+            return $this->repo->getAllUpcomingCourses();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    public function getAllTestimonial()
+    {
+        try {
+            return $this->repo->getAllTestimonial();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    
     public function getAllDisasterManagementNews()
     {
         try {

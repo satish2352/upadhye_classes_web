@@ -27,7 +27,7 @@ class SliderController extends Controller
     public function store(Request $request){
         $rules = [
             'rank_no' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.SLIDER_IMAGE_MAX_SIZE").'|dimensions:min_width=1500,min_height=500,max_width=2000,max_height=1000|min:'.Config::get("AllFileValidation.SLIDER_IMAGE_MIN_SIZE").'',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.SLIDER_IMAGE_MAX_SIZE").'|dimensions:min_width=400,min_height=300,max_width=1500,max_height=1200|min:'.Config::get("AllFileValidation.SLIDER_IMAGE_MIN_SIZE").'',
            
         ];
         $messages = [    
@@ -85,7 +85,7 @@ class SliderController extends Controller
         ];
 
         if($request->has('image')) {
-            $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.SLIDER_IMAGE_MAX_SIZE").'|dimensions:min_width=1500,min_height=500,max_width=2000,max_height=1000|min:'.Config::get("AllFileValidation.SLIDER_IMAGE_MIN_SIZE");
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.SLIDER_IMAGE_MAX_SIZE").'|dimensions:min_width=400,min_height=300,max_width=1500,max_height=1200|min:'.Config::get("AllFileValidation.SLIDER_IMAGE_MIN_SIZE");
         }
        
         $messages = [   

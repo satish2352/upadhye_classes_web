@@ -53,57 +53,6 @@ class ResourceCenterRepository  {
         }
     }
     
-    public function getAllGalleryAvailableCategories()
-    {
-        try {
-            $data_output = GalleryCategory::where('is_active','=',true);
-            if (Session::get('language') == 'mar') {
-                $data_output =  $data_output->select('id','marathi_name');
-            } else {
-                $data_output = $data_output->select('id','english_name');
-            }
-            $data_output =  $data_output->get()->toArray();
-            return  $data_output;
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }
-
-    public function getAllGallery($request) {
-        try {
-            $return_data =[];
-            $gallery_data_final = [];
-            $query = Gallery::where('is_active', true);
-            if($request->category_id) {
-                $query->where('category_id','=', $request->category_id);
-            }
-            if (Session::get('language') == 'mar') {
-                $query->select('category_id', 'marathi_image');
-            } else {
-                $query->select('category_id', 'english_image');
-            }
-
-            $gallery_data = $query->get()->toArray();
-            foreach ($gallery_data as $key => $value) {
-                $data_gallary = [];
-                if (Session::get('language') == 'mar') {
-                    $data_gallary['marathi_image'] = Config::get('DocumentConstant.Gallery_VIEW').$value['marathi_image'];
-                    $data_gallary['category_id'] = $value['category_id'];
-                } else {
-                    $data_gallary['english_image'] = Config::get('DocumentConstant.Gallery_VIEW').$value['english_image'];
-                    $data_gallary['category_id'] = $value['category_id'];
-                }
-                array_push($gallery_data_final,$data_gallary);
-            }
-            $categories = $this->getAllGalleryAvailableCategories();
-            $return_data['gallery_data'] = $gallery_data_final;
-            $return_data['categories'] = $categories;
-            return $return_data;
-        } catch (\Exception $e) {
-            return $e;
-        }
-    }
-
 // public function getAllGallery()
 // {
 //     try {
