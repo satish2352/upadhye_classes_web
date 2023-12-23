@@ -10,10 +10,10 @@ use App\Models\ {
 };
 
 class OurResultCategoryRepository  {
-	public function getAll()
-    {
+    public function getAll(){
         try {
-            return OurResultCategory::all();
+            $data_output = OurResultCategory::orderBy('updated_at', 'desc')->get();
+            return $data_output;
         } catch (\Exception $e) {
             return $e;
         }

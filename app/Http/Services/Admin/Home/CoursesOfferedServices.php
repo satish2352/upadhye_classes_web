@@ -63,18 +63,13 @@ class CoursesOfferedServices
                 } else {
                     // Handle the case where 'image' key is not present in the request.
                     // For example, you might want to skip the file handling or return an error message.
-                }
-
-                
+                }                
                 // $englishImageName = $return_data['last_insert_id'] . '_' . rand(100000, 999999) . '_image.' . $request->image->extension();
                 uploadImage($request, 'image', $path, $englishImageName);
-                $slide_data = Slider::find($return_data['last_insert_id']);
+                $slide_data = CoursesOffered::find($return_data['last_insert_id']);
                 $slide_data->image = $englishImageName;
                 $slide_data->save();
-            }
-                
-            dd($return_data);
-            die();
+            }          
             if ($return_data) {
                 return ['status' => 'success', 'msg' => 'Slide Updated Successfully.'];
             } else {

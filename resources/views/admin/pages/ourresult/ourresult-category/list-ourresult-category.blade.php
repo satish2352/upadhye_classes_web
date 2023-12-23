@@ -7,10 +7,8 @@
             <div class="page-header">
                 <h3 class="page-title">
                     Our Result Category
-                    @if (in_array('per_add'))
                         <a href="{{ route('add-ourresult-category') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
-                    @endif
 
                 </h3>
                 <nav aria-label="breadcrumb">

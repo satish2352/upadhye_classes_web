@@ -116,7 +116,7 @@ class GalleryRepository  {
     public function deleteById($id){
             try {
                 $deleteDataById = Gallery::find($id);
-                if ($deleteData) {
+                if ($deleteDataById) {
                     if (file_exists_view(Config::get('DocumentConstant.GALLERY_DELETE') . $deleteDataById->image)){
                         removeImage(Config::get('DocumentConstant.GALLERY_DELETE') . $deleteDataById->image);
                     }

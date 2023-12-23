@@ -23,7 +23,7 @@
                 @if (empty($data_output))
                 <div class="container">
                     <div class="row">
-                        <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                        <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found For Gallery</h3>
                     </div>
                 </div>
             @else

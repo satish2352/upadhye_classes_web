@@ -45,7 +45,7 @@
                                                         <td>{{ strip_tags($item->position) }}</td>
                                                         <td>{{ strip_tags($item->description) }}</td>
                                                         <td> <img class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $item->image }}"
+                                                                src="{{ Config::get('DocumentConstant.TESTIMONIAL_VIEW') }}{{ $item->image }}"
                                                                 alt=" {{ strip_tags($item['title']) }} Image" />
                                                         </td>
                                                         <td>

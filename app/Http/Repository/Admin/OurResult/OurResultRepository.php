@@ -12,17 +12,21 @@ use App\Models\ {
 use Config;
 
 class OurResultRepository  {
-	public function getAll(){
-        try {
-            $gallery = OurResult::join('ourresult_category', 'ourresult_category.id','=', 'ourresult.category_id')
-            ->select('ourresult.is_active as is_active', 'ourresult_category.title as title','ourresult.id as id','ourresult.category_id as category_id', 'ourresult.image as image')
+	public function getAll()
+{
+    try {
+        $gallery = OurResult::join('ourresult_category', 'ourresult_category.id', '=', 'ourresult.category_id')
+            ->select('ourresult.is_active as is_active', 'ourresult_category.title as title', 'ourresult.id as id', 'ourresult.category_id as category_id', 'ourresult.image as image')
+            ->orderBy('ourresult.id', 'desc') // Order by 'id' column in descending order
             ->get();
+
         return $gallery;
-            
-        } catch (\Exception $e) {
-            return $e;
-        }
+
+    } catch (\Exception $e) {
+        return $e;
     }
+}
+
 	public function addAll($request){
     try {
         $data =array();
@@ -69,7 +73,7 @@ public function getById($id)
 public function updateAll($request)
 {
     try {
-        $return_data = array();
+        $update_gallery = array();
         $update_gallery = OurResult::find($request->id);
         
         if (!$update_gallery) {
@@ -79,15 +83,14 @@ public function updateAll($request)
             ];
         }
        // Store the previous image names
+    //    $update_gallery->category_id = $request['category_id'];
        $previousEnglishImage = $update_gallery->image;
-       $previousMarathiImage = $update_gallery->marathi_image;
 
        $update_gallery->save();        
        $last_insert_id = $update_gallery->id;
 
        $return_data['last_insert_id'] = $last_insert_id;
        $return_data['image'] = $previousEnglishImage;
-       $return_data['marathi_image'] = $previousMarathiImage;
        return  $return_data;
        
     } catch (\Exception $e) {

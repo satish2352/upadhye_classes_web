@@ -364,4 +364,19 @@ public function getAllMarqueeTabAvailableCategories()
             return $e;
         }
     }   
+
+    // ====================
+
+    public function showParticularUpcominCourses()
+    {
+        try {
+            $data_output = UpcomingCourses::where('is_active','=',true);
+            $data_output =  $data_output->select('title','description','start_date','duration','test_mode', 'test_medium','course_fess','id');
+            $data_output =  $data_output->get()
+                            ->toArray();
+            return  $data_output;
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
 }

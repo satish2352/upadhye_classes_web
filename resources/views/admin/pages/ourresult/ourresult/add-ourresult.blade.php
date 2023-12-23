@@ -22,7 +22,6 @@
                                 enctype="multipart/form-data" id="regForm">
                                 @csrf
                                 <div class="row">
-
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="category_id">Our Result Category</label>&nbsp<span
@@ -37,7 +36,6 @@
                                             <div class="red-text"><?php echo $errors->first('category_id', ':message'); ?></div>
                                         @endif
                                         </div>
-                                      
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
@@ -101,17 +99,17 @@
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [180, 2048], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [10, 1024], // Min 10KB and Max 2MB (2 * 1024 KB)
                         },
                     },
                     messages: {
                         category_id: {
-                            required: "Please Select the Category.",
+                            required: "Please Select the Our Result Category.",
                         },
                         image: {
                             required: "Please upload an Image (JPG, JPEG, PNG).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 180 KB and 2 MB.",
+                            fileSize: "File size must be between 10 KB and 1 MB.",
                         },
                     },
                 });

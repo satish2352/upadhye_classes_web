@@ -26,7 +26,7 @@
                     <div class="item">
                         <div class="container">
                             <div class="row">
-                                <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                                <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found For Slider</h3>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                 @if (empty($data_output_courses_offered))
                     <div class="container">
                         <div class="row">
-                            <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                            <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found Courses Offered</h3>
                         </div>
                     </div>
                 @else
@@ -410,7 +410,7 @@
                 @if (empty($data_output_upcoming_courses))
                     <div class="container">
                         <div class="row">
-                            <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                            <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found For Upcoming Courses</h3>
                         </div>
                     </div>
                 @else
@@ -724,7 +724,7 @@
                 @if (empty($data_output_testimonial))
                 <div class="container">
                     <div class="row">
-                        <h3 class="d-flex justify-content-center" style="color: #fff">No data found</h3>
+                        <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found For Testimonial</h3>
                     </div>
                 </div>
             @else

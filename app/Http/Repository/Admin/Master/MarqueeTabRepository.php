@@ -10,13 +10,15 @@ use App\Models\ {
 };
 
 class MarqueeTabRepository{
-	public function getAll(){
+    public function getAll(){
         try {
-            return MarqueeTab::all();
+            $data_output = MarqueeTab::orderBy('updated_at', 'desc')->get();
+            return $data_output;
         } catch (\Exception $e) {
             return $e;
         }
     }
+
 
 	public function addAll($request){
         try {

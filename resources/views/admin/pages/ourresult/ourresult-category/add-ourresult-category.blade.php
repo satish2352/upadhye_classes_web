@@ -22,7 +22,7 @@
                                 enctype="multipart/form-data" id="regForm">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <label for="title"> Name</label>&nbsp<span class="red-text">*</span>
                                             <input class="form-control mb-2 title" name="title" id="title"
@@ -50,29 +50,30 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const title = $('#title').val();
-
-                    // Enable the submit button if all fields are valid
-                    // if (title && marathi_name) {
-                    //     $('#submitButton').prop('disabled', false);
-                    // } else {
-                    //     $('#submitButton').prop('disabled', true);
-                    // }
+                    const title = $('#title').val();                    
                 }
-
                 // Call the checkFormValidity function on input change
                 $('input').on('input change', checkFormValidity);
-
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
                         title: {
                             required: true,
+                            spcenotallow: true,
                         },
                     },
                     messages: {
                         title: {
                             required: "Please Enter the Name",
+                            spcenotallow: "Enter Some Text",
                         },
                     },
                 });

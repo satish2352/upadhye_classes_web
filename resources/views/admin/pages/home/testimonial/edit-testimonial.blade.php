@@ -75,7 +75,7 @@
                                             @endif
                                         </div>
                                         <img id="english"
-                                            src="{{ Config::get('DocumentConstant.SLIDER_VIEW') }}{{ $editData->image }}"
+                                            src="{{ Config::get('DocumentConstant.TESTIMONIAL_VIEW') }}{{ $editData->image }}"
                                             class="img-fluid img-thumbnail" width="150">
                                         <img id="english_imgPreview" src="#" alt="pic"
                                             class="img-fluid img-thumbnail" width="150" style="display:none">
@@ -103,21 +103,16 @@
                 </div>
             </div>
         </div>
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
                     const title = $('#title').val();
+                    const position = $('#position').val();
                     const description = $('#description textarea').val();
-                    const image = $('#image').val();
-
-                    // Enable the submit button if all fields are valid
-                    // if (title && description && image) {
-                    //     $('#submitButton').prop('disabled', false);
-                    // } else {
-                    //     $('#submitButton').prop('disabled', true);
-                    // }
+                    const image = $('#image').val();                    
                 }
+                
                 // Custom validation method to check file extension
                 $.validator.addMethod("fileExtension", function(value, element, param) {
                     // Get the file extension
@@ -137,29 +132,39 @@
 
                 // Call the checkFormValidity function on input change
                 $('input, textarea, #image').on('input change', checkFormValidity);
+                $.validator.addMethod("spcenotallow", function(value, element) {
+                    if ("select" === element.nodeName.toLowerCase()) {
+                        var e = $(element).val();
+                        return e && e.length > 0;
+                    }
+                    return this.checkable(element) ? this.getLength(value, element) > 0 : value.trim().length >
+                        0;
+                }, "Enter Some Text");
 
                 // Initialize the form validation
                 $("#regForm").validate({
                     rules: {
                         title: {
                             required: true,
-                        },
-                        position: {
-                            required: true,
+                            spcenotallow: true,
                         },
                         description: {
+                            required: true,
+                        },
+                        position: {
                             required: true,
                         },
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [10, 500], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [5, 200], // Min 10KB and Max 2MB (2 * 1024 KB)
                             imageDimensions: [50, 50, 800, 800], // Min width x height and Max width x height
                         },
                     },
                     messages: {
                         title: {
                             required: "Please enter the Title.",
+                            spcenotallow: "Enter Some Title",
                         },
                         position: {
                             required: "Please Enter the Position",
@@ -170,11 +175,11 @@
                         image: {
                             required: "Please upload an Image (jpg, jpeg, png).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 10 KB and 500 KB.",
-                            imageDimensions: "Image dimensions must be between 50x50 and 800x800 pixels.",
+                            fileSize: "File size must be between 10 KB and 150 KB.",
+                            imageDimensions: "Image dimensions must be between 100x100 and 800x800 pixels.",
                         },
                     },
                 });
             });
-        </script>   
+        </script>  --}}
     @endsection

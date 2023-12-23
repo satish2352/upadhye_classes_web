@@ -61,29 +61,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- Make sure you have jQuery and jquery.validate.js included before this script -->
         <script>
             $(document).ready(function() {
                 var currentEnglishImage = $("#currentEnglishImage").val();
-             
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
                     const image = $('#image').val();
-                  
                     // Update the old PDF values if there are any selected files
                     if (image !== currentEnglishImage) {
                         $("#currentEnglishImage").val(image);
                     }
-                   
                 }
-        
+                $('input').on('input change', checkFormValidity);
                 // Call the checkFormValidity function on file input change
                 $('input, #image').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
-        
                 $.validator.addMethod("validImage", function(value, element) {
                     // Check if a file is selected
                     if (element.files && element.files.length > 0) {
@@ -110,14 +104,13 @@
                     rules: {
                         image: {
                             validImage: true,
-                            fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [10, 1024], // Min 180KB and Max 2MB (2 * 1024 KB)
                         },
-                      
                     },
                     messages: {
                         image: {
                     validImage: "Only JPG, JPEG, PNG images are allowed.",
-                    fileSize: "The file size must be between 10 KB and 2048 KB.",
+                    fileSize: "The file size must be between 180 KB and 2048 KB.",
                 },
                     },
                     submitHandler: function(form) {
@@ -132,7 +125,6 @@
                         form.submit();
                     }
                 });
-        
                 // You can remove the following two blocks if you don't need to display selected images on the page
                 $("#image").change(function() {
                     var reader = new FileReader();

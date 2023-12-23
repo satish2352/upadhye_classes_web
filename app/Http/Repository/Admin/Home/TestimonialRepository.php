@@ -24,14 +24,15 @@ class TestimonialRepository  {
             $data =array();
             $dataOutput = new Testimonial();
             $dataOutput->title = $request['title'];
+            $dataOutput->position = $request['position'];
             $dataOutput->description = $request['description'];
-            
+        
             $dataOutput->save(); 
             $last_insert_id = $dataOutput->id;
 
             $ImageName = $last_insert_id .'_' . rand(100000, 999999) . '_image.' . $request->image->extension();
             
-            $finalOutput = Slider::find($last_insert_id); // Assuming $request directly contains the ID
+            $finalOutput = Testimonial::find($last_insert_id); // Assuming $request directly contains the ID
             $finalOutput->image = $ImageName; // Save the image filename to the database
             $finalOutput->save();
             
@@ -121,7 +122,7 @@ class TestimonialRepository  {
     public function deleteById($id){
             try {
                 $deleteDataById = Testimonial::find($id);
-                if ($deleteData) {
+                if ($deleteDataById) {
                     if (file_exists_view(Config::get('DocumentConstant.Testimonial_DELETE') . $deleteDataById->image)){
                         removeImage(Config::get('DocumentConstant.Testimonial_DELETE') . $deleteDataById->image);
                     }

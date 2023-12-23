@@ -22,6 +22,21 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
+                                    {{-- <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="category_id">Our Result Category</label>&nbsp<span
+                                                class="red-text">*</span>
+                                            <select class="form-control mb-2" id="category_id" name="category_id">
+                                                <option value="">Select</option>
+                                                @foreach ($category_gallery as $item)
+                                                    <option value="{{ $item['id'] }}">{{ $item['title'] }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('category_id'))
+                                            <div class="red-text"><?php //echo $errors->first('category_id', ':message'); ?></div>
+                                        @endif
+                                        </div>
+                                    </div> --}}
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="image"> Image</label>
@@ -60,24 +75,21 @@
         <script>
             $(document).ready(function() {
                 var currentEnglishImage = $("#currentEnglishImage").val();
-                var currentMarathiImage = $("#currentMarathiImage").val();
-        
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
+                    const category_id = $('#category_id').val();
                     const image = $('#image').val();
-        
                     // Update the old PDF values if there are any selected files
                     if (image !== currentEnglishImage) {
                         $("#currentEnglishImage").val(image);
                     }
                 }
-        
+                $('input').on('input change', checkFormValidity);
                 // Call the checkFormValidity function on file input change
                 $('input, #image').on('change', function() {
                     checkFormValidity();
                     validator.element(this); // Revalidate the file input
                 });
-        
                 $.validator.addMethod("validImage", function(value, element) {
                     // Check if a file is selected
                     if (element.files && element.files.length > 0) {
@@ -102,12 +114,18 @@
                 var form = $("#regForm");
                 var validator = form.validate({
                     rules: {
+                        category_id: {
+                            required: true,
+                        },
                         image: {
                             validImage: true,
-                            fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [10, 1024], // Min 180KB and Max 2MB (2 * 1024 KB)
                         },
                     },
                     messages: {
+                        category_id: {
+                            required: "Please Select the Our Result Category.",
+                        },
                         image: {
                     validImage: "Only JPG, JPEG, PNG images are allowed.",
                     fileSize: "The file size must be between 180 KB and 2048 KB.",
@@ -125,7 +143,6 @@
                         form.submit();
                     }
                 });
-        
                 // You can remove the following two blocks if you don't need to display selected images on the page
                 $("#image").change(function() {
                     var reader = new FileReader();
@@ -136,7 +153,7 @@
                         validator.element("#image"); // Revalidate the file input
                     };
                     reader.readAsDataURL(this.files[0]);
-                });               
+                });
             });
-        </script>   
+        </script> 
     @endsection

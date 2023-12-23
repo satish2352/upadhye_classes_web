@@ -176,5 +176,13 @@ class IndexServices
             return $e;
         }
     }  
-    
+    // =============
+    public function showParticularUpcominCourses()
+    {
+        try {
+            return $this->repo->showParticularUpcominCourses();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    } 
 }

@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 text-center">
                                         <button type="submit" class="btn btn-sm btn-success" id="submitButton"
-                                            {{-- disabled --}}>
+                                            >
                                             Save &amp; Submit
                                         </button>
                                         {{-- <button type="reset" class="btn btn-sm btn-danger">Cancel</button> --}}
@@ -51,14 +51,7 @@
             $(document).ready(function() {
                 // Function to check if all input fields are filled with valid data
                 function checkFormValidity() {
-                    const image = $('#image').val();
-
-                    // Enable the submit button if all fields are valid
-                    if (image) {
-                        $('#submitButton').prop('disabled', false);
-                    } else {
-                        $('#submitButton').prop('disabled', true);
-                    }
+                    const image = $('#image').val();                    
                 }
                 // Custom validation method to check file extension
                 $.validator.addMethod("fileExtension", function(value, element, param) {
@@ -91,8 +84,8 @@
                     },
                     messages: {
                         image: {
-                            required: "Please upload an Image (JPG, JPEG, PNG).",
-                            fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
+                            required: "Please upload an Image (jpg, jpeg, png).",
+                            fileExtension: "Only jpg, JPEG, and png images are allowed.",
                             // fileSize: "File size must be between 10 KB and 2 MB.",
                         },
                     },

@@ -27,18 +27,7 @@ $common_form_data = App\Http\Controllers\Website\IndexController::getCommonFormD
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="title">Title </label>&nbsp<span class="red-text">*</span>
-                                            <input class="form-control mb-2" name="title" id="title" placeholder="Enter the Title" value="@if (old('title'))
-                                            {{ old('title') }}@else{{ $marquees->title }}
-                                            @endif">
-                                            @if ($errors->has('title'))
-                                                <span class="red-text"><?php echo $errors->first('title', ':message'); ?></span>
-                                            @endif
-                                        </div>
-                                    </div>                                   
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <label for="marquee_tab_id">Role Type</label>&nbsp<span class="red-text">*</span>
+                                            <label for="marquee_tab_id">Marquee Tab  </label>&nbsp<span class="red-text">*</span>
                                             <select class="form-control" id="marquee_tab_id" name="marquee_tab_id"
                                                 onchange="myFunction(this.value)">
                                                 <option>Select</option>
@@ -54,6 +43,38 @@ $common_form_data = App\Http\Controllers\Website\IndexController::getCommonFormD
                                         </div>
                                     </div>
 
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="marquee_tab_id">Role Type</label>&nbsp<span class="red-text">*</span>
+                                            <select class="form-control" id="marquee_tab_id" name="marquee_tab_id"
+                                               >
+                                                <option>Select</option>
+                                                @foreach ($common_form_data['data_output_marquee_tab'] as $role)
+                                                    <option value="{{ $role['id'] }}"
+                                                        @if ($role['id'] == $common_form_data['data_output_marquee_tab']['marquee_tab_id']) <?php echo 'selected'; ?> @endif>
+                                                        {{ $role['title'] }}</option>
+                                                @endforeach
+                                            </select>
+                                            @if ($errors->has('marquee_tab_id'))
+                                                <span class="red-text"><?php echo $errors->first('marquee_tab_id', ':message'); ?></span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <label for="title">Title </label>&nbsp<span class="red-text">*</span>
+                                            <input class="form-control mb-2" name="title" id="title" placeholder="Enter the Title" value="@if (old('title'))
+                                            {{ old('title') }}@else{{ $marquees->title }}
+                                            @endif">
+                                            @if ($errors->has('title'))
+                                                <span class="red-text"><?php echo $errors->first('title', ':message'); ?></span>
+                                            @endif
+                                        </div>
+                                    </div>                                   
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
                                             <label for="url"> URL</label>&nbsp<span class="red-text">*</span>
@@ -83,10 +104,31 @@ $common_form_data = App\Http\Controllers\Website\IndexController::getCommonFormD
             </div>
         </div>
         <script>
+             function myFunction(role_id) {
+                $("#data_for_role").empty();
+                $.ajax({
+                    url: "{{ route('list-role-wise-permission') }}",
+                    method: "POST",
+                    data: {
+                        "role_id": role_id
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
+                        $("#data_for_role").empty();
+                        $("#data_for_role").append(data);
+                    },
+                    error: function(data) {}
+                });
+            }
+
+
+
+
             $(document).ready(function() {
                 function checkFormValidity() {
                     const title = $('#title').val();
-                    const marathi_title = $('#marathi_title').val();
                     const url = $('#url').val();
                     
                     url = url.replace(/\s/g, '');

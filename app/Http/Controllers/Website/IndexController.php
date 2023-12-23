@@ -93,5 +93,16 @@ class IndexController extends Controller
         }
     }
     
-    
+    // ================
+
+    public function showParticularUpcominCourses()
+    {
+        try {
+            $data_output = $this->service->showParticularUpcominCourses();
+
+        } catch (\Exception $e) {
+            return $e;
+        }
+        return view('website.pages.particularcoursedetails',compact('data_output'));
+    }
 }

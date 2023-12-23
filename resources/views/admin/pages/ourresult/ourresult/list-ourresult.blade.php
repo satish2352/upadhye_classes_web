@@ -6,10 +6,8 @@
             <div class="page-header">
                 <h3 class="page-title">
                     Our Result
-                    @if (in_array('per_add'))
                         <a href="{{ route('add-ourresult') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
-                    @endif
 
                 </h3>
                 <nav aria-label="breadcrumb">
@@ -44,7 +42,7 @@
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ strip_tags($item->title) }}</td>
                                                         <td> <img class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.OUR_RESULT_VIEW') }}{{ $item->english_image }}"
+                                                                src="{{ Config::get('DocumentConstant.OUR_RESULT_VIEW') }}{{ $item->image }}"
                                                                 alt=" {{ strip_tags($item['english_title']) }} Image" />
                                                         </td>
                                                         <td>

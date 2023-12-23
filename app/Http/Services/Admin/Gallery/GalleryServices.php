@@ -89,9 +89,7 @@ class GalleryServices
     public function deleteById($id)
     {
         try {
-            $delete = $this->repo->deleteById($id);
-
-          
+            $delete = $this->repo->deleteById($id);          
             if ($delete) {
                 return ['status' => 'success', 'msg' => 'Deleted Successfully.'];
             } else {

@@ -10,13 +10,15 @@ use App\Models\ {
 };
 
 class LocationAddressRepository{
-	public function getAll(){
+    public function getAll(){
         try {
-            return LocationAddress::all();
+            $data_output = LocationAddress::orderBy('updated_at', 'desc')->get();
+            return $data_output;
         } catch (\Exception $e) {
             return $e;
         }
     }
+
 
 	public function addAll($request){
         try {

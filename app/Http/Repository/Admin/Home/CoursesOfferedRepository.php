@@ -76,7 +76,8 @@ class CoursesOfferedRepository  {
             $previousEnglishImage = $dataOutput->image;
 
             // Update the fields from the request
-            $dataOutput->rank_no = $request['rank_no'];
+            $dataOutput->title = $request['title'];
+            $dataOutput->description = $request['description'];
             
             $dataOutput->save();
             $last_insert_id = $dataOutput->id;
@@ -123,7 +124,7 @@ class CoursesOfferedRepository  {
     public function deleteById($id){
             try {
                 $deleteDataById = CoursesOffered::find($id);
-                if ($deleteData) {
+                if ($deleteDataById) {
                     if (file_exists_view(Config::get('DocumentConstant.COURSES_OFFERED_DELETE') . $deleteDataById->image)){
                         removeImage(Config::get('DocumentConstant.COURSES_OFFERED_DELETE') . $deleteDataById->image);
                     }
