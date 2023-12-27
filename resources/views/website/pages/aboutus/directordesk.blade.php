@@ -4,6 +4,8 @@
     <div class="stricky-header stricked-menu main-menu main-header-two">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div><!-- /.stricky-header -->
+
+    
     <section class="page-header page-header--bg-two" data-jarallax data-speed="0.3" data-imgPosition="50% -100%">
         <div class="page-header__bg jarallax-img"></div><!-- /.page-header-bg -->
         <div class="page-header__overlay"></div><!-- /.page-header-overlay -->
