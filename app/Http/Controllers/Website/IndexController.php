@@ -28,16 +28,37 @@ class IndexController extends Controller
             $data_output_courses_offered = $this->service->getAllCoursesOffered();
             $data_output_upcoming_courses = $this->service->getAllUpcomingCourses();
             $data_output_testimonial = $this->service->getAllTestimonial();
-            
+            $galleryData = $this->service->getAllMarquee($request);
+            $gallery_data = $galleryData['gallery_data'];
+            $categories = $galleryData['categories'];
+            // print_r($gallery_data);
+            // die();
          
-            return view('website.pages.index', compact('data_output_slider','data_output_courses_offered','data_output_upcoming_courses','data_output_testimonial'));
+            return view('website.pages.index', compact('data_output_slider','data_output_courses_offered','data_output_upcoming_courses',
+            'data_output_testimonial','gallery_data',
+            'categories'));
         } catch (\Exception $e) {
             return $e;
         }
     }
 
+    // public function getOurresult(Request $request) {
+    //     try {
+          
+    //         $galleryData = $this->service->getAllGalleryMain($request);
+    //         $gallery_data = $galleryData['gallery_data'];
+    //         $categories = $galleryData['categories'];
+           
+
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    //     return view('website.pages.ourresult.ourresult',compact('gallery_data', 'categories'));
+    // }
+
+
     public function getAllAjaxMultimedia(Request $request) {
-        $return_data = $this->service->getAllGallery($request);
+        $return_data = $this->service->getAllMaequee($request);
         return $return_data['gallery_data'];
     }
     static function getCommonFormData() {
@@ -95,14 +116,24 @@ class IndexController extends Controller
     
     // ================
 
-    public function showParticularUpcominCourses()
+    public function showParticularCourseDetails()
     {
         try {
-            $data_output = $this->service->showParticularUpcominCourses();
+            $data_output = $this->service->showParticularCourseDetails();
 
         } catch (\Exception $e) {
             return $e;
         }
-        return view('website.pages.particularcoursedetails',compact('data_output'));
+        return view('website.pages.subpages.course-details',compact('data_output'));
+    }
+    public function showParticularUpcomingCourseDetailsDetails()
+    {
+        try {
+            $data_output = $this->service->showParticularUpcomingCourseDetailsDetails();
+
+        } catch (\Exception $e) {
+            return $e;
+        }
+        return view('website.pages.subpages.upcoming-course-details',compact('data_output'));
     }
 }

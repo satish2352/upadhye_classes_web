@@ -2,7 +2,6 @@
 namespace App\Http\Services\Website;
 
 use App\Http\Repository\Website\IndexRepository;
-
 // use App\Marquee;
 use Carbon\Carbon;
 
@@ -20,6 +19,17 @@ class IndexServices
         $this->repo = new IndexRepository();
     }
     
+
+    // public function getAllMaequee($request)
+    // {
+    //     try {
+    //         return $this->repo->getAllMaequee($request);
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    // } 
+
+
     public function getAllSocialIcon()
     {
         try {
@@ -177,10 +187,28 @@ class IndexServices
         }
     }  
     // =============
-    public function showParticularUpcominCourses()
+    public function showParticularCourseDetails()
     {
         try {
-            return $this->repo->showParticularUpcominCourses();
+            return $this->repo->showParticularCourseDetails();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    } 
+    public function showParticularUpcomingCourseDetailsDetails()
+    {
+        try {
+            return $this->repo->showParticularUpcomingCourseDetailsDetails();
+        } catch (\Exception $e) {
+            return $e;
+        }
+    } 
+    
+
+    public function getAllMarquee($request)
+    {
+        try {
+            return $this->repo->getAllMarquee($request);
         } catch (\Exception $e) {
             return $e;
         }

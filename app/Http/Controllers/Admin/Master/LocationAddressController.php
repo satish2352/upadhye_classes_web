@@ -31,11 +31,10 @@ class LocationAddressController extends Controller
 
     public function store(Request $request) {
         $rules = [
-            'name' => 'required|unique:location_address|regex:/^[a-zA-Z\s]+$/u|max:255',
+            'name' => 'required|unique:location_address|max:255',
          ];
         $messages = [   
             'name'       =>  'Please enter title.',
-            'name.regex' => 'Please  enter text only.',
             'name.unique' => 'Title already exist.',
         ];
 
@@ -82,12 +81,11 @@ class LocationAddressController extends Controller
 {
     $id = $request->input('id'); // Assuming the 'id' value is present in the request
     $rules = [
-        'name' => ['required', 'max:255','regex:/^[a-zA-Z\s]+$/u', Rule::unique('location_address', 'name')->ignore($id, 'id')],
+        'name' => ['required', 'max:255', Rule::unique('location_address', 'name')->ignore($id, 'id')],
     ];
 
     $messages = [
         'name.required' => 'Please enter an title.',
-        'name.regex' => 'Please  enter text only.',
         'name.max' => 'Please enter an  title with a maximum of 255 characters.',
         'name.unique' => 'The title already exists.',
     ];

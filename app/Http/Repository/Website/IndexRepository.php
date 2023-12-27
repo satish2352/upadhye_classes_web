@@ -42,6 +42,44 @@ class IndexRepository  {
         }
     }	
 
+
+    // public function getAllMaequeeTab()
+    // {
+    //     try {
+    //         $data_output = MarqueeTab::where('is_active','=',true);
+    //         $data_output = $data_output->select('id','title');
+    //         $data_output =  $data_output->get()->toArray();
+    //         return  $data_output;
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    // }
+
+    // public function getAllMaequee($request) {
+    //     try {
+    //         $return_data =[];
+    //         $gallery_data_final = [];
+    //         $query = Marquee::where('is_active', true);
+    //         $query->title = $request['title'];
+    //         if($request->marquee_tab_id) {
+    //             $query->where('marquee_tab_id','=', $request->marquee_tab_id);
+    //         }
+
+    //         $gallery_data = $query->get()->toArray();
+    //         foreach ($gallery_data as $key => $value) {
+    //             $data_gallary = [];
+    //             $data_gallary['marquee_tab_id'] = $value['marquee_tab_id'];
+    //             array_push($gallery_data_final,$data_gallary);
+    //         }
+    //         $categories = $this->getAllMarqueeTab();
+    //         $return_data['gallery_data'] = $gallery_data_final;
+    //         $return_data['categories'] = $categories;
+    //         return $return_data;
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    // }
+
   	
 //     public function getAllMarquee()
 // {
@@ -134,15 +172,15 @@ class IndexRepository  {
   }
 
  // Repository file
-public function getAllMarqueeTabAvailableCategories()
-{
-    try {
-        $data_output = MarqueeTab::where('is_active', true)->select('id', 'title')->get()->toArray();
-        return $data_output;
-    } catch (\Exception $e) {
-        return $e;
-    }
-}
+// public function getAllMaequeeTab()
+// {
+//     try {
+//         $data_output = MarqueeTab::where('is_active', true)->select('id', 'title')->get()->toArray();
+//         return $data_output;
+//     } catch (\Exception $e) {
+//         return $e;
+//     }
+// }
 
     public function getAllDisasterManagementNews()
     {
@@ -367,7 +405,21 @@ public function getAllMarqueeTabAvailableCategories()
 
     // ====================
 
-    public function showParticularUpcominCourses()
+    public function showParticularCourseDetails()
+    {
+        try {
+            $data_output = CoursesOffered::where('is_active','=',true);
+            $data_output =  $data_output->select('id','title','description','image');
+            $data_output =  $data_output->get()
+                            ->toArray();
+            return  $data_output;
+       
+        
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    public function showParticularUpcomingCourseDetailsDetails()
     {
         try {
             $data_output = UpcomingCourses::where('is_active','=',true);
@@ -375,8 +427,93 @@ public function getAllMarqueeTabAvailableCategories()
             $data_output =  $data_output->get()
                             ->toArray();
             return  $data_output;
+       
+          
         } catch (\Exception $e) {
             return $e;
         }
     }
+    
+
+    public function getAllMarqueeAvailableCategories()
+    {
+        try {
+            $data_output = MarqueeTab::where('is_active','=',true);
+            $data_output =  $data_output->select('id','title');
+           
+            $data_output =  $data_output->get()->toArray();
+            return  $data_output;
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+
+    public function getAllMarquee($request) {
+        try {
+            $return_data = [];
+            $gallery_data_final = [];
+            $query = Marquee::where('is_active', true);
+    
+            if ($request->marquee_tab_id) {
+                $query->where('marquee_tab_id', '=', $request->marquee_tab_id);
+            }
+    
+            // Select the necessary fields, including 'title'
+            $gallery_data = $query->select('marquee_tab_id', 'title')->get()->toArray();
+    
+            foreach ($gallery_data as $key => $value) {
+                $data_gallary = [];
+                // Exclude image code
+                // $data_gallary['image'] = Config::get('DocumentConstant.GALLERY_MAIN_VIEW') . $value['image'];
+                $data_gallary['marquee_tab_id'] = $value['marquee_tab_id'];
+    
+                // Add new fields to the $data_gallary array
+                $data_gallary['title'] = $value['title']; // Assuming 'title' is a field in the Marquee model
+    
+                array_push($gallery_data_final, $data_gallary);
+            }
+    
+            $categories = $this->getAllMarqueeAvailableCategories();
+            $return_data['gallery_data'] = $gallery_data_final;
+            $return_data['categories'] = $categories;
+    
+            // Remove the following lines as they are unreachable
+            // dd($return_data);
+            // die();
+    
+            return $return_data;
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    
+    
+    
+
+    // public function getAllMarquee($request) {
+    //     try {
+    //         $return_data =[];
+    //         $gallery_data_final = [];
+    //         $query = Marquee::where('is_active', true);
+    //         if($request->marquee_tab_id) {
+    //             $query->where('marquee_tab_id','=', $request->marquee_tab_id);
+    //         }
+
+    //         $gallery_data = $query->get()->toArray();
+    //         foreach ($gallery_data as $key => $value) {
+    //             $data_gallary = [];
+    //             $data_gallary['image'] = Config::get('DocumentConstant.GALLERY_MAIN_VIEW').$value['image'];
+    //             $data_gallary['marquee_tab_id'] = $value['marquee_tab_id'];               
+                
+    //             array_push($gallery_data_final,$data_gallary);
+    //         }
+    //         $categories = $this->getAllGalleryAvailableCategories();
+    //         $return_data['gallery_data'] = $gallery_data_final;
+    //         $return_data['categories'] = $categories;
+    //         return $return_data;
+    //     } catch (\Exception $e) {
+    //         return $e;
+    //     }
+    // }
+
 }

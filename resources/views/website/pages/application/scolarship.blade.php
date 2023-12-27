@@ -131,7 +131,7 @@
                             <div class="row py-4">
                                 <div class="col-xl-12">
                                     <div class="checkout-page__check-box">
-                                        <input type="checkbox" name="skipper4" id="skipper4" checked="">
+                                        <input type="checkbox" name="skipper4" id="skipper4" >
                                         <label for="skipper4" style="font-size: 15px">I Agree to receive SMS/Call from Upadhye Classes<span></span></label>
                                     </div>
                                 </div>

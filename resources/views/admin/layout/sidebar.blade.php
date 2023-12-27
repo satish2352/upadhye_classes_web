@@ -114,6 +114,17 @@
 
                     </li>
 
+
+
+               
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link"
+                            href="{{ route('list-gallery-category') }}">Gallery Category</a>
+                    </li>
+                        <li class="nav-item d-none d-lg-block"><a class="nav-link"
+                                href="{{ route('list-gallery-main') }}">Gallery Main</a>
+                        </li>
+                  
+
                 </ul>
             </div>
         </li>

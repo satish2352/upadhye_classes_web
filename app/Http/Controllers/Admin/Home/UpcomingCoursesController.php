@@ -27,7 +27,7 @@ class UpcomingCoursesController extends Controller
         public function store(Request $request){
             $rules = [
                 'title' => 'required',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 'start_date' => 'required',
                 'duration' => 'required',
                 'test_mode' => 'required',
@@ -87,7 +87,7 @@ class UpcomingCoursesController extends Controller
         public function update(Request $request){
             $rules = [
                 'title' => 'required',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 'start_date' => 'required',
                 'duration' => 'required',
                 'test_mode' => 'required',

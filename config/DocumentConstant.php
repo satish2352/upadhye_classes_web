@@ -27,6 +27,11 @@ return [
     'GALLERY_DELETE'	         => '/all_web_data/images/gallery/',
     'GALLERY_VIEW'	         => env("FILE_VIEW").'/all_web_data/images/gallery/',
 
+    'GALLERY_MAIN_ADD'	         => "/all_web_data/images/gallerymain/",
+    'GALLERY_MAIN_DELETE'	         => '/all_web_data/images/gallerymain/',
+    'GALLERY_MAIN_VIEW'	         => env("FILE_VIEW").'/all_web_data/images/gallerymain/',
+
+
     'OUR_RESULT_ADD'	         => "/all_web_data/images/ourresult/",
     'OUR_RESULT_DELETE'	         => '/all_web_data/images/ourresult/',
     'OUR_RESULT_VIEW'	         => env("FILE_VIEW").'/all_web_data/images/ourresult/',

@@ -19,6 +19,15 @@
     <section class="course-three"
         style="background-image: url({{ asset('website/assets/images/shapes/course-bg-3.png') }});" id="course">
         <div class="container">
+            @if (empty($data_output))
+            <div class="container">
+                <div class="row">
+                    <h3 class="d-flex justify-content-center" style="color: #fff">No Data Found For Gallery</h3>
+                </div>
+            </div>
+        @else
+            @foreach ($data_output as $upcomingcourse)
+
             <div class="section-title wow fadeInUp text-center" data-wow-delay="100ms">
                 {{-- <h5 class="section-title__tagline">
                     Course
@@ -35,23 +44,25 @@
                         </g>
                     </svg>
                 </h5> --}}
-                <h2 class="section-title__title">About JEE (Main)</h2>
+                <h2 class="section-title__title">{{$upcomingcourse['title']}}</h2>
             </div><!-- section-title -->
         <div class="tab fadeInUp animated" id="overview">
             <div class="course-details__overview">
                 <p class="course-details__overview__text">
-                    The Joint Entrance Examination, JEE (Main) comprises two papers. Paper 1 is conducted for admission to Undergraduate Engineering Programs (B.E/B.Tech.) at NITs, IIITs, other Centrally Funded Technical Institutions (CFTIs), and Institutions/Universities funded/recognized by participating State Governments. JEE (Main) is also an eligibility test for JEE (Advanced), which is conducted for admission to IITs. Paper 2 is conducted for admission to B. Arch and B. Planning courses in the country.
+                    {{strip_tags($upcomingcourse['description'])}}
                 </p>
                 <h3 class="neet_title">Upadhye Test Series:</h3>
                 <ul class="list-unstyled course-details__overview__lists">
-                    <li><span class="icon-check"></span>Test Series Starting Date: 16st September, 2023</li>
-                    <li><span class="icon-check"></span>Test Duration: 3:00 Hrs.</li>
-                    <li><span class="icon-check"></span>Mode Of Test: Online</li>
-                    <li><span class="icon-check"></span>Medium of Test: English</li>
-                    <li><span class="icon-check"></span>Course Fee: Rs. 1499/- Only</li>
+                    <li><span class="icon-check"></span>Test Series Starting Date: {{$upcomingcourse['start_date']}}</li>
+                    <li><span class="icon-check"></span>Test Duration:{{$upcomingcourse['duration']}} Hrs.</li>
+                    <li><span class="icon-check"></span>Mode Of Test: {{$upcomingcourse['test_mode']}}</li>
+                    <li><span class="icon-check"></span>Medium of Test: {{$upcomingcourse['test_medium']}}</li>
+                    <li><span class="icon-check"></span>Course Fee: {{$upcomingcourse['course_fess']}}/- Only</li>
                 </ul>
             </div>
         </div><!-- tab-content-overview -->
+        @endforeach
+        @endif
         </div>
     </section>
     <!-- Course End -->

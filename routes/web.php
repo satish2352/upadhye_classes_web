@@ -178,6 +178,44 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/update-dynamic-page', ['as' => 'update-dynamic-page', 'uses' => 'App\Http\Controllers\Admin\DynamicPages\DynamicPagesController@update']);
     
 
+
+
+
+
+
+
+
+
+    Route::get('/list-gallery-category', ['as' => 'list-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@index']);
+    Route::get('/add-gallery-category', ['as' => 'add-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@add']);
+    Route::post('/add-gallery-category', ['as' => 'add-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@store']);
+    Route::get('/edit-gallery-category/{edit_id}', ['as' => 'edit-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@edit']);
+    Route::post('/update-gallery-category', ['as' => 'update-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@update']);
+    Route::post('/show-gallery-category', ['as' => 'show-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@show']);
+    Route::post('/delete-gallery-category', ['as' => 'delete-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@destroy']);
+    Route::post('/update-one-gallery-category', ['as' => 'update-one-gallery-category', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryCategoryController@updateOne']);
+    
+    Route::get('/list-gallery-main', ['as' => 'list-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@index']);
+    Route::get('/add-gallery-main', ['as' => 'add-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@add']);
+    Route::post('/add-gallery-main', ['as' => 'add-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@store']);
+    Route::get('/edit-gallery-main/{edit_id}', ['as' => 'edit-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@edit']);
+    Route::post('/update-gallery-main', ['as' => 'update-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@update']);
+    Route::post('/show-gallery-main', ['as' => 'show-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@show']);
+    Route::post('/delete-gallery-main', ['as' => 'delete-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@destroy']);
+    Route::post('/update-one-gallery-main', ['as' => 'update-one-gallery-main', 'uses' => 'App\Http\Controllers\Admin\Our\GalleryController@updateOne']);
+    
+
+
+
+
+
+
+
+
+
+
+
+
     Route::get('/db-backup', ['as' => 'db-backup', 'uses' => 'App\Http\Controllers\DBBackup\DBBackupController@downloadBackup']);
     Route::get('/log-out', ['as' => 'log-out', 'uses' => 'App\Http\Controllers\Admin\LoginRegister\LoginController@logout']);
 
@@ -202,8 +240,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/add-feespayment', ['as' => 'add-feespayment', 'uses' => 'App\Http\Controllers\Website\Application\FessPaymentFormController@addFessPaymentForm']);
     //End Application========
 
+    Route::post('/course-details', ['as' => 'course-details', 'uses' => 'App\Http\Controllers\Website\IndexController@showParticularCourseDetails']);
+    Route::post('/upcoming-course-details', ['as' => 'upcoming-course-details', 'uses' => 'App\Http\Controllers\Website\IndexController@showParticularUpcomingCourseDetailsDetails']);
 
-    Route::post('/particular-upcoming-courses', ['as' => 'particular-upcoming-courses', 'uses' => 'App\Http\Controllers\Website\IndexController@showParticularUpcominCourses']);
+   
+    // Route::post('/particular-upcoming-courses', ['as' => 'particular-upcoming-courses', 'uses' => 'App\Http\Controllers\Website\IndexController@showParticularUpcominCourses']);
 
 
     //Start Contact========
@@ -226,4 +267,5 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/neet', ['as' => 'neet', 'uses' => 'App\Http\Controllers\Website\Courses\CoursesController@getNeet']);
     Route::get('/noticeboard', ['as' => 'noticeboard', 'uses' => 'App\Http\Controllers\Website\NoticeBoard\NoticeBoardController@getNoticeboard']);
 
-
+    // Route::get('/gallery', ['as' => 'gallery', 'uses' => 'App\Http\Controllers\Website\Gallery\GalleryController@getAllMultimedia']);
+    Route::post('/list-ajax-multimedia-web', ['as' => 'list-ajax-multimedia-web', 'uses' => 'App\Http\Controllers\Website\Gallery\OurResultController@getAllAjaxMultimedia']);

@@ -21,11 +21,11 @@
                     <h3 class="main-footer__title">Courses</h3>
                     <ul>
                         <li><a href="course.html">JEE (MAIN+ADVANCED)</a></li>
-                        <li><a href="about.html">Repeaters Batch</a></li>
-                        <li><a href="services.html">Revision Batch</a></li>
-                        <li><a href="team.html">XI Science</a></li>
-                        <li><a href="team-become.html">XII Science</a></li>
-                        <li><a href="team-become.html">Crash course</a></li>
+                        <li><a href="{{ route('repeatersbatch') }}">Repeaters Batch</a></li>
+                        <li><a href="{{ route('revisionbatch') }}">Revision Batch</a></li>
+                        <li><a href="{{ route('progressivebatch') }}">XI Science</a></li>
+                        <li><a href="{{ route('progressivebatch-xii') }}">XII Science</a></li>
+                        <li><a href="{{ route('crashcoursebatch') }}">Crash course</a></li>
                     </ul><!-- /.list-unstyled -->
                     </ul><!-- /.list-unstyled -->
                 </div><!-- /.footer-menu -->
@@ -34,10 +34,10 @@
                 <div class="main-footer__navmenu main-footer__widget02">
                     <h3 class="main-footer__title">Useful Links</h3>
                     <ul>
-                        <li><a href="about.html">Admission Process</a></li>
-                        <li><a href="course.html">Contact</a></li>
-                        <li><a href="blog-grid-right.html">Online Fees Payment</a></li>
-                        <li><a href="faq.html">WHY UPADHYE CLASSES</a></li>
+                        <li><a href="{{ route('applicatioform') }}">Admission Process</a></li>
+                        <li><a href="{{ route('contactus') }}">Contact</a></li>
+                        <li><a href="{{ route('feespayment') }}">Online Fees Payment</a></li>
+                        <li><a href="{{ route('updadhyeclasses') }}">WHY UPADHYE CLASSES</a></li>
                     </ul><!-- /.list-unstyled -->
                     </ul><!-- /.list-unstyled -->
                 </div><!-- /.footer-menu -->
@@ -46,7 +46,11 @@
                 <div class="main-footer__newsletter">
                     <h3 class="main-footer__title">Contact Us</h3>
                     <ul class="main-footer-two__info-list">
-                        <li><span class="icon-Location"></span>Upadhye Classes, 1st & 2nd Floor, Phoenix Towers, Near Jyoti Stores, New Pandit Colony, Off Gangapure Road, 422 002</li>
+                        <li><span class="icon-Location"> 
+                            {{-- <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.097414944681!2d73.77351471474529!3d20.004425786562145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddebdc3fa72841%3A0x1b567c479d5596a6!2sUpadhye%20Classes!5e0!3m2!1sen!2sin!4v1680260496216!5m2!1sen!2sin"
+                            class="google-map__one" allowfullscreen></iframe> --}}
+                        </span>Upadhye Classes, 1st & 2nd Floor, Phoenix Towers, Near Jyoti Stores, New Pandit Colony, Off Gangapure Road, 422 002</li>
                         <li><span class="icon-Telephone"></span><a href="tel:9850511000">9850511000</a></li>
                         <li><span class="icon-Email"></span><a href="mailto:upadhyeclasses@gmail.com">upadhyeclasses@gmail.com</a></li>
                     </ul>
@@ -105,10 +109,10 @@
         </li>
     </ul><!-- /.mobile-nav__contact -->
     <div class="mobile-nav__social">
-        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/rkupadhye?lang=en"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/Upadhyeclass/"><i class="fab fa-facebook"></i></a>
         <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/channel/UCn6JXOHr112mYwWmQbFGwNA"><i class="fab fa-instagram"></i></a>
     </div><!-- /.mobile-nav__social -->
 </div>
 <!-- /.mobile-nav__content -->
@@ -160,8 +164,18 @@
 <!-- template js -->
 <script src="{{ asset('website/assets/js/eduact.js')}}"></script>
 
-
-
+<script>
+    $('.show-btn').click(function(e) {
+        $("#show_id").val($(this).attr("data-id"));
+        $("#showform").submit();
+    })
+</script>
+<script>
+    $('.show-detail-btn').click(function(e) {
+        $("#show-detail_id").val($(this).attr("data-id"));
+        $("#showdetailform").submit();
+    })
+</script>
 </body>
 
 
