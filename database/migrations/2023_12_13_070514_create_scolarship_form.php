@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('mobile_number');
             $table->string('roll_number');
             $table->text('address');
+            $table->boolean('is_ngo')->default(false);
             $table->string('is_deleted')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
