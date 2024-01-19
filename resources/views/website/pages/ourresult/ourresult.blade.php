@@ -110,16 +110,43 @@
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Find the first tab and content, add "active" class
-        var firstTab = $('.tab-buttons .tab-btn').first();
-        var firstContent = $('.tabs-content .tab').first();
+// <script>
+//     $(document).ready(function () {
+//         // Find the first tab and content, add "active" class
+//         var firstTab = $('.tab-buttons .tab-btn').first();
+//         var firstContent = $('.tabs-content .tab').first();
 
-        if (firstTab.length && firstContent.length) {
-            firstTab.addClass('active');
-            firstContent.addClass('active');
-        }
-    });
-</script>
+//         if (firstTab.length && firstContent.length) {
+//             firstTab.addClass('active');
+//             firstContent.addClass('active');
+//         }
+//     });
+// </script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all tabs and tab content
+            const tabs = document.querySelectorAll('.course-details__tabs__lists .tab-btn');
+            const tabContents = document.querySelectorAll('.tabs-content .tab');
+    
+            // Add click event listener to each tab
+            tabs.forEach(function (tab, index) {
+                tab.addEventListener('click', function () {
+                    // Remove 'active' class from all tabs and tab contents
+                    tabs.forEach(function (t) {
+                        t.classList.remove('active');
+                    });
+                    tabContents.forEach(function (content) {
+                        content.classList.remove('active');
+                    });
+    
+                    // Add 'active' class to the clicked tab and its corresponding content
+                    tab.classList.add('active');
+                    tabContents[index].classList.add('active');
+                });
+            });
+    
+            // Show the content of the first tab by default
+            tabs[0].click();
+        });
+    </script>
 @endsection

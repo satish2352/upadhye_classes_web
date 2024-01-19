@@ -1,6 +1,11 @@
 @extends('website.layout.master')
 
 @section('content')
+<style>
+    .marquee-height{
+        height:300px !important;
+    }
+</style>
     <div class="stricky-header stricked-menu main-menu main-header-two">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
     </div><!-- /.stricky-header -->
@@ -282,7 +287,7 @@
                                             @foreach ($categories as $index => $category)
                                                 <div class="tab {{ $index === 0 ? 'active' : '' }} fadeInUp animated"
                                                     id="category_{{ $category['id'] }}">
-                                                    <section class="team-one"
+                                                    <section class="team-one marquee-height"
                                                         style="background-image: url({{ asset('website/assets/images/shapes/team-bg-1.png') }});">
                                                         <div class="container">
                                                             <div class="section-title text-center wow fadeInUp"
@@ -298,7 +303,7 @@
                                                                             data-wow-delay="200ms">
 
                                                                             <marquee width="100%" direction="up"
-                                                                                height="150px" scrolldelay="250"
+                                                                                height="50px" scrolldelay="50"
                                                                                 onMouseOver="this.stop()"
                                                                                 onMouseOut="this.start()"
                                                                                 scrollamount="5">
@@ -430,8 +435,8 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7 wow fadeInLeft" data-wow-delay="200ms">
                         <h3 class="video-one__title">REASONS TO CHOOSE UPADHYE CLASSES</h3>
-                        <a href="contact.html" class="eduact-btn eduact-btn-second"><span
-                                class="eduact-btn__curve"></span>Discover More<i class="icon-arrow"></i></a>
+                        <!--<a href="contact.html" class="eduact-btn eduact-btn-second"><span-->
+                        <!--        class="eduact-btn__curve"></span>Discover More<i class="icon-arrow"></i></a>-->
                     </div>
                     <div class="col-lg-6 col-md-5 wow fadeInRight" data-wow-delay="200ms">
                         <div class="video-one__btn">
@@ -732,8 +737,10 @@
                                     {{ strip_tags($testimonial['description']) }}
                                 </div><!-- testimonial-quote -->
                                 <div class="testimonial-two__meta">
-                                    <img src="{{ asset('website/assets/images/resources/testimonial-2-author-1.png') }}"
+                                    <img
+                                    src="{{ Config::get('DocumentConstant.TESTIMONIAL_VIEW') }}{{ $testimonial['image'] }}"
                                         alt="eduact">
+                                        
                                     <h5 class="testimonial-two__title">{{ strip_tags($testimonial['title']) }}</h5>
                                     <span
                                         class="testimonial-two__designation">{{ strip_tags($testimonial['position']) }}</span>
@@ -793,16 +800,43 @@
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Find the first tab and content, add "active" class
-            var firstTab = $('.tab-buttons .tab-btn').first();
-            var firstContent = $('.tabs-content .tab').first();
+    // <script>
+    //     $(document).ready(function() {
+    //         // Find the first tab and content, add "active" class
+    //         var firstTab = $('.tab-buttons .tab-btn').first();
+    //         var firstContent = $('.tabs-content .tab').first();
 
-            if (firstTab.length && firstContent.length) {
-                firstTab.addClass('active');
-                firstContent.addClass('active');
-            }
+    //         if (firstTab.length && firstContent.length) {
+    //             firstTab.addClass('active');
+    //             firstContent.addClass('active');
+    //         }
+    //     });
+    // </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all tabs and tab content
+            const tabs = document.querySelectorAll('.course-details__tabs__lists .tab-btn');
+            const tabContents = document.querySelectorAll('.tabs-content .tab');
+    
+            // Add click event listener to each tab
+            tabs.forEach(function (tab, index) {
+                tab.addEventListener('click', function () {
+                    // Remove 'active' class from all tabs and tab contents
+                    tabs.forEach(function (t) {
+                        t.classList.remove('active');
+                    });
+                    tabContents.forEach(function (content) {
+                        content.classList.remove('active');
+                    });
+    
+                    // Add 'active' class to the clicked tab and its corresponding content
+                    tab.classList.add('active');
+                    tabContents[index].classList.add('active');
+                });
+            });
+    
+            // Show the content of the first tab by default
+            tabs[0].click();
         });
     </script>
 

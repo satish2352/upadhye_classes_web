@@ -5,12 +5,12 @@
         <div class="content-wrapper mt-6">
             <div class="page-header">
                 <h3 class="page-title">
-                    Gallery Category
+                    Our Result Category
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-category') }}">Resource Center</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Gallery Category</li>
+                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-category') }}">Our Result</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Our Result Category</li>
                     </ol>
                 </nav>
             </div>

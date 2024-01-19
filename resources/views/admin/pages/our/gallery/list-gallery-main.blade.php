@@ -6,7 +6,7 @@
         <div class="content-wrapper mt-6">
             <div class="page-header">
                 <h3 class="page-title">
-                    Gallery
+                    Our Result
                   
                         <a href="{{ route('add-gallery-main') }}" class="btn btn-sm btn-primary ml-3">+
                             Add</a>
@@ -15,8 +15,8 @@
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Resource Center</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Gallery</li>
+                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Our Result</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Our Result</li>
                     </ol>
                 </nav>
             </div>
@@ -32,9 +32,8 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Gallery Category</th>
+                                                    <th>Our Result Category</th>
                                                     <th> Image</th>
-                                                    <th>छायाचित्र</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>

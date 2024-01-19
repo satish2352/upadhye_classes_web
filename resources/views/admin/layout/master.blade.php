@@ -95,22 +95,20 @@
                     </li>
                 </ul>
 
-                <ul class="navbar-nav navbar-nav-right">
+                               <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown mr-0">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img class="img-size" 
-                            src=""
-                            />
+                            <i class="fas fa-user menu-icon"></i>
+                            <!--<img class="img-size" -->
+                            <!--src=""-->
+                            <!--/>-->
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             {{-- @foreach ($user_data as $item) --}}
-                            <a 
-                            {{-- data-id="{{ $user_data->id }}"  --}}
-                            class="dropdown-item edit-user-btn"
-                                href="{{ route('edit-user-profile') }}">
-                                <i class="fas fa-user text-primary"></i>
-                                Profile
+                            <a class="dropdown-item" href="{{ url('change-password') }}">
+                                <i class="fas fa-power-off text-primary"></i>
+                                Change Password
                             </a>
                             {{-- @endforeach --}}
                             <div class="dropdown-divider"></div>

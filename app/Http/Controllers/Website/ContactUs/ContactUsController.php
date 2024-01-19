@@ -63,7 +63,7 @@ class ContactUsController extends Controller
                     $msg = $add_contact['msg'];
                     $status = $add_contact['status'];
                     if($status=='success') {
-                        Session::flash('success_message', 'Feedback and suggestions submitted successfully!');
+                        Session::flash('success_message', 'Contact Us submitted successfully!');
                         return redirect('contactus')->with(compact('msg','status'));
                     }
                     else {

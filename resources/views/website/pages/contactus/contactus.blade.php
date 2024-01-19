@@ -107,6 +107,11 @@
                         
                     </div>
                 </form>
+                  @if(Session::has('success_message'))
+                        <script>
+                            alert("{{ Session::get('success_message') }}");
+                        </script>
+                    @endif
                 <div class="result"></div>
             </div>
         </div>

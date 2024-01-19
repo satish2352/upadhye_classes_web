@@ -5,11 +5,11 @@
         <div class="content-wrapper mt-6">
             <div class="page-header">
                 <h3 class="page-title">
-                    Gallery</h3>
+                    Our Result</h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Resource Center</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Update Gallery
+                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Our Result</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Update Our Result
                         </li>
                     </ol>
                 </nav>
@@ -105,7 +105,7 @@
                     rules: {
                         image: {
                             validImage: true,
-                            fileSize: [180, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [50, 2048], // Min 180KB and Max 2MB (2 * 1024 KB)
                         },
                     },
                     messages: {

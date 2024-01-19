@@ -31,7 +31,7 @@ class TestimonialController extends Controller
             $rules = [
                 'title' => 'required',
                 'position' => 'required',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 'image' => 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.TESTIMONIAL_IMAGE_MAX_SIZE").'|dimensions:min_width=50,min_height=50,max_width=800,max_height=800|min:'.Config::get("AllFileValidation.TESTIMONIAL_IMAGE_MIN_SIZE").'',
                
             ];
@@ -90,7 +90,7 @@ class TestimonialController extends Controller
             $rules = [
                 'title' => 'required',
                 'position' => 'required',
-                'description' => 'required|max:255',
+                'description' => 'required',
                 
             ];
     

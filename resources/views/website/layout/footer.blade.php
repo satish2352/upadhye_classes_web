@@ -20,7 +20,7 @@
                 <div class="main-footer__navmenu main-footer__widget01">
                     <h3 class="main-footer__title">Courses</h3>
                     <ul>
-                        <li><a href="course.html">JEE (MAIN+ADVANCED)</a></li>
+                        <li><a href="{{ route('iitjeebatch') }}">JEE (MAIN+ADVANCED)</a></li>
                         <li><a href="{{ route('repeatersbatch') }}">Repeaters Batch</a></li>
                         <li><a href="{{ route('revisionbatch') }}">Revision Batch</a></li>
                         <li><a href="{{ route('progressivebatch') }}">XI Science</a></li>
@@ -46,10 +46,7 @@
                 <div class="main-footer__newsletter">
                     <h3 class="main-footer__title">Contact Us</h3>
                     <ul class="main-footer-two__info-list">
-                        <li><span class="icon-Location"> 
-                            {{-- <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.097414944681!2d73.77351471474529!3d20.004425786562145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddebdc3fa72841%3A0x1b567c479d5596a6!2sUpadhye%20Classes!5e0!3m2!1sen!2sin!4v1680260496216!5m2!1sen!2sin"
-                            class="google-map__one" allowfullscreen></iframe> --}}
+                        <li onclick="openMap()" style="cursor: pointer;"><span class="icon-Location"> 
                         </span>Upadhye Classes, 1st & 2nd Floor, Phoenix Towers, Near Jyoti Stores, New Pandit Colony, Off Gangapure Road, 422 002</li>
                         <li><span class="icon-Telephone"></span><a href="tel:9850511000">9850511000</a></li>
                         <li><span class="icon-Email"></span><a href="mailto:upadhyeclasses@gmail.com">upadhyeclasses@gmail.com</a></li>
@@ -101,11 +98,11 @@
     <ul class="mobile-nav__contact list-unstyled">
         <li>
             <i class="fas fa-envelope"></i>
-            <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+            <a href="mailto:upadhyeclasses@gmail.com">upadhyeclasses@gmail.com</a>
         </li>
         <li>
             <i class="fa fa-phone-alt"></i>
-            <a href="tel:+9236809850">+92 (3680) - 9850</a>
+            <a href="tel:9850511000">9850511000</a>
         </li>
     </ul><!-- /.mobile-nav__contact -->
     <div class="mobile-nav__social">
@@ -132,6 +129,13 @@
 </div>
 <!-- /.search-popup -->
 
+<a href="https://wa.me/9850511000"
+style="position: fixed; bottom: 98px; right: 24px;"
+target="_blank"
+className="btn-whatsapp-pulse">
+<img src="https://i.ibb.co/VgSspjY/whatsapp-button.png" alt="whatsapp">
+{{-- <i className="fa fa-whatsapp"></i> --}}
+</a>  
 <!-- back-to-top-start -->
 <a href="#" class="scroll-top">
 <svg class="scroll-top__circle" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -175,6 +179,21 @@
         $("#show-detail_id").val($(this).attr("data-id"));
         $("#showdetailform").submit();
     })
+</script>
+<script>
+    $('.active-btn').click(function(e) {
+        $("#active_id").val($(this).attr("data-id"));
+        $("#activeform").submit();
+    })
+</script>
+<script>
+    function openMap() {
+        // Specify the map's URL in the href attribute
+        var mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.097414944681!2d73.77351471474529!3d20.004425786562145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddebdc3fa72841%3A0x1b567c479d5596a6!2sUpadhye%20Classes!5e0!3m2!1sen!2sin!4v1680260496216!5m2!1sen!2sin"; // Replace with the actual coordinates or address
+
+        // Open the map link in a new tab or window
+        window.open(mapUrl, "_blank");
+    }
 </script>
 </body>
 
