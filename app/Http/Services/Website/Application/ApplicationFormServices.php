@@ -19,9 +19,9 @@ class ApplicationFormServices
     {
         $this->repo = new ApplicationFormRepository();
     }
-    public function addApplicatioform($request){
+    public function addApplicationform($request){
         try {
-            $last_id = $this->repo->addApplicatioform($request);
+            $last_id = $this->repo->addApplicationform($request);
          
             if ($last_id) {
                 return ['status' => 'success', 'msg' => 'Added Successfully.'];

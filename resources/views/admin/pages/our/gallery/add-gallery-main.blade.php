@@ -5,12 +5,12 @@
         <div class="content-wrapper mt-6">
             <div class="page-header">
                 <h3 class="page-title">
-                    Gallery
+                    Our Result
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Resource Center</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"> Gallery</li>
+                        <li class="breadcrumb-item"><a href="{{ url('list-gallery-main') }}">Our Result</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Our Result</li>
                     </ol>
                 </nav>
             </div>
@@ -25,7 +25,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-sm-6">
                                         <div class="form-group">
-                                            <label for="category_id">Gallery Category</label>&nbsp<span
+                                            <label for="category_id">Our Result Category</label>&nbsp<span
                                                 class="red-text">*</span>
                                             <select class="form-control mb-2" id="category_id" name="category_id">
                                                 <option value="">Select</option>
@@ -104,7 +104,7 @@
                         image: {
                             required: true,
                             fileExtension: ["jpg", "jpeg", "png"],
-                            fileSize: [180, 2048], // Min 10KB and Max 2MB (2 * 1024 KB)
+                            fileSize: [10, 2048], // Min 10KB and Max 2MB (2 * 1024 KB)
                         },
                     },
                     messages: {
@@ -114,7 +114,7 @@
                         image: {
                             required: "Please upload an Image (JPG, JPEG, PNG).",
                             fileExtension: "Only JPG, JPEG, and PNG images are allowed.",
-                            fileSize: "File size must be between 180 KB and 2 MB.",
+                            fileSize: "File size must be between 10 KB and 2 MB.",
                         },
                     },
                 });

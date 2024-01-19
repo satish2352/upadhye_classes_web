@@ -340,8 +340,8 @@
 .video-one__title {
   color: var(--eduact-white);
   font-size: 40px;
-  line-height: 40px;
-  margin: 0 0 34px;
+  /*line-height: 40px;*/
+  /*margin: 0 0 34px;*/
 }
 
 @media (min-width: 1400px) {
@@ -3916,7 +3916,7 @@ h6 {
 }
 
 .section-title__title {
-  font-size: 40px;
+  font-size: 29px;
   line-height: 47px;
   color: var(--eduact-black);
   margin: 0;

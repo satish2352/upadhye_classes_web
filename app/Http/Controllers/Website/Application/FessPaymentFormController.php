@@ -75,7 +75,7 @@ class FessPaymentFormController extends Controller
                      $msg = $add_contact['msg'];
                      $status = $add_contact['status'];
                      if($status=='success') {
-                         Session::flash('success_message', 'Feedback and suggestions submitted successfully!');
+                         Session::flash('success_message', 'Fess Payment Form submitted successfully!');
                          return redirect('feespayment')->with(compact('msg','status'));
                      }
                      else {

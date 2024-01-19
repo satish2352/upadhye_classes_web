@@ -39,7 +39,7 @@ class GalleryController extends Controller
     public function store(Request $request) {
         $rules = [
             'category_id' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=1500,min_height=500,max_width=2000,max_height=1000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE").'',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=500,min_height=500,max_width=2000,max_height=2000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE").'',
                 
             
          ];
@@ -50,7 +50,7 @@ class GalleryController extends Controller
         'image.mimes' => 'The image must be in JPEG, PNG, JPG format.',
         'image.max' => 'The image size must not exceed '.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'KB .',
         'image.min' => 'The image size must not be less than '.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE").'KB .',
-        'image.dimensions' => 'The image dimensions must be between 1500x500 and 2000x1000 pixels.',
+        'image.dimensions' => 'The image dimensions must be between 500x500 and 2000x2000 pixels.',
       
     ];
     
@@ -97,10 +97,10 @@ class GalleryController extends Controller
         // 'category_id' => 'required',
      ];
      if($request->has('image')) {
-        $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=1500,min_height=500,max_width=2000,max_height=1000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE");
+        $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=500,min_height=500,max_width=2000,max_height=2000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE");
     }
     if($request->has('marathi_image')) {
-        $rules['marathi_image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=1500,min_height=500,max_width=2000,max_height=1000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE");
+        $rules['marathi_image'] = 'required|image|mimes:jpeg,png,jpg|max:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'|dimensions:min_width=500,min_height=500,max_width=2000,max_height=2000|min:'.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE");
     }
     $messages = [   
         // 'category_id.required' => 'Please select category.',
@@ -109,7 +109,7 @@ class GalleryController extends Controller
         'image.mimes' => 'The image must be in JPEG, PNG, JPG format.',
         'image.max' => 'The image size must not exceed '.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MAX_SIZE").'KB .',
         'image.min' => 'The image size must not be less than '.Config::get("AllFileValidation.GALLERY_MAIN_IMAGE_MIN_SIZE").'KB .',
-        'image.dimensions' => 'The image dimensions must be between 1500x500 and 2000x1000 pixels.',
+        'image.dimensions' => 'The image dimensions must be between 500x500 and 2000x2000 pixels.',
        
     ];
 

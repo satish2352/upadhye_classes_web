@@ -160,6 +160,11 @@
                                         class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></button>
                             </div>
                         </form>
+                          @if(Session::has('success_message'))
+                        <script>
+                            alert("{{ Session::get('success_message') }}");
+                        </script>
+                    @endif
                     </div>
                 </div>
             </div>

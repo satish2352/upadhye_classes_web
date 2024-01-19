@@ -143,7 +143,7 @@
                             <div class="row py-3">
                                 <div class="col-xl-12">
                                     <div class="checkout-page__check-box">
-                                        <input type="checkbox" name="skipper4" id="skipper4" checked="">
+                                        <input type="checkbox" name="skipper4" id="skipper4" >
                                         <label for="skipper4" style="font-size: 15px">I Agree to receive SMS/Call from
                                             Upadhye Classes
                                             I have read all Privacy Policy and Refund Policy, Agree to receive SMS/Call from
@@ -156,6 +156,11 @@
                                         class="eduact-btn__curve"></span>Submit<i class="icon-arrow"></i></button>
                             </div>
                         </form>
+                          @if(Session::has('success_message'))
+                        <script>
+                            alert("{{ Session::get('success_message') }}");
+                        </script>
+                    @endif
                     </div>
                 </div>
             </div>

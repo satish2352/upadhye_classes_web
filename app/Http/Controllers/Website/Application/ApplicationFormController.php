@@ -38,7 +38,7 @@ class ApplicationFormController extends Controller
         return response()->json(['location_id' => $locations]);
     }
     
-    public function addApplicationform(Request $request) {
+    public function addApplicationForm(Request $request) {
        $rules = [
             'edu_location_id' => 'required',
             'edu_board_id' => 'required',
@@ -78,7 +78,7 @@ class ApplicationFormController extends Controller
             }
             else
             {
-                $add_contact = $this->service->addApplicatioform($request);
+                $add_contact = $this->service->addApplicationform($request);
     
                 if($add_contact)
                 {
@@ -86,7 +86,7 @@ class ApplicationFormController extends Controller
                     $msg = $add_contact['msg'];
                     $status = $add_contact['status'];
                     if($status=='success') {
-                        Session::flash('success_message', 'Feedback and suggestions submitted successfully!');
+                        Session::flash('success_message', 'Application Form submitted successfully!');
                         return redirect('applicatioform')->with(compact('msg','status'));
                     }
                     else {

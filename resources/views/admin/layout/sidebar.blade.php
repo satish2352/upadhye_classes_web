@@ -106,22 +106,22 @@
             </a>
             <div class="collapse" id="ourresult">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                            href="{{ route('list-ourresult-category') }}">Our Result Gallery</a></li>
+                    <!--<li class="nav-item d-none d-lg-block"><a class="nav-link"-->
+                    <!--        href="{{ route('list-ourresult-category') }}">Our Result Gallery</a></li>-->
 
-                    <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                            href="{{ route('list-ourresult') }}">Our Result</a>
+                    <!--<li class="nav-item d-none d-lg-block"><a class="nav-link"-->
+                    <!--        href="{{ route('list-ourresult') }}">Our Result</a>-->
 
-                    </li>
+                    <!--</li>-->
 
 
 
                
                     <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                            href="{{ route('list-gallery-category') }}">Gallery Category</a>
+                            href="{{ route('list-gallery-category') }}">Our Result Category</a>
                     </li>
                         <li class="nav-item d-none d-lg-block"><a class="nav-link"
-                                href="{{ route('list-gallery-main') }}">Gallery Main</a>
+                                href="{{ route('list-gallery-main') }}">Our Result</a>
                         </li>
                   
 

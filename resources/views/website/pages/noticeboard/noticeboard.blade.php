@@ -45,8 +45,9 @@
                                 {{-- <ul class="course-details__sidebar__lists clerfix"> --}}
                                     <div class="d-flex  align-items-center justify-content-center">
                                     <img src="{{ asset('website/assets/images/pdf.png') }}"
-                                    alt="eduact">
+                                    alt="eduact" style="width:60%">
                                     </div>
+                                    <br>
                                     <div class="d-flex align-items-center justify-content-center">
                                     <button type="submit" class="eduact-btn eduact-btn-second">
                                         <span class="eduact-btn__curve"></span>Download<i class="icon-arrow"></i>
