@@ -19,7 +19,7 @@ class MarqueeRepository  {
 								'marquee.url',
 								'marquee.id',
 								'marquee.is_active'
-							)->get();
+							)->orderBy('marquee.id', 'desc')->get();
 		return $data_users;
 	}
 

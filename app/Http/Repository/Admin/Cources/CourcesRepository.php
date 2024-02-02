@@ -14,7 +14,7 @@ class CourcesRepository  {
 	public function getAll()
     {
         try {
-            return DisasterManagementPortal::all();
+            return DisasterManagementPortal::orderBy('id', 'desc')->get();
         } catch (\Exception $e) {
             return $e;
         }

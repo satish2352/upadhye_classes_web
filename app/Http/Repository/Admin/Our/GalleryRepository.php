@@ -16,6 +16,7 @@ class GalleryRepository  {
         try {
             $gallerymain = OurResult::join('ourresult_category', 'ourresult_category.id','=', 'ourresult.Category_id')
             ->select('ourresult.is_active as is_active', 'ourresult_category.title as title','ourresult.id as id','ourresult.category_id as category_id', 'ourresult.image as image')
+           ->orderBy('ourresult.created_at', 'desc')
             ->get();
         return $gallerymain;
             

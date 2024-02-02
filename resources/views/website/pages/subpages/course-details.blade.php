@@ -34,9 +34,10 @@
             </div><!-- section-title -->
         <div class="tab fadeInUp animated" id="overview">
             <div class="course-details__overview">
-                <p class="course-details__overview__text">
-                    {{$coursedetails['description']}}
-                </p>
+               <p class="course-details__overview__text">
+    <?php echo strip_tags($coursedetails['description']); ?>
+</p>
+
                 <img src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $coursedetails['image'] }}"
                 alt="{{ strip_tags($coursedetails['title']) }} Image" width="70px"
                 class="img-fluid" />

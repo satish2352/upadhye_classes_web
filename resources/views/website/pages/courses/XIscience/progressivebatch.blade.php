@@ -35,7 +35,7 @@
                         </g>
                     </svg>
                 </h5>
-                <h2 class="section-title__title">Offerd Courses</h2>
+                <h2 class="section-title__title">Offered Courses</h2>
             </div><!-- section-title -->
             <div class="row">
                 <div class="col-xl-12 wow fadeInUp" data-wow-delay="200ms">

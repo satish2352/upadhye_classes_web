@@ -5,15 +5,15 @@
         <div class="content-wrapper mt-7">
             <div class="page-header">
                 <h3 class="page-title">
-                    Courses Offered List
-                    <a href="{{ route('add-courses-offered') }}" class="btn btn-sm btn-primary ml-3">+
+                    Course Details
+                    <a href="{{ route('add-course-details') }}" class="btn btn-sm btn-primary ml-3">+
                         Add</a>
 
                 </h3>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('list-courses-offered') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Courses Offered List</li>
+                        <li class="breadcrumb-item"><a href="{{ route('list-course-details') }}">Courses</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Course Details </li>
                     </ol>
                 </nav>
             </div>
@@ -29,23 +29,23 @@
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Title </th>
-                                                    <th>Description </th>
-                                                    <th>Image </th>
+                                                    <th>Course Name</th>
+                                                    <th>Courses Type </th>
+                                                    <th>Admission Procedure</th>
+                                                    <th>Eligibility</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($getOutput as $item)
+                                                @foreach ($combinedData as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ strip_tags($item->title) }}</td>
-                                                        <td>{{ strip_tags($item->description) }}</td>
-                                                        <td> <img style="background-color: aliceblue;" class="img-size"
-                                                                src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $item->image }}"
-                                                                alt=" {{ strip_tags($item['title']) }} Image" />
-                                                        </td>
+                                                        <td>{{ strip_tags($item->service_name) }}</td>
+                                                        <td>{{ strip_tags($item->courses_type) }}</td>
+                                                        <td>{{ strip_tags($item->admission_procedure) }}</td>
+                                                        <td>{{ strip_tags($item->eligibility) }}</td>
+                                                      
                                                         <td>
                                                             <label class="switch">
                                                                 <input data-id="{{ $item->id }}" type="checkbox"
@@ -59,7 +59,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="d-flex">
-                                                                <a href="{{ route('edit-courses-offered', base64_encode($item->id)) }}"
+                                                                <a href="{{ route('edit-course-details', base64_encode($item->id)) }}"
                                                                     class="btn btn-sm btn-outline-primary m-1"
                                                                     title="Edit Slide"><i
                                                                         class="fas fa-pencil-alt"></i></a>
@@ -86,15 +86,15 @@
                 </div>
             </div>
         </div>
-        <form method="POST" action="{{ url('/delete-courses-offered') }}" id="deleteform">
+        <form method="POST" action="{{ url('/delete-course-details') }}" id="deleteform">
             @csrf
             <input type="hidden" name="delete_id" id="delete_id" value="">
         </form>
-        <form method="POST" action="{{ url('/show-courses-offered') }}" id="showform">
+        <form method="POST" action="{{ url('/show-course-details') }}" id="showform">
             @csrf
             <input type="hidden" name="show_id" id="show_id" value="">
         </form>
-        <form method="POST" action="{{ url('/update-active-courses-offered') }}" id="activeform">
+        <form method="POST" action="{{ url('/update-active-course-details') }}" id="activeform">
             @csrf
             <input type="hidden" name="active_id" id="active_id" value="">
         </form>

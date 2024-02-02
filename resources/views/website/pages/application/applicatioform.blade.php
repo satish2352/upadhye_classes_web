@@ -137,7 +137,7 @@
                                 <div class="col-xl-6 py-3">
                                     <div class="">
                                         <input type="text" name="address" id="address"
-                                            value="{{ old('address') }}" placeholder="Please Enter Your Full Name" class="form-control">
+                                            value="{{ old('address') }}" placeholder="Please Enter Your Address" class="form-control">
                                         @if ($errors->has('address'))
                                             <span class="red-text"><?php echo $errors->first('address', ':message'); ?></span>
                                         @endif
@@ -217,38 +217,38 @@
             },
             messages: {
                 edu_location_id: {
-                    required: "Select Branch",
+                    required: "Please Select Branch",
                 },
                 edu_board_id: {
-                    required: "Select Board",
+                    required: "Please Select Board",
                 },
                 edu_class_id: {
-                    required: "Select Class",
+                    required: "Please Select Class",
                 },
                 edu_course_id: {
-                    required: "Select Course",
+                    required: "Please Select Course",
                 },
                 address: {
                     required: "Please Enter Address",
                 },
                 mobile_number: {
-                    required: "Enter Mobile Number",
+                    required: "Please Enter Mobile Number",
                     pattern: "Invalid Mobile Number",
                     remote: "This mobile number already exists.",
                     spcenotallow: "Enter Some Text",
                 },
                 alternative_mobile_number: {
-                    required: "Enter Alternative Mobile Number",
+                    required: "Please Enter Alternative Mobile Number",
                     pattern: "Invalid Mobile Number",
                     remote: "This mobile number already exists.",
                     spcenotallow: "Enter Some Text",
                 },
                 full_name: {
-                    required: "Enter Description",
+                    required: "Please Enter Full Name",
                     spcenotallow: "Enter Some Text",
                 },
                 email: {
-                    required: "Enter Email Id",
+                    required: "Please Enter Email Id",
                     spcenotallow: "Enter Some Text",
                 },
 

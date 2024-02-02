@@ -10,15 +10,14 @@ use App\Models\ {
 };
 
 class GalleryCategoryRepository  {
-	public function getAll()
+    public function getAll()
     {
         try {
-            return OurResultCategory::all();
+            return OurResultCategory::orderBy('id', 'desc')->get();
         } catch (\Exception $e) {
             return $e;
         }
     }
-
 	
 	public function addAll($request)
 {

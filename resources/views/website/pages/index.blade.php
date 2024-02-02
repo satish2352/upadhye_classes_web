@@ -2,9 +2,59 @@
 
 @section('content')
 <style>
-    .marquee-height{
-        height:300px !important;
-    }
+       .container-marquee {
+    width: 100%;
+    height: 10em;
+    margin: 2em auto;
+    overflow: hidden;
+    /* background: #ffffff; */
+    position: relative;
+}
+
+.slider {
+    top: 1em;
+    position: relative;
+    box-sizing: border-box;
+    animation: slider 5s linear infinite;
+    list-style-type: none;
+    text-align: left;
+}
+
+.slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes slider {
+    0%   { top:   10em }
+    100% { top: -14em }
+}
+
+.blur .slider {
+  	margin: 0;
+    padding: 0 1em;
+    line-height: 1.5em;
+}
+
+.blur:before, .blur::before,
+.blur:after,  .blur::after {
+    left: 0;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    width: 100%; 
+    height: 2em;
+    /* background-image: linear-gradient(180deg, #FFF, rgba(255,255,255,0)); */
+}
+
+.blur:after, .blur::after {
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+.blur:before, .blur::before {
+    top: 0;
+}
+
 </style>
     <div class="stricky-header stricked-menu main-menu main-header-two">
         <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
@@ -203,20 +253,20 @@
             <div class="row">
                 <div class="col-lg-7 col-md-7">
                     <div class="testimonial-three__wrapper">
-                        {{-- <div class="testimonial-three__carousel__thumb eduact-owl__carousel owl-theme owl-carousel" data-owl-options='{
-                "items": 3,
-                "margin": 36,
-                "smartSpeed": 700,
-                "loop":true,
-                "autoplay": true,
-                "URLhashListener":true,
-                "center": true,
-                "dots":false
-                }'>
-                        <a href="#item1" class="item" data-hash="item1"><img src="{{ asset('website/assets/images/resources/testimonial-3-1.jpg')}}" alt="eduact"></a><!-- Testimonial Item -->
-                        <a href="#item2" class="item" data-hash="item2"><img src="{{ asset('website/assets/images/resources/testimonial-3-2.jpg')}}" alt="eduact"></a><!-- Testimonial Item -->
-                        <a href="#item3" class="item" data-hash="item3"><img src="{{ asset('website/assets/images/resources/testimonial-3-3.jpg')}}" alt="eduact"></a><!-- Testimonial Item -->
-                    </div> --}}
+                <!--        <div class="testimonial-three__carousel__thumb eduact-owl__carousel owl-theme owl-carousel" data-owl-options='{-->
+                <!--"items": 3,-->
+                <!--"margin": 36,-->
+                <!--"smartSpeed": 700,-->
+                <!--"loop":true,-->
+                <!--"autoplay": true,-->
+                <!--"URLhashListener":true,-->
+                <!--"center": true,-->
+                <!--"dots":false-->
+                <!--}'>-->
+                <!--        <a href="#item1" class="item" data-hash="item1"><img src="{{ asset('website/assets/images/resources/testimonial-3-1.jpg')}}" alt="eduact"></a>-->
+                <!--        <a href="#item2" class="item" data-hash="item2"><img src="{{ asset('website/assets/images/resources/testimonial-3-2.jpg')}}" alt="eduact"></a>-->
+                <!--        <a href="#item3" class="item" data-hash="item3"><img src="{{ asset('website/assets/images/resources/testimonial-3-3.jpg')}}" alt="eduact"></a>-->
+                <!--    </div> -->
                         <div class="testimonial-three__carousel eduact-owl__carousel owl-theme owl-carousel"
                             data-owl-options='{
         "items": 1,
@@ -294,40 +344,60 @@
                                                                 data-wow-delay="100ms">
                                                                 {{-- <h2 class="section-title__title">{{ $category['title'] }} Results</h2> --}}
                                                             </div><!-- section-title -->
-                                                            <div class="row">
-                                                                <?php $k = 1; ?>
-                                                                @forelse($gallery_data as $key => $item)
-                                                                    <!-- Adjust the condition based on your logic -->
-                                                                    @if ($item['marquee_tab_id'] == $category['id'])
-                                                                        <div class="col-lg-12 col-md-12 wow fadeInUp"
-                                                                            data-wow-delay="200ms">
-
-                                                                            <marquee width="100%" direction="up"
-                                                                                height="50px" scrolldelay="50"
-                                                                                onMouseOver="this.stop()"
-                                                                                onMouseOut="this.start()"
-                                                                                scrollamount="5">
-
-                                                                                <span style="font-size:18px;">
-                                                                                    <li>{{ $item['title'] }} <span><img
-                                                                                                src="{{ asset('website/assets/images/img1.png') }}"></span>
-                                                                                    </li><br>
-                                                                                </span>
-                                                                            </marquee>
-
-
-                                                                                {{-- <h1 class="card__image toZoom d-block w-100 img-fluid" id="img{{ $key }}" attr="else" loading="lazy">{{ $item['title'] }}</h1> --}}
-
-
-
-                                                                        </div><!-- /.team-one -->
                                                             
-                                            @endif
-                                        @empty
-                                            No Items found for this category
-                                            @endforelse
-                                            <?php $k++; ?>
+                                                            <div class="container-marquee blur">
+                                            <ul class="slider">
+                                        
+                                                @forelse($gallery_data as $key => $item)
+                                                    {{-- Check if the item's marquee_tab_id matches the category id --}}
+                                                    @if ($item['marquee_tab_id'] == $category['id'])
+                                                        <li>
+                                                            <p>{{ $item['title'] }}
+                                                            <span><img src="{{ asset('website/assets/images/img1.png') }}"></span></p>
+                                                        </li>
+                                                    @endif
+                                                @empty
+                                                    <li>
+                                                        <p>No Items found for this category</p>
+                                                    </li>
+                                                @endforelse
+                                        
+                                            </ul>
                                         </div>
+                                        <!--                    <div class="row">-->
+                                        <!--                        <?php //$k = 1; ?>-->
+                                        <!--                        @forelse($gallery_data as $key => $item)-->
+                                                                   
+                                        <!--                            @if ($item['marquee_tab_id'] == $category['id'])-->
+                                        <!--                                <div class="col-lg-12 col-md-12 wow fadeInUp"-->
+                                        <!--                                    data-wow-delay="200ms">-->
+
+                                        <!--                                    <marquee width="100%" direction="up"-->
+                                        <!--                                        height="50px" scrolldelay="50"-->
+                                        <!--                                        onMouseOver="this.stop()"-->
+                                        <!--                                        onMouseOut="this.start()"-->
+                                        <!--                                        scrollamount="5">-->
+
+                                        <!--                                        <span style="font-size:18px;">-->
+                                        <!--                                            <li>{{ $item['title'] }} <span><img-->
+                                        <!--                                                        src="{{ asset('website/assets/images/img1.png') }}"></span>-->
+                                        <!--                                            </li><br>-->
+                                        <!--                                        </span>-->
+                                        <!--                                    </marquee>-->
+
+
+                                        <!--                                        {{-- <h1 class="card__image toZoom d-block w-100 img-fluid" id="img{{ $key }}" attr="else" loading="lazy">{{ $item['title'] }}</h1> --}}-->
+
+
+
+                                        <!--                                </div>-->
+                                                            
+                                        <!--    @endif-->
+                                        <!--@empty-->
+                                        <!--    No Items found for this category-->
+                                        <!--    @endforelse-->
+                                        <!--    <?php //$k++; ?>-->
+                                        <!--</div>-->
                                        </section>
                                             </div>
                                             @endforeach

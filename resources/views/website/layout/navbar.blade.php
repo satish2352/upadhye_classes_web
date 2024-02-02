@@ -1,5 +1,14 @@
 <body class="custom-cursor">
-
+<?php
+    // Assuming you have an instance of the IndexController class
+    $controllerInstance = new App\Http\Controllers\Website\IndexController();
+    
+    // Call the getCommonFormData method to retrieve common form data
+    $common_form_data = $controllerInstance->getCommonFormData();
+    
+    // Access the categories from the common form data
+    // $categories = $common_form_data['categories'];
+    ?>
     <div class="custom-cursor__cursor"></div>
     <div class="custom-cursor__cursor-two"></div>
 
@@ -164,26 +173,36 @@
                             <li class="dropdown">
                                 <a href="#">Courses</a>
                                 <ul>
-                                    <li><a href="{{ route('crashcoursebatch') }}">Crash course Batch</a></li>
-                                    <li><a href="{{ route('repeatersbatch') }}">Repeaters Batch</a></li>
-                                    <li><a href="{{ route('revisionbatch') }}">Revision Batch</a></li>
-                                    <li class="dropdown">
-                                        <a href="#">XI Science</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('progressivebatch') }}">Progressive Batch</a></li>
-                                            <li><a href="{{ route('intensivebatch') }}">FIntensive Batch</a></li>
-                                            <li><a href="{{ route('iitjeebatch') }}">IIT / JEE Batch</a></li>
-                                        </ul>
+                                    <!--<li><a href="{{ route('crashcoursebatch') }}">Crash course Batch</a></li>-->
+                                    <!--<li><a href="{{ route('repeatersbatch') }}">Repeaters Batch</a></li>-->
+                                    <!--<li><a href="{{ route('revisionbatch') }}">Revision Batch</a></li>-->
+                                   
+                                    @foreach ($common_form_data['data_output_courses'] as $locationaddress)
+                                    <li value="{{ $locationaddress['id'] }}"
+                                        {{ old('course_id') == $locationaddress['id'] ? 'selected' : '' }}>
+                                        <a href="{{ route('courses-details', ['id' => $locationaddress['id']]) }}">
+                                            {{ $locationaddress['service_name'] }}
+                                        </a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#">XII Science</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="{{ route('progressivebatch-xii') }}">Progressive Batch</a></li>
-                                            <li><a href="{{ route('intensivebatch-xii') }}">FIntensive Batch</a></li>
-                                            <li><a href="{{ route('iitjeebatch-xii') }}">IIT / JEE Batch</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{{ route('prefoundationbatch') }}">Pre Foundation Batch</a></li>
+                                @endforeach
+                               
+                                    <!--<li class="dropdown">-->
+                                    <!--    <a href="#">XI Science</a>-->
+                                    <!--    <ul class="sub-menu">-->
+                                    <!--        <li><a href="{{ route('progressivebatch') }}">Progressive Batch</a></li>-->
+                                    <!--        <li><a href="{{ route('intensivebatch') }}">Intensive Batch</a></li>-->
+                                    <!--        <li><a href="{{ route('iitjeebatch') }}">IIT / JEE Batch</a></li>-->
+                                    <!--    </ul>-->
+                                    <!--</li>-->
+                                    <!--<li class="dropdown">-->
+                                    <!--    <a href="#">XII Science</a>-->
+                                    <!--    <ul class="sub-menu">-->
+                                    <!--        <li><a href="{{ route('progressivebatch-xii') }}">Progressive Batch</a></li>-->
+                                    <!--        <li><a href="{{ route('intensivebatch-xii') }}">Intensive Batch</a></li>-->
+                                    <!--        <li><a href="{{ route('iitjeebatch-xii') }}">IIT / JEE Batch</a></li>-->
+                                    <!--    </ul>-->
+                                    <!--</li>-->
+                                    <!--<li><a href="{{ route('prefoundationbatch') }}">Pre Foundation Batch</a></li>-->
                                 </ul>
                             </li>
                             {{-- <li><a href="course.html">Our Result</a></li>
@@ -207,9 +226,10 @@
                         <a href="#" class="main-menu__toggler mobile-nav__toggler">
                             <i class="fa fa-bars"></i>
                         </a><!-- /.mobile menu btn -->
-                        <a href="#" class="main-menu__search search-toggler">
-                            <i class="icon-Search"></i>
-                        </a><!-- /.search btn -->
+                        <!--<a href="#" class="main-menu__search search-toggler">-->
+                        <!--    <i class="icon-Search"></i>-->
+                        <!--</a>-->
+                        <!-- /.search btn -->
                         {{-- <a href="login.html" class="main-menu__login">
                             <i class="icon-account-1"></i>
                         </a><!-- /.login btn --> --}}

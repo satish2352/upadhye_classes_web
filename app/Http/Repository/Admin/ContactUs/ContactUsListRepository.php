@@ -13,7 +13,7 @@ class ContactUsListRepository  {
 
     public function getAll(){
         try {
-            return ContactUs::all();
+            return ContactUs::orderBy('id', 'desc')->get();
         } catch (\Exception $e) {
             return $e;
         }

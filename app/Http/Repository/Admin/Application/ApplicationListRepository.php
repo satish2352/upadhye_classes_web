@@ -17,6 +17,7 @@ class ApplicationListRepository  {
             // return ApplicationForm::all();
             $modal_data = LocationAddress::join('application_form', 'application_form.edu_location_id','=', 'location_address.id')
             ->select('application_form.*', 'location_address.name')
+            ->orderBy('application_form.created_at', 'desc')
             ->get();
         return $modal_data;
         } catch (\Exception $e) {

@@ -107,7 +107,7 @@
                             aria-labelledby="profileDropdown">
                             {{-- @foreach ($user_data as $item) --}}
                             <a class="dropdown-item" href="{{ url('change-password') }}">
-                                <i class="fas fa-power-off text-primary"></i>
+                                <i class="fas fa-user text-primary"></i>
                                 Change Password
                             </a>
                             {{-- @endforeach --}}

@@ -17,6 +17,7 @@ class FessPaymentListRepository  {
             // return ApplicationForm::all();
             $modal_data = LocationAddress::join('fess_payment_form', 'fess_payment_form.edu_location_id','=', 'location_address.id')
             ->select('fess_payment_form.*', 'location_address.name')
+            ->orderBy('fess_payment_form.created_at', 'desc')
             ->get();
         return $modal_data;
         } catch (\Exception $e) {

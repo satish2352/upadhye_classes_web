@@ -8,10 +8,10 @@
         <div class="page-header__bg jarallax-img"></div><!-- /.page-header-bg -->
         <div class="page-header__overlay"></div><!-- /.page-header-overlay -->
         <div class="container text-center">
-            <h2 class="page-header__title">Intensive Batch</h2><!-- /.page-title -->
+            <h2 class="page-header__title">Crash Courses</h2><!-- /.page-title -->
             <ul class="page-header__breadcrumb list-unstyled">
                 <li><a href="index-2.html">Home</a></li>
-                <li><span>Intensive Batch</span></li>
+                <li><span>Crash Courses</span></li>
             </ul><!-- /.page-breadcrumb list-unstyled -->
         </div><!-- /.container -->
     </section><!-- /.page-header -->
@@ -35,49 +35,54 @@
                         </g>
                     </svg>
                 </h5>
-                <h2 class="section-title__title">Offered Courses</h2>
+               
+                {{-- @foreach($showData  as $courseDetail) --}}
+                <h2 class="section-title__title">{{$showData->service_name}}</h2>
+                {{-- @endforeach --}}
             </div><!-- section-title -->
             <div class="row">
                 <div class="col-xl-12 wow fadeInUp" data-wow-delay="200ms">
                     <div class="course-three__item">
-                        <div class="course-three__content p-3">
+                        {{-- @foreach($showData  as $courseDetail) --}}
+                        <div class="course-three__content p-3 w-100" width='100%'>
                             {{-- <ul class="course-details__sidebar__lists clerfix"> --}}
 
                             <div class="row pt-2">
                                 <div class="col-lg-3 d-flex align-items-center">
 
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
-                                                class="icon-instructor"></i></span> Course Type :</h3>
+                                                class="icon-instructor"></i></span> Course Type : </h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text">Monday to Sunday 6 to 9 hours of studying.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">{{ $showData->courses_type }}</span></div>
                             </div>
                             <hr>
 
                             <div class="row ">
                                 <div class="col-lg-3 d-flex align-items-center">
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
-                                                class="icon-history"></i></span> Course Duration</h3>
+                                                class="icon-history"></i></span> Course Duration : </h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text">This batch is conducted from April to till May.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">{{ $showData->courses_duration }}</span></div>
                             </div>
                             <hr>
                             <div class="row ">
                                 <div class="col-lg-3 d-flex align-items-center">
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
-                                                class="icon-reading"></i></i></span> Admission Procedure :</h3>
+                                                class="icon-reading"></i></i></span> Admission Procedure : </h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text">Must have passed 10+2 or equivalent with Physics, Chemistry, Biology, Math and English as core subjects from a recognized board.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text"> {{ strip_tags($showData->admission_procedure) }}</span></div>
                             </div>
                             <hr>
                             <div class="row ">
                                 <div class="col-lg-3 d-flex align-items-center">
                                     <h3 class="testimonial-two__title"><span class="icon-color-yekkow"><i
-                                                class="icon-book"></i></span> Eligibility :</h3>
+                                                class="icon-book"></i></span> Eligibility : </h3>
                                 </div>
-                                <div class="col-lg-9"><span class="course-details__overview__text">Class 12 or equivalent appearing aspirants are also eligible to apply for NEET.</span></div>
+                                <div class="col-lg-9"><span class="course-details__overview__text">{{ strip_tags($showData->eligibility) }}</span></div>
                             </div>
                             <hr>
                         </div><!-- /.course-content -->
+{{-- \                        @endforeach --}}
                     </div><!-- /.course-card-two -->
                 </div>
 

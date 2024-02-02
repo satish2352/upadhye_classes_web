@@ -4,21 +4,29 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
-    var summernoteInstance1 = $('#description').summernote({
-        placeholder: 'Enter Content',
-        tabsize: 2,
-        height: 100
-    });
+    function initializeSummernote(descriptionSelector, summernoteId) {
+        var summernoteInstance = $(descriptionSelector).summernote({
+            placeholder: 'Enter Content',
+            tabsize: 2,
+            height: 100
+        });
 
-    summernoteInstance1.summernote('disable');
+        summernoteInstance.summernote('disable');
 
-    $('#summernote_id .note-editable').on('click', function() {
-        summernoteInstance1.summernote('enable');
-        summernoteInstance1.summernote('toolbar', [
-            ['style', ['bold', 'italic', 'underline']],
-            ['insert', ['link', 'picture']]
-        ]);
-    });
+        $(summernoteId + ' .note-editable').on('click', function() {
+            summernoteInstance.summernote('enable');
+            summernoteInstance.summernote('toolbar', [
+                ['style', ['bold', 'italic', 'underline']],
+                ['insert', ['link', 'picture']]
+            ]);
+        });
+    }
+
+    // Initialize the first instance
+    initializeSummernote('#description', '#summernote_id');
+
+    // Initialize the second instance
+    initializeSummernote('#description1', '#summernote_id1');
 </script>
 
 <script type="text/javascript">
@@ -45,7 +53,7 @@
 <!-- content-wrapper ends -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"> © 2023. All rights reserved with
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"> © 2024. All rights reserved with
             Admin</span>
         {{-- <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">Powered by Software
             Solutions Private Limited</span> --}}

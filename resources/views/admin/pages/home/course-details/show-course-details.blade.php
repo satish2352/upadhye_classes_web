@@ -10,12 +10,12 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-start align-items-center">
                             <h3 class="page-title">
-                                Courses Offered
+                                Show Course Details
                             </h3>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-end align-items-center">
                             <div>
-                                <a href="{{ route('list-courses-offered') }}" class="btn btn-sm btn-primary ml-3">Back</a>
+                                <a href="{{ route('list-course-details') }}" class="btn btn-sm btn-primary ml-3">Back</a>
                             </div>
                         </div>
 
@@ -26,29 +26,38 @@
                                 <div class="col-12">
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label>Title :</label>
+                                            <label>Course Name :</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->title) }}</label>
+                                            <label>{{ strip_tags($showData->service_name) }}</label>
                                         </div>
                                     </div>      
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label>Description :</label>
+                                            <label>Courses Type :</label>
                                         </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <label>{{ strip_tags($showData->description) }}</label>
+                                            <label>{{$showData->courses_type }}</label>
                                         </div>
-                                    </div>                             
+                                        
+                                    </div>      
+
                                     <div class="row ">
                                         <div class="col-lg-3 col-md-3 col-sm-3">
-                                            <label> Image :</label>
+                                            <label>Admission Procedure :</label>
                                         </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">
+                                            <label>{{$showData->admission_procedure }}</label>
+                                        </div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <label>Eligibility :</label>
+                                            </div>
                                         <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <img src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $showData->image }}"
-                                                style="width:150px; height:150px; background-color: aliceblue;" alt=" {{ strip_tags($showData['title']) }} Image"/>
-                                        </div>
-                                    </div>
+                                                <label>{{$showData->eligibility }}</label>
+                                            </div>
+                                            </div>
                                 </div>
                             </div>
                         </div>

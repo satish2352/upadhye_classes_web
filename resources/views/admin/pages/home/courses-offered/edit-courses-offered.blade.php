@@ -45,7 +45,7 @@
                                         </div>
                                         <img id="english"
                                             src="{{ Config::get('DocumentConstant.COURSES_OFFERED_VIEW') }}{{ $editData->image }}"
-                                            class="img-fluid img-thumbnail" width="150">
+                                            class="img-fluid img-thumbnail" width="150" style="background-color: aliceblue;">
                                         <img id="english_imgPreview" src="#"
                                             alt=" {{ strip_tags($editData['title']) }} Image"
                                             class="img-fluid img-thumbnail" width="150" style="display:none">
